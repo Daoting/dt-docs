@@ -1,4 +1,4 @@
-baseURL = "https://daotingh.gitee.io/dt-docs"
+baseURL = "https://daoting.github.io/dt-docs/"
 
 # 主题
 #theme = "LoveIt"
@@ -69,7 +69,7 @@ enableEmoji = true
   defaultTheme = "auto"
   # public git repo url only then enableGitInfo is true
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
-  gitRepo = "https://gitee.com/daotingh/dt-docs"
+  gitRepo = "https://github.com/daotingh/dt-docs"
   # 哪种哈希函数用来 SRI, 为空时表示不使用 SRI
   # ["sha256", "sha384", "sha512", "md5"]
   fingerprint = ""

@@ -351,4 +351,5 @@ MigrationBackup/
 # 后添加
 gitconfig.txt
 resources
+public
 .hugo_build.lock
