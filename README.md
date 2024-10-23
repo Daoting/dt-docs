@@ -1,6 +1,6 @@
 <div align=center>
  <img src="https://raw.githubusercontent.com/Daoting/dt/master/logo.png" width="64" />
- <h1>搬运工教程</h1>
+ <h1>搬运工</h1>
 </div>
 
 ### 利用 C# + XAML 进行快速业务开发的跨平台框架
@@ -24,6 +24,6 @@
 
 * 同时，两部分都支持独立使用，也可根据规范在不同层面、不同粒度下扩展框架，从而满足特定的业务需求。
 
-### [查看教程](https://daotingh.gitee.io/dt-docs/docs/)
+### [查看教程](https://daoting.github.io/dt-docs/)
 
 ### [查看源码](https://github.com/daoting/dt)
