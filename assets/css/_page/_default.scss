@@ -1,0 +1,64 @@
+// 默认页，后添加
+.home-container {
+
+  .home-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: .5rem;
+  }
+
+  .item-profile {
+    @include transform(translateY(0));
+    padding-top: 2rem;
+    text-align: center;
+
+    .home-avatar {
+      padding: .5rem;
+
+      img {
+        display: inline-block;
+        width: 6rem;
+        height: auto;
+        margin: 0 auto;
+        @include border-radius(100%);
+        @include box-shadow(0 0 0 .3618em rgba(0, 0, 0, .05));
+        @include transition(all 0.4s ease);
+
+        &:hover {
+          position: relative;
+          @include transform(translateY(-.75rem));
+        }
+      }
+    }
+  }
+
+  .item-blank {
+    height: 4rem;
+  }
+
+  .item-section {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+
+  }
+
+  .item-info {
+    width: 600px;
+
+  }
+
+  .item-img {
+    
+    img {
+      width: 400px;
+      
+    }
+
+  }
+
+  .gray {
+    background-color: #eee;
+  }
+}

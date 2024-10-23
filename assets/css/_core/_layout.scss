@@ -1,0 +1,24 @@
+/** Layout **/
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+
+  main {
+    flex: 1 0 auto;
+    padding-top: 3.5rem;
+
+    .container {
+      display: flex;
+      justify-content: center;
+      container-type: inline-size; // 容器查询标志，在_media.scss中查询
+      container-name: main-container;
+    }
+
+    .home-container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

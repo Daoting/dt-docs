@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>服务 - 搬运工</title>
+        <meta name="Description" content="利用 C# &#43; XAML 进行快速业务开发的跨平台框架">
+        <meta name="application-name" content="搬运工">
+        <meta name="apple-mobile-web-app-title" content="搬运工">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <link rel="shortcut icon" type="image/x-icon" href="/dt-docs/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/dt-docs/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/dt-docs/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/dt-docs/apple-touch-icon.png">
+        <link rel="mask-icon" href="/dt-docs/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="manifest" href="/dt-docs/site.webmanifest">
+        <link rel="canonical" href="https://daotingh.gitee.io/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/" />
+        <link rel="alternate" href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/index.xml" type="application/rss+xml" title="搬运工">
+        <link rel="feed" href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/index.xml" type="application/rss+xml" title="搬运工"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/dt-docs/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    </head>
+    <body data-header-desktop="fixed" data-header-mobile="auto">
+        <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+        <div id="mask"></div>
+        <div class="wrapper">
+            <header class="desktop" id="header-desktop">
+                <div class="header-wrapper">
+                    <div class="header-title">
+                        <a href="/dt-docs/" title="搬运工"><img class="lazyload logo" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/favicon-32x32.png" data-srcset="/dt-docs/favicon-32x32.png, /dt-docs/favicon-32x32.png 1.5x, /dt-docs/favicon-32x32.png 2x" data-sizes="auto" alt="/dt-docs/favicon-32x32.png" title="/dt-docs/favicon-32x32.png" />搬运工</a>
+                    </div>
+                    <div class="menu">
+                        <div class="menu-inner"><a class="menu-item" href="/dt-docs/posts/"> 文章 </a><a class="menu-item" href="/dt-docs/docs/"> 教程 </a><a class="menu-item" href="https://github.com/daoting/dt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span>
+                            <span class="menu-item search" id="search-desktop">
+                                <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                                <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                                    <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                                    <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <span class="search-button search-loading" id="search-loading-desktop">
+                                    <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                            <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <header class="mobile" id="header-mobile">
+                <div class="header-container">
+                    <div class="header-wrapper">
+                        <div class="header-title">
+                            <a href="/dt-docs/" title="搬运工"><img class="lazyload logo" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/favicon-32x32.png" data-srcset="/dt-docs/favicon-32x32.png, /dt-docs/favicon-32x32.png 1.5x, /dt-docs/favicon-32x32.png 2x" data-sizes="auto" alt="/dt-docs/favicon-32x32.png" title="/dt-docs/favicon-32x32.png" />搬运工</a>
+                        </div>
+                        <div class="menu-toggle" id="menu-toggle-mobile">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="menu" id="menu-mobile">
+                        <div class="search-wrapper">
+                            <div class="search mobile" id="search-mobile">
+                                <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                                <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                                    <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                                    <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <span class="search-button search-loading" id="search-loading-mobile">
+                                    <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                                取消
+                            </a>
+                        </div>
+                        <a class="menu-item" href="/dt-docs/posts/" title="">文章</a>
+                        <a class="menu-item" href="/dt-docs/docs/" title="">教程</a>
+                        <a class="menu-item" href="https://github.com/daoting/dt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a>
+                        <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                            <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <div class="search-dropdown desktop">
+                <div id="search-dropdown-desktop"></div>
+            </div>
+            <div class="search-dropdown mobile">
+                <div id="search-dropdown-mobile"></div>
+            </div>
+            <main class="main"><div class="doc-frame">
+    <aside class="doc-tree">
+        <div id="content-mobile">
+  <button class="fas fa-bars" type="button" onclick="var nav = document.getElementById('td-section-nav'); nav.style.display = (nav.style.display == 'block') ? 'none' : 'block' ">
+  </button>
+</div>
+<nav class="td-sidebar-nav" id="td-section-nav">
+  <ul class="td-sidebar-nav__section">
+    <li>
+  <a href="/dt-docs/docs/" title="概述" class="td-sidebar-link tree-root"><span>概述</span></a>
+  <ul  class="ul-1" >
+    <li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/" title="开始" class="td-sidebar-link"><span>开始</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/1%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="开发环境" class="td-sidebar-link"><span>开发环境</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/2%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/" title="创建空项目" class="td-sidebar-link"><span>创建空项目</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/3%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/" title="小试牛刀" class="td-sidebar-link"><span>小试牛刀</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/4%E6%90%AC%E8%BF%90%E5%B7%A5%E6%A0%B7%E4%BE%8B/" title="搬运工样例" class="td-sidebar-link"><span>搬运工样例</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/" title="基础" class="td-sidebar-link"><span>基础</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/1%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84/" title="总体架构" class="td-sidebar-link"><span>总体架构</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/2%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/" title="基础功能" class="td-sidebar-link"><span>基础功能</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/3%E9%A2%86%E5%9F%9F%E5%B1%82/" title="领域层" class="td-sidebar-link"><span>领域层</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/" title="服务" class="td-sidebar-link active"><span>服务</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/" title="客户端" class="td-sidebar-link"><span>客户端</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/1%E5%9F%BA%E7%A1%80/" title="基础" class="td-sidebar-link"><span>基础</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/2%E7%95%8C%E9%9D%A2%E6%A1%86%E6%9E%B6/" title="界面框架" class="td-sidebar-link"><span>界面框架</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/3fv/" title="Fv" class="td-sidebar-link"><span>Fv</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/" title="Lv" class="td-sidebar-link"><span>Lv</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/5tab/" title="Tab" class="td-sidebar-link"><span>Tab</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/6%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6/" title="基础控件" class="td-sidebar-link"><span>基础控件</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/" title="发布部署" class="td-sidebar-link"><span>发布部署</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/1%E6%9C%8D%E5%8A%A1/" title="服务" class="td-sidebar-link"><span>服务</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/2win%E5%BA%94%E7%94%A8/" title="Win应用" class="td-sidebar-link"><span>Win应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/3android%E5%BA%94%E7%94%A8/" title="Android应用" class="td-sidebar-link"><span>Android应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/4ios%E5%BA%94%E7%94%A8/" title="iOS应用" class="td-sidebar-link"><span>iOS应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/5wasm%E5%BA%94%E7%94%A8/" title="Wasm应用" class="td-sidebar-link"><span>Wasm应用</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul>
+</nav>
+
+
+    </aside>
+    <div class="doc-main">
+        <div class="container">
+            <article class="page single"><h1 class="single-title animate__animated animate__flipInX">服务</h1><div class="post-meta">
+                    <div class="post-meta-line">
+                        <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 11430 字&nbsp;
+                        <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 23 分钟&nbsp;</div>
+                </div><div class="content" id="content"><h2 id="服务配置">服务配置</h2>
+<p>服务端系统配置包括全局配置和服务配置两部分，所有配置文件的存储路径为<code>/etc/config/</code>。</p>
+<ul>
+<li>文件<code>global.json</code>中存储全局配置，全局配置包括应用名称、所有涉及的数据库连接串、rabbitmq配置、redis配置等，是系统内所有微服务需要的公共配置。</li>
+<li>文件<code>service.json</code>中存储当前服务的配置，内容包括默认数据源、各种控制参数等。</li>
+<li>文件<code>logger.json</code>是单独提供给日志的配置文件。系统配置未包含环境变量。</li>
+<li>文件<code>model.json</code>是cm服务导出模型库时的配置文件。</li>
+</ul>
+<p>当服务部署在<code>K8s</code>时，路径<code>/etc/config/</code>下的<code>json</code>配置文件作为集群的<code>configMap</code>资源，以<code>Volume</code>的方式加载到<code>Pod</code>中，最后释放到服务的<code>app/etc/config</code>目录下，支持动态更新配置文件，响应时间10多秒。</p>
+<h3 id="获取配置值">获取配置值</h3>
+<p>获取配置的统一方法：<code>Kit.GetCfg</code> 可以获取<code>global.json service.json</code>两个配置文件及环境变量中的值，也可通过<code>Kit.Config</code>属性自由查询，定义如下：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">Kit</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 获取系统配置中指定键的值</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;typeparam name=&#34;T&#34;&gt;值的类型&lt;/typeparam&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_key&#34;&gt;键名&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_defaultValue&#34;&gt;键不存在时的默认值&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="n">T</span> <span class="n">GetCfg</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">p_key</span><span class="p">,</span> <span class="n">T</span> <span class="n">p_defaultValue</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 获取系统配置中指定键的值</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;typeparam name=&#34;T&#34;&gt;值的类型&lt;/typeparam&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_key&#34;&gt;键名&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="n">T</span> <span class="n">GetCfg</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">p_key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h3 id="globaljson">global.json</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;App&#34;</span><span class="p">:</span> <span class="s2">&#34;dt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;Database&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;mydt&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;ConnStr&#34;</span><span class="p">:</span> <span class="s2">&#34;Server=10.10.1.2;Port=3306;Database=dt;Uid=dt;Pwd=dt;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;DbType&#34;</span><span class="p">:</span> <span class="s2">&#34;mysql&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;orcldt&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;ConnStr&#34;</span><span class="p">:</span> <span class="s2">&#34;User Id=dt;Password=dt;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.10.1.2)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=sec)(SERVER=dedicated)))&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;DbType&#34;</span><span class="p">:</span> <span class="s2">&#34;oracle&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sqldt&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;ConnStr&#34;</span><span class="p">:</span> <span class="s2">&#34;Data Source=10.10.1.2,1433;Initial Catalog=dt;User ID=dt;Password=dt;Encrypt=True;TrustServerCertificate=True;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;DbType&#34;</span><span class="p">:</span> <span class="s2">&#34;sqlserver&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;pgdt&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;ConnStr&#34;</span><span class="p">:</span> <span class="s2">&#34;Host=10.10.1.2;Port=5432;Database=dt;Username=dt;Password=dt;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;DbType&#34;</span><span class="p">:</span> <span class="s2">&#34;postgresql&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;RabbitMq&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;HostName&#34;</span><span class="p">:</span> <span class="s2">&#34;10.10.1.2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;UserName&#34;</span><span class="p">:</span> <span class="s2">&#34;dt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Password&#34;</span><span class="p">:</span> <span class="s2">&#34;dt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Port&#34;</span><span class="p">:</span> <span class="mi">5672</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;HttpPort&#34;</span><span class="p">:</span> <span class="mi">15672</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;Redis&#34;</span><span class="p">:</span> <span class="s2">&#34;10.10.1.2,password=dt,defaultDatabase=15,allowAdmin=true&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><code>App</code>节定义系统名称，用于在<code>RabbitMq</code>等处识别不同系统。</li>
+<li><code>Database</code>节是系统所有微服务用到的所有数据库信息，每个库信息包括连接串、库类型，每个库都有唯一的键名，用于在每个微服务的<code>service.json</code>中配置默认数据源键名使用。</li>
+<li><code>RabbitMq</code>节定义连接<code>RabbitMq</code>服务器的配置。</li>
+<li><code>Redis</code>节定义连接<code>Redis</code>服务器的配置。</li>
+</ul>
+<h3 id="servicejson">service.json</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 设置运行模式，共三种，默认Svc模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 1. Svc          普通微服务模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 2. SingletonSvc 单体服务模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 3. InitDb       初始化数据库模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;Mode&#34;</span><span class="p">:</span> <span class="s2">&#34;SingletonSvc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// 默认数据源键名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;DbKey&#34;</span><span class="p">:</span> <span class="s2">&#34;mydt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 服务名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;SvcName&#34;</span><span class="p">:</span> <span class="s2">&#34;cosm&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// 是否输出所有调用的Sql语句或存储过程名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;TraceSql&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 是否输出所有调用的Api名称
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;TraceRpc&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// 启动KestrelServer时的监听设置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;KestrelListen&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;Scheme&#34;</span><span class="p">:</span> <span class="s2">&#34;https&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;Address&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;Port&#34;</span><span class="p">:</span> <span class="s2">&#34;20204&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">/**************</span> <span class="err">以下配置只在单体时有效</span> <span class="err">**************/</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 单体服务时合并所有微服务为一个服务，微服务包括：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 1. cm msg fsm三个标准微服务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 2. 当前服务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 3. CustomSvcDbKey配置的服务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 自定义服务的数据源键名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 1. 可以自定义cm msg fsm服务或当前服务的数据源键名，否则采用默认数据源键名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 2. 定义任意其它服务的数据源键名，实现跨多个数据源操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;CustomSvcDbKey&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//&#34;svcname&#34;: &#34;dbkey&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// cm服务用，除默认数据源外，其余需要导出到模型库的数据源键名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;ExportToModel&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// fsm服务用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;FixedVolume&#34;</span><span class="p">:</span> <span class="s2">&#34;photo;editor;g;chat&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;MaxRequestBodySize&#34;</span><span class="p">:</span> <span class="mi">1073741824</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="modeljson">model.json</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;OmOption&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 创建sqlite表、索引等
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;Create&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;create table if not exists OmOption (Name text not null,Category text not null)&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;create index if not exists \&#34;OmOption_Category\&#34; on \&#34;OmOption\&#34;(\&#34;Category\&#34;)&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 待导出的数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;Data&#34;</span><span class="p">:</span> <span class="s2">&#34;select a.Name,b.Name Category from cm_option a, cm_option_group b where a.GroupID=b.ID order by Category,Dispidx&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 数据源键名，省略时使用默认键名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;DbKey&#34;</span><span class="p">:</span> <span class="s2">&#34;dt&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;OmReport&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Create&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;create table if not exists OmReport (ID integer not null,Name text,Define text,primary key (ID))&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Data&#34;</span><span class="p">:</span> <span class="s2">&#34;select id,name,define from cm_rpt&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;OmMenu&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Create&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;create table if not exists OmMenu (ID integer not null,ParentID integer,Name text,IsGroup integer,ViewName text,Params text,Icon text,Note text,DispIdx integer,primary key (ID))&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Data&#34;</span><span class="p">:</span> <span class="s2">&#34;select * from cm_menu where islocked=0 order by dispidx&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p><code>model.json</code>是<code>cm</code>服务导出模型库时的配置文件，除了<code>cm</code>服务用到外，当一个服务配置成<strong>单体模式</strong>时也需要该文件。</p>
+<p>该配置文件的每一节都是要导出到sqlite的表结构及数据，当需要在客户端缓存一些其它常用数据时可以在此添加配置，上述默认的缓存内容禁止删除。OmOption是提供给下拉选择框的数据源，如学历、地区等；OmReport是报表模板；OmMenu是菜单。</p>
+<p>当配置中的数据修改后，需要更新模型库文件。</p>
+<h2 id="微服务">微服务</h2>
+<h3 id="部署">部署</h3>
+<p>部署服务时支持两种模式：</p>
+<ul>
+<li>微服务模式，部署时各微服务单独部署，独立配置；</li>
+<li>单体模式，就是将所有微服务合并成一个服务使用，并且只一个副本，相当于传统的单体服务，适用于功能简单、用户量较少的情况，该模式部署方便、节省资源和网络通信，微服务之间的Rpc调用变成内部方法调用，EventBus还按照微服务的方式进行。</li>
+</ul>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><code>两种部署模式都支持每个微服务连接不同数据库。</code>单体模式时虽然对外是一个服务地址，但RPC请求还是区分每个微服务的。因此两种部署模式功能相同，可根据需求任意切换，一般开发时使用单体模式。</div>
+        </div>
+    </div>
+<p>如何在单体模式连接不同数据库呢？主要在<code>service.json</code>的配置上：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 设置运行模式，共三种，默认Svc模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 1. Svc          普通微服务模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 2. SingletonSvc 单体服务模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 3. InitDb       初始化数据库模式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;Mode&#34;</span><span class="p">:</span> <span class="s2">&#34;SingletonSvc&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">/**************</span> <span class="err">以下配置只在单体时有效</span> <span class="err">**************/</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 单体服务时合并所有微服务为一个服务，微服务包括：
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 1. cm msg fsm三个标准微服务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 2. 当前服务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 3. CustomSvcDbKey配置的服务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  
+</span></span><span class="line"><span class="cl">  <span class="c1">// 自定义服务的数据源键名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 1. 可以自定义cm msg fsm服务或当前服务的数据源键名，否则采用默认数据源键名
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// 2. 定义任意其它服务的数据源键名，实现跨多个数据源操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;CustomSvcDbKey&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;svc1&#34;</span><span class="p">:</span> <span class="s2">&#34;dbkey1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;svc2&#34;</span><span class="p">:</span> <span class="s2">&#34;dbkey2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>单体模式除了包括<code>cm msg fsm 当前服务</code>四个微服务外，还可以在<code>CustomSvcDbKey</code>节定义其它微服务，并指定数据源键名，实现跨多个数据源操作，当然这些微服务只提供公共<code>Api</code>。</p>
+<h3 id="内置服务">内置服务</h3>
+<p>平台提供五个内置微服务：</p>
+<ul>
+<li>内核模型服务(cm)</li>
+<li>消息服务(msg)</li>
+<li>文件服务(fsm)</li>
+<li>宇宙服务(cosm)</li>
+<li>承载wasm服务(boot)</li>
+</ul>
+<p>每个微服务都有独立的服务存根类(Stub)、服务配置、服务日志、sql语句字典等，Stub主要定义服务名称、注册全局服务、注册中间件等，如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 服务存根</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">SvcStub</span> <span class="p">:</span> <span class="n">Stub</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 定义全局服务</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_services&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">p_services</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">p_services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">SqliteModelHandler</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 自定义请求处理或定义请求管道的中间件</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_app&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_handlers&#34;&gt;注册自定义请求处理&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">p_app</span><span class="p">,</span> <span class="n">IDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">RequestDelegate</span><span class="p">&gt;</span> <span class="n">p_handlers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Kit</span><span class="p">.</span><span class="n">GetService</span><span class="p">&lt;</span><span class="n">SqliteModelHandler</span><span class="p">&gt;().</span><span class="n">Init</span><span class="p">(</span><span class="n">p_handlers</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">目前平台只支持所有微服务连接同一<code>RabbitMq</code>、同一<code>Redis</code>，但每个微服务可以连接不同的数据库，详细配置见<a href="#servicejson" rel="">service.json配置</a>。</div>
+        </div>
+    </div>
+<h3 id="内核模型服务cm">内核模型服务(cm)</h3>
+<p>cm是<code>Core Model</code>的缩写，内核模型服务是平台必不可少的基础服务，客户端启动时首先连接该服务获取配置，配置包括：所有微服务地址、服务器时间、是否为单体服务等。</p>
+<p>还提供下载缓存在客户端的sqlite文件，有包含所有库结构的model.db文件，菜单缓存文件menu.db，报表模板缓存文件report.db，自定义缓存文件等，该服务<strong>暂不支持多副本部署</strong>。</p>
+<p>基础模型包括基础菜单、用户、角色、权限、工作流、参数、文件目录等功能模块，数据结构如下：
+<figure><a class="lightgallery" href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/1.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/1.png" data-thumbnail="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/1.png" data-sub-html="<h2>数据结构</h2>">
+        <img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/1.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/1.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/1.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/1.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/1.png" width="1012" height="684" />
+    </a><figcaption class="image-caption">数据结构</figcaption>
+    </figure>
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/2.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/2.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/2.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/2.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/2.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/2.png" width="572" height="595" /></p>
+<h3 id="消息服务msg">消息服务(msg)</h3>
+<p>平台内置的基础消息服务，<strong>支持多副本部署</strong>，所有已注册的客户端在启动时调用服务端的<code>Register</code>方法，该<code>Api</code>采用基于<code>http2</code>协议的<code>ServerStream</code>模式，即：客户端发送一个请求，服务端返回数据流响应，<strong>相当于在服务端和客户端建立了长连接，服务端可以实时向客户端推送信息</strong>。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 客户端注册在线推送</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_deviceInfo&#34;&gt;客户端设备信息&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_writer&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">Register</span><span class="p">(</span><span class="n">Dict</span> <span class="n">p_deviceInfo</span><span class="p">,</span> <span class="n">ResponseWriter</span> <span class="n">p_writer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">ci</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ClientInfo</span><span class="p">(</span><span class="n">p_deviceInfo</span><span class="p">,</span> <span class="n">p_writer</span><span class="p">,</span> <span class="n">_userID</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 注册新会话(同一账号支持多个会话)，并向新会话发送离线信息</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">Online</span><span class="p">.</span><span class="n">Register</span><span class="p">(</span><span class="n">ci</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 推送</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="p">(</span><span class="k">await</span> <span class="n">ci</span><span class="p">.</span><span class="n">SendMsg</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 推送结束，删除会话</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Online</span><span class="p">.</span><span class="n">RemoveSession</span><span class="p">(</span><span class="n">ci</span><span class="p">.</span><span class="n">UserID</span><span class="p">,</span> <span class="n">ci</span><span class="p">.</span><span class="n">SessionID</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="p">.</span><span class="n">Debug</span><span class="p">(</span><span class="s">&#34;{0} 离线&#34;</span><span class="p">,</span> <span class="n">ci</span><span class="p">.</span><span class="n">UserID</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p><strong>推送过程</strong></p>
+<p>服务端向客户端发送的消息主要包括三类：</p>
+<ul>
+<li>即时消息(聊天内容或系统消息)；</li>
+<li>订阅消息；</li>
+<li>指令消息；</li>
+</ul>
+<p>其中即时消息和指令消息按<code>userid</code>发送，订阅消息只推送给订阅了该消息类型的用户，所有类型消息的发送都遵循<code>在线直接发送</code>、<code>离线按照用户设置进行推送</code>的原则。其推送过程如下图所示：
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/3.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/3.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/3.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/3.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/3.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/3.png" width="684" height="981" /></p>
+<p><strong>客户端解析推送</strong>
+客户端需要在解析推送类型上指定[PushApi]标签，调用过程由系统内部处理。</p>
+<p>系统内置推送处理
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="na">[PushApi]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">SysPushApi</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 接收服务器推送的聊天信息</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_letter&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">void</span> <span class="n">ReceiveLetter</span><span class="p">(</span><span class="n">LetterInfo</span> <span class="n">p_letter</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ChatDs</span><span class="p">.</span><span class="n">ReceiveLetter</span><span class="p">(</span><span class="n">p_letter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 系统警告提示</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_msg&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">void</span> <span class="n">ShowSysWarning</span><span class="p">(</span><span class="kt">string</span> <span class="n">p_msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Kit</span><span class="p">.</span><span class="n">Warn</span><span class="p">(</span><span class="s">$&#34;【系统通知】\r\n{p_msg}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 新任务提醒</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">void</span> <span class="n">WfNotify</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">WfiDs</span><span class="p">.</span><span class="n">ReceiveNewTask</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>以下是客户端自定义推送处理和推送指令消息的例子：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="na">[PushApi]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">PushDemoApi</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">void</span> <span class="n">Hello</span><span class="p">(</span><span class="kt">string</span> <span class="n">p_msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Kit</span><span class="p">.</span><span class="n">Msg</span><span class="p">(</span><span class="s">$&#34;【收到服务端推送】\r\n{p_msg}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">OnPush</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SendCmd</span><span class="p">(</span><span class="n">Kit</span><span class="p">.</span><span class="n">UserID</span><span class="p">,</span> <span class="k">new</span> <span class="n">MsgInfo</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MethodName</span> <span class="p">=</span> <span class="s">&#34;PushDemoApi.Hello&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Params</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="p">{</span> <span class="s">&#34;Hello myself&#34;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">});</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 向某用户的客户端推送指令信息</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_userID&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_msg&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;true 在线推送&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">SendCmd</span><span class="p">(</span><span class="kt">long</span> <span class="n">p_userID</span><span class="p">,</span> <span class="n">MsgInfo</span> <span class="n">p_msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Kit</span><span class="p">.</span><span class="n">Rpc</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;(</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;msg&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;CmdMsg.SendCmd&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p_userID</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p_msg</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h3 id="文件服务fsm">文件服务(fsm)</h3>
+<p>文件服务统一管理应用范围内使用的文件，在<code>k8s</code>中<strong>支持多副本部署</strong>，支持分卷存储文件，可通过<code>ConfigMap</code>将数据卷<code>Volume</code>挂载到指定目录，该服务只负责文件的上传下载和文件管理功能，不涉及具体的业务问题，在功能和<code>Api</code>上较稳定。</p>
+<h4 id="卷">卷</h4>
+<p>文件的本地目录为<code>drive</code>，为了和<code>wwwroot</code>区分，映射到虚拟目录<code>drv</code>，并且<code>drive</code>下的所有文件都作为网站静态文件，访问路径形如：https://localhost/dt-fsm/drv/v0/21/06/80819234523705344.jpg。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="hl"><span class="lnt">22
+</span></span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 自定义请求处理或定义请求管道的中间件</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;param name=&#34;p_app&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;param name=&#34;p_handlers&#34;&gt;注册自定义请求处理&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">p_app</span><span class="p">,</span> <span class="n">IDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">RequestDelegate</span><span class="p">&gt;</span> <span class="n">p_handlers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Cfg</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 注册请求路径处理</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p_handlers</span><span class="p">[</span><span class="s">&#34;/.u&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="n">p_context</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">Uploader</span><span class="p">(</span><span class="n">p_context</span><span class="p">).</span><span class="n">Handle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p_handlers</span><span class="p">[</span><span class="s">&#34;/.d&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="p">(</span><span class="n">p_context</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">Downloader</span><span class="p">(</span><span class="n">p_context</span><span class="p">).</span><span class="n">Handle</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 设置可浏览目录的根目录，测试用</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p_app</span><span class="p">.</span><span class="n">UseDirectoryBrowser</span><span class="p">(</span><span class="k">new</span> <span class="n">DirectoryBrowserOptions</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span><span class="n">Cfg</span><span class="p">.</span><span class="n">Root</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RequestPath</span> <span class="p">=</span> <span class="s">&#34;/drv&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// drive下的所有文件作为网站静态文件，映射到虚拟目录drv，和wwwroot区分</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">p_app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">(</span><span class="k">new</span> <span class="n">StaticFileOptions</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span><span class="n">Cfg</span><span class="p">.</span><span class="n">Root</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RequestPath</span> <span class="p">=</span> <span class="s">&#34;/drv&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>服务支持挂载多个卷，每个卷有不同的用途，系统将卷划分为<code>固定卷</code>和<code>普通卷</code>。</p>
+<ul>
+<li><code>固定卷</code>是指客户端在上传文件时可根据卷名访问的卷，该卷一般存储特殊用途的文件，如头像文件、聊天文件等，使用场景较少。</li>
+<li><code>普通卷</code>是除固定卷以外的卷，上传文件时根据普通卷的使用情况动态选择要存储的卷，服务启动时在<code>Redis</code>缓存中创建了<code>SortedSet</code>类型的<code>volume</code>键，该<code>SortedSet</code>列表中的每行对应一个卷，值为这个卷的“正在使用数”，正在使用数就是当前正在写入卷的请求数，该数值能正确反映一个卷的闲置状态，每次有新的上传请求时都选择“正在使用数”最小的卷进行存储。</li>
+</ul>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/4.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/4.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/4.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/4.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/4.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/4.png" width="232" height="406" /></p>
+<h4 id="上传">上传</h4>
+<p>文件上传采用流式上传方式，流式上传和使用<code>IFormFile</code>在效率上没有太大的差异，<code>IFormFile</code>的缺点主要是客户端上传过来的文件首先会缓存在服务器内存中，任何超过 64KB 的单个缓冲文件会从 RAM 移动到服务器磁盘上的临时文件中。文件上传所用的资源（磁盘、RAM）取决于并发文件上传的数量和大小，流式上传主要解决内存占用过高和磁盘空间不足问题。</p>
+<p><code>Http Post</code>请求时内容有三种编码类型，系统文件上传使用<code>multipart/form-data</code>：</p>
+<ul>
+<li>
+<p><code>application/x-www-urlencoded</code>，<code>Form</code>默认的编码类型，消息内容会经过 URL 格式编码，就像在GET请求时 URL 里的 <code>QueryString</code> 那样。
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/5.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/5.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/5.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/5.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/5.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/5.png" width="680" height="83" />
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/6.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/6.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/6.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/6.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/6.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/6.png" width="682" height="174" /></p>
+</li>
+<li>
+<p><code>multipart/form-data</code>,它可以包含了多个 <code>Parts</code>，每个 <code>Part</code> 都包含头信息部分，<code>Part</code> 头信息中必须包含一个 <code>Content-Disposition</code> 头，其他的头信息则为可选项，比如 <code>Content-Type</code> 等，<code>Content-Disposition</code> 包含 <code>type</code> 和一个名字为 <code>name</code> 的 <code>parameter</code>，<code>type</code>是 <code>form-data</code>，<code>name</code> 参数的值则为表单控件（也即 field）的名字，如果是文件，那么还有一个 <code>filename</code> 参数，值就是文件名。
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/7.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/7.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/7.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/7.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/7.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/7.png" width="689" height="99" />
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/8.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/8.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/8.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/8.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/8.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/8.png" width="684" height="483" /></p>
+</li>
+<li>
+<p><code>text-plain</code>，空格转换为 &ldquo;+&rdquo; 加号，但不对特殊字符编码。</p>
+</li>
+</ul>
+<p>文件上传的Section结构如下：
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/9.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/9.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/9.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/9.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/9.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/9.png" width="850" height="519" />
+当使用固定卷时第一Section用于指定固定卷名，当使用普通卷时所有Section都是FileSection。</p>
+<p>文件上传过程：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/10.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/10.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/10.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/10.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/10.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/10.png" width="570" height="1181" /></p>
+<h4 id="下载">下载</h4>
+<p>下载文件时需要提供文件的完整路径，记录文件下载次数。下载缩略图时，若缩略图不存在，则下载原始图像，客户端可通过<code>Api</code>先判断缩略图是否存在。
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>缩略图命名规则：</p>
+<p>原文件名添加后缀&quot;<code>-t.jpg</code>&quot;，如 143203944767549440.wmv 的缩略图文件名为143203944767549440.wmv-t.jpg。</p>
+</div>
+        </div>
+    </div></p>
+<h4 id="浏览">浏览</h4>
+<p>和下载类似，文件服务还支持按路径直接浏览的方式，方便图片或视频等嵌入到网页中。</p>
+<p>如：https://localhost/dt-fsm/drv/v0/21/06/80819234523705344.jpg</p>
+<p>同样浏览缩略图时若无缩略图自动取原图。</p>
+<h4 id="网页发布">网页发布</h4>
+<p>文件服务还提供静态网页浏览的功能，和<code>cm</code>服务中的发布模块配合。文件服务中有两个目录的文件与发布相关：<code>drive/editor</code>目录是<code>html</code>富文本编辑器，<code>drive/g</code>是动态生成的网页，目录结构如下：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/11.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/11.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/11.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/11.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/11.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/11.png" width="129" height="289" /></p>
+<p><code>editor</code>目录包含<code>froala</code>编辑器的所有文件，默认编辑器在<code>editor\html\default.html</code>页面。<code>g</code>目录下保存生成的静态网页，以“年月”格式的目录作为网页的二级分类。因生成的网页中采用相对路径，如插入的图片或视频为“../../drv/v0/26/2D/91789217609150464.mp4”，并且为了保证生成的网页和<code>froala</code>中编辑的内容都能正常显示，禁止修改目录结构。</p>
+<p><code>html</code>编辑器用于编辑网页内容，编辑后的网页内容可以保存在数据库或根据模板生成完整网页。</p>
+<p><code>html</code>编辑器使用<code>Froala Editor(V3.1.1)</code>，功能强大界面美观但收费，在<code>froala_editor.min.js</code>或<code>froala_editor.pkgd.min.js</code>文件中搜索<code>new Image</code>，删除以下代码：</p>
+<p>搜索<code>POWERED_BY</code>，删除左下角logo链接：</p>
+<h3 id="宇宙服务cosm">宇宙服务(cosm)</h3>
+<p>cosm服务是一个空服务，只提供公共Api，通过配置<code>service.json</code>可以实现以下功能：</p>
+<ul>
+<li>单体服务，适用于不需要任何自定义Api，所有功能都在客户端完成的情况。</li>
+<li>每个微服务独立部署时，若微服务只需连接不同数据库，无需自定义Api，可按照服务名、默认数据源键名配置cosm，相当于单体模式的其它微服务。</li>
+</ul>
+<h3 id="承载wasmboot">承载wasm(boot)</h3>
+<p><code>boot</code>服务不同于以上四个服务，它只是用来承载<code>wasm web</code>网站，无数据库、RabbitMq、Redis连接，无Api。</p>
+<p>wasm应用发布时默认会为<code>js css wasm clr</code>格式的文件生成<code>Brotli</code>压缩文件，文件名为原名加<code>br</code>扩展名，参见下图，参见<a href="https://platform.uno/docs/articles/external/uno.wasm.bootstrap/doc/features-pre-compression.html" target="_blank" rel="noopener noreffer">预压缩详情</a></p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/19.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/19.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/19.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/19.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/19.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/19.png" width="625" height="260" /></p>
+<p>发布后生成的<code>dist</code>目录就是一个完整的单页面静态<code>wasm</code>网站。
+<code>Uno.Wasm.Bootstrap.DevServer</code>提供的 <code>webapp</code> 包括调试代理、xaml热重载等功能，正式发布后都不需要，并且缺少自动下载同名<code>.br</code>文件的功能，因此平台提供<code>boot</code>服务作为承载wasm静态网站的<code>webapp</code>。</p>
+<p><code>boot</code>服务通过<code>service.json</code>配置<code>wasm</code>静态网站的位置，可以是完整路径或相对路径：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;WasmPath&#34;</span><span class="p">:</span> <span class="s2">&#34;dist&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p><code>boot</code>服务启动时加入三个中间件：</p>
+<ul>
+<li>第一个中间件重写请求文件路径，将存在<code>Brotli</code>压缩文件的路径指向压缩文件<code>.br</code>；</li>
+<li>第二个中间件处理访问根路径时的默认页，使用标准的<code>UseDefaultFiles</code>；</li>
+<li>第三个中间件使用标准的<code>UseStaticFiles</code>，增加支持 <code>.clr .br .dat</code> 文件类型，同时对于<code>.br</code>文件，mime类型在 <code>OnPrepareResponse</code> 时重置到非压缩文件的类型。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">p_app</span><span class="p">,</span> <span class="n">IDictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="n">RequestDelegate</span><span class="p">&gt;</span> <span class="n">p_handlers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">pathBase</span> <span class="p">=</span> <span class="n">Kit</span><span class="p">.</span><span class="n">GetCfg</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">&#34;WasmPath&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(!</span><span class="n">Path</span><span class="p">.</span><span class="n">IsPathRooted</span><span class="p">(</span><span class="n">pathBase</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 相对路径</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pathBase</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">AppContext</span><span class="p">.</span><span class="n">BaseDirectory</span><span class="p">,</span> <span class="n">pathBase</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">fileProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PhysicalFileProvider</span><span class="p">(</span><span class="n">pathBase</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">p_app</span><span class="p">.</span><span class="n">UseMiddleware</span><span class="p">&lt;</span><span class="n">RewriteBrFileMiddleware</span><span class="p">&gt;(</span><span class="n">fileProvider</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 该中间件处理访问根路径时的默认页，内部只重置 context.Request.Path 的值</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 所以必须在UseStaticFiles之前调用，最终由 StaticFiles 中间件响应默认页</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p_app</span><span class="p">.</span><span class="n">UseDefaultFiles</span><span class="p">(</span><span class="k">new</span> <span class="n">DefaultFilesOptions</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FileProvider</span> <span class="p">=</span> <span class="n">fileProvider</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RequestPath</span> <span class="p">=</span> <span class="s">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">p_app</span><span class="p">.</span><span class="n">UseStaticFiles</span><span class="p">(</span><span class="k">new</span> <span class="n">StaticFileOptions</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FileProvider</span> <span class="p">=</span> <span class="n">fileProvider</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ContentTypeProvider</span> <span class="p">=</span> <span class="n">_mimeTypeProvider</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">OnPrepareResponse</span> <span class="p">=</span> <span class="n">SetCacheHeaders</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>将<code>boot</code>部署到<code>IIS</code>时通常以项目名命名webapp名，如：https://localhost/fz，平台服务和<code>boot</code>的典型部署如下图所示：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/20.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/20.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/20.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/20.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/20.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/20.png" width="152" height="110" /></p>
+<h2 id="mysql">MySql</h2>
+<p><code>MySqlAccess</code>为MySql数据库访问类，继承IDataAccess接口，所有外部方法全部采用异步操作，基于开源项目 <code>MySqlConnector</code> 和 <code>Dapper</code>，<code>MySqlConnector</code>实现标准的<code>Ado.net</code>，高性能、原生异步<code>I/O</code>，<code>Dapper</code>提供精简ORM功能，主打高性能，性能接近<code>Ado.net</code>。</p>
+<h2 id="api授权控制">Api授权控制</h2>
+<p>通过<code>Rpc</code>方式调用服务<code>Api</code>时，系统内部执行公共的授权验证，授权验证标签为<code>AuthAttribute</code>，可以标记在<code>Api</code>的<strong>类或方法</strong>上，按照就近原则，若方法上有<code>Auth</code>标签就按方法的<code>Auth</code>进行授权验证，否则按类的<code>Auth</code>标签进行授权验证，类和方法上都无<code>Auth</code>标签时不进行授权验证，访问无限制。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 授权标志</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="na">[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">AuthAttribute</span> <span class="p">:</span> <span class="n">Attribute</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 所有登录用户</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">AuthAttribute</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 自定义校验授权方法</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// Attribute 的参数只支持简单类型、Type、enum，无法指定委托</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_customAuthType&#34;&gt;自定义校验授权方法的类型&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">AuthAttribute</span><span class="p">(</span><span class="n">Type</span> <span class="n">p_customAuthType</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">p_customAuthType</span><span class="p">.</span><span class="n">GetInterface</span><span class="p">(</span><span class="s">&#34;ICustomAuth&#34;</span><span class="p">)</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="n">p_customAuthType</span><span class="p">.</span><span class="n">FullName</span> <span class="p">+</span> <span class="s">&#34; 需要实现 ICustomAuth 接口&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CustomAuthType</span> <span class="p">=</span> <span class="n">p_customAuthType</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 自定义校验授权方法的类型</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">Type</span> <span class="n">CustomAuthType</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>提供两种格式的<code>Auth</code>标签：</p>
+<ul>
+<li>一种为 <code>[Auth]</code> 表示所有登录用户都可访问(只限制匿名用户)；</li>
+<li>一种为 <code>[Auth(Type)]</code> 表示外部自定义校验授权方法，<code>Type</code>需要实现<code>ICustomAuth</code>接口，可以按照需求自定义授权验证，如按权限判断、按用户所属分类等等。</li>
+</ul>
+<p>例如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">TestAuth</span> <span class="p">:</span> <span class="n">DomainSvc</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Auth]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Auth</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;必须登录后可访问&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [Auth(typeof(MyAuth))]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">CustomAuth</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;自定义授权验证&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyAuth</span> <span class="p">:</span> <span class="n">ICustomAuth</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">&gt;</span> <span class="n">IsAuthenticated</span><span class="p">(</span><span class="n">HttpContext</span> <span class="n">p_context</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">string</span> <span class="n">userID</span> <span class="p">=</span> <span class="n">p_context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Headers</span><span class="p">[</span><span class="s">&#34;uid&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="n">FromResult</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h2 id="面向切面编程aop">面向切面编程AOP</h2>
+<p>通过预编译方式或运行期动态代理方式实现在不修改源代码的情况下给程序动态统一添加功能的一种技术，系统内部使用<code>Castle.Core</code>在运行时动态生成代理类的方式实现<code>AOP</code>编程。</p>
+<p>首先在需要拦截的<code>Api</code>类型上指定<code>Interceptors</code>，支持多个拦截器，再将需要拦截的方法指定为<code>virtual</code>。例如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="hl"><span class="lnt"> 1
+</span></span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="hl"><span class="lnt"> 8
+</span></span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="hl"><span class="lnt">22
+</span></span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line hl"><span class="cl"><span class="na">[Api(Interceptors = new Type[]</span> <span class="p">{</span> <span class="k">typeof</span><span class="p">(</span><span class="n">Interceptor1</span><span class="p">),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">Interceptor2</span><span class="p">)</span> <span class="p">},</span> <span class="n">IsTest</span> <span class="p">=</span> <span class="k">true</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">TestIntercept</span> <span class="p">:</span> <span class="n">DomainSvc</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 不拦截内嵌方法</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line hl"><span class="cl">    <span class="k">public</span> <span class="k">virtual</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">CallInline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">GetSql</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 外层不拦截，拦截内嵌方法</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;returns&gt;&lt;/returns&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">NotIntercept</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">GetSql</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">    <span class="k">public</span> <span class="k">virtual</span> <span class="n">Task</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">GetSql</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_da</span><span class="p">.</span><span class="n">GetScalar</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">&#34;select `sql` from cm_sql&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">Interceptor1</span> <span class="p">:</span> <span class="n">IInterceptor</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">isIntercepted</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">async</span> <span class="k">void</span> <span class="n">Intercept</span><span class="p">(</span><span class="n">IInvocation</span> <span class="n">p_invocation</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 只拦截一次</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">isIntercepted</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Log</span><span class="p">.</span><span class="n">Information</span><span class="p">(</span><span class="s">&#34;1号拦截器放行 &#34;</span> <span class="p">+</span> <span class="n">p_invocation</span><span class="p">.</span><span class="n">Method</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p_invocation</span><span class="p">.</span><span class="n">Proceed</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">isIntercepted</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="p">.</span><span class="n">Information</span><span class="p">(</span><span class="s">&#34;1号拦截器已拦截 &#34;</span> <span class="p">+</span> <span class="n">p_invocation</span><span class="p">.</span><span class="n">Method</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">type</span> <span class="p">=</span> <span class="n">p_invocation</span><span class="p">.</span><span class="n">Method</span><span class="p">.</span><span class="n">ReturnType</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p_invocation</span><span class="p">.</span><span class="n">Proceed</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 异步时等待外部调用结束</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">type</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">Task</span><span class="p">)</span> <span class="p">||</span> <span class="k">typeof</span><span class="p">(</span><span class="n">Task</span><span class="p">).</span><span class="n">IsAssignableFrom</span><span class="p">(</span><span class="n">type</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">await</span> <span class="p">((</span><span class="n">Task</span><span class="p">)</span><span class="n">p_invocation</span><span class="p">.</span><span class="n">ReturnValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">catch</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">finally</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Log</span><span class="p">.</span><span class="n">Information</span><span class="p">(</span><span class="s">&#34;1号拦截器结束 &#34;</span> <span class="p">+</span> <span class="n">p_invocation</span><span class="p">.</span><span class="n">Method</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">Interceptor2</span> <span class="p">:</span> <span class="n">IInterceptor</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">isIntercepted</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">async</span> <span class="k">void</span> <span class="n">Intercept</span><span class="p">(</span><span class="n">IInvocation</span> <span class="n">p_invocation</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">isIntercepted</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Log</span><span class="p">.</span><span class="n">Information</span><span class="p">(</span><span class="s">&#34;2号拦截器放行 &#34;</span> <span class="p">+</span> <span class="n">p_invocation</span><span class="p">.</span><span class="n">Method</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p_invocation</span><span class="p">.</span><span class="n">Proceed</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">isIntercepted</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Log</span><span class="p">.</span><span class="n">Information</span><span class="p">(</span><span class="s">&#34;2号拦截器已拦截 &#34;</span> <span class="p">+</span> <span class="n">p_invocation</span><span class="p">.</span><span class="n">Method</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">type</span> <span class="p">=</span> <span class="n">p_invocation</span><span class="p">.</span><span class="n">Method</span><span class="p">.</span><span class="n">ReturnType</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">p_invocation</span><span class="p">.</span><span class="n">Proceed</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 异步时等待外部调用结束</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">type</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">Task</span><span class="p">)</span> <span class="p">||</span> <span class="k">typeof</span><span class="p">(</span><span class="n">Task</span><span class="p">).</span><span class="n">IsAssignableFrom</span><span class="p">(</span><span class="n">type</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">await</span> <span class="p">((</span><span class="n">Task</span><span class="p">)</span><span class="n">p_invocation</span><span class="p">.</span><span class="n">ReturnValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">catch</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">throw</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">finally</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Log</span><span class="p">.</span><span class="n">Information</span><span class="p">(</span><span class="s">&#34;2号拦截器结束 &#34;</span> <span class="p">+</span> <span class="n">p_invocation</span><span class="p">.</span><span class="n">Method</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h2 id="服务部署">服务部署</h2>
+<p>服务端环境的安装部署主要包括<code>平台服务、数据库、RabbitMQ、Redis、k8s、IIS</code>等，参见<a href="/dt-docs/docs/1%e5%bc%80%e5%a7%8b/1%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83/" rel="">开发环境安装</a>。</p>
+<p>本节主要介绍平台服务的两种部署方式：</p>
+<ul>
+<li>IIS部署</li>
+<li>k8s部署</li>
+</ul>
+<h3 id="web服务器">Web服务器</h3>
+<p><code>Asp.net core</code>的web服务器有两种：<code>KestrelServer</code> 和 <code>IISHttpServer</code>。</p>
+<ul>
+<li><code>IISHttpServer</code>主要用于部署在<code>IIS</code>并且进程内承载时使用，具体可参见下一节的“承载模式”，<code>IISHttpServer</code>的配置在<code>web.config</code>。</li>
+<li>其他情况都使用<code>KestrelServer</code>，它的监听和协议在<code>service.json</code> 中配置，可以监听多个Url，每个监听可以指定使用的协议、监听地址、端口、X509证书文件及密码等，如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="hl"><span class="lnt"> 8
+</span></span><span class="hl"><span class="lnt"> 9
+</span></span><span class="hl"><span class="lnt">10
+</span></span><span class="hl"><span class="lnt">11
+</span></span><span class="hl"><span class="lnt">12
+</span></span><span class="hl"><span class="lnt">13
+</span></span><span class="hl"><span class="lnt">14
+</span></span><span class="hl"><span class="lnt">15
+</span></span><span class="hl"><span class="lnt">16
+</span></span><span class="hl"><span class="lnt">17
+</span></span><span class="hl"><span class="lnt">18
+</span></span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;DbConn&#34;</span><span class="p">:</span> <span class="s2">&#34;dt&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;TraceSql&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;TraceRpc&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;KestrelListen&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line hl"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line hl"><span class="cl">      <span class="nt">&#34;Scheme&#34;</span><span class="p">:</span> <span class="s2">&#34;http&#34;</span><span class="p">,</span>
+</span></span><span class="line hl"><span class="cl">      <span class="nt">&#34;Address&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line hl"><span class="cl">      <span class="nt">&#34;Port&#34;</span><span class="p">:</span> <span class="s2">&#34;30001&#34;</span>
+</span></span><span class="line hl"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line hl"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line hl"><span class="cl">      <span class="nt">&#34;Scheme&#34;</span><span class="p">:</span> <span class="s2">&#34;https&#34;</span><span class="p">,</span>
+</span></span><span class="line hl"><span class="cl">      <span class="nt">&#34;Address&#34;</span><span class="p">:</span> <span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span>
+</span></span><span class="line hl"><span class="cl">      <span class="nt">&#34;Port&#34;</span><span class="p">:</span> <span class="s2">&#34;20201&#34;</span>
+</span></span><span class="line hl"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line hl"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line hl"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;SvcUrls&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;msg&#34;</span><span class="p">:</span> <span class="s2">&#34;*/dt-msg&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fsm&#34;</span><span class="p">:</span> <span class="s2">&#34;*/dt-fsm&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;demo&#34;</span><span class="p">:</span> <span class="s2">&#34;*/dt-demo&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="iis部署">IIS部署</h3>
+<p>在开发或部署到<code>windows server</code>时首选<code>IIS</code>，和传统<code>asp.net</code>应用不同，<code>IIS</code>只作为反向代理使用。</p>
+<h4 id="安装iisdt-docsdocs1开始1开发环境安装-iis"><a href="/dt-docs/docs/1%e5%bc%80%e5%a7%8b/1%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83/#%e5%ae%89%e8%a3%85-iis" rel="">安装IIS</a></h4>
+<h4 id="https配置">https配置</h4>
+<p><code>http2.0</code>协议比<code>http1.1</code>更高效，本来<code>http2.0</code>协议和<code>https</code>之间没有依赖关系，但主流浏览器和<code>.net</code>都要求采用<code>http2.0</code>协议通信必须启用<code>https</code>。</p>
+<p>平台所有服务都同时支持<code>http1.1</code>和<code>http2.0</code>协议，平台四种客户端(<code>win wasm android ios</code>) 与服务之间以及服务与服务之间都采用<code>http2.0</code>协议进行<code>http</code>请求，虽然<code>http</code>请求为<code>http2.0</code>但它们之间采用何种通信协议，最终取决于是否启用<code>https</code>，启用<code>https</code>时采用<code>http2.0</code>协议，否则仍采用<code>http1.1</code>协议。</p>
+<p>因此要想采用高效的<code>http2.0</code>协议必须启用<code>https</code>通信，而要使用<code>https</code>需要在网站的服务器上配置<code>https</code>证书。</p>
+<p>证书可以向专门的<code>https</code>证书提供商进行购买，也可以自己生成，两种的区别是自己生成的证书不被浏览器信任，需要点击信任或将证书安装在“受信任的根证书颁发机构”之后才能继续访问，安装方法是将<code>Dt\Service\iis\tls.pfx</code>证书安装在“受信任的根证书颁发机构”，私钥密码<code>dt</code>。</p>
+<p>默认情况下，<code>IIS</code>中的网站只提供了<code>http</code>绑定，要支持<code>https</code>绑定，首先需要<code>pfx</code>格式的服务器证书，以下为生成<code>https</code>证书的过程：</p>
+<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>生成https证书<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>在windows上安装<code>Win64OpenSSL_Light-1_1_1b.exe</code>，然后打开PowerShell(管理员)，cd到openssl.exe所在的目录</p>
+<p>生成私钥tls.key, 密钥位数是 2048</p>
+<p><code>.\openssl genrsa -out tls.key 2048</code></p>
+<p>使用<code>server.key</code> 生成自签证书，域名<code>localhost</code>，有效期20年</p>
+<p><code>.\openssl req -new -x509 -days 7300 -key tls.key -out tls.crt -subj /CN=localhost -addext &quot;subjectAltName=DNS:localhost&quot;</code></p>
+<p>生成tls.key, tls.crt文件用于以上secret资源，crt存储公钥，key存储私钥
+将私钥和公钥合并成pfx证书，密码为dt，用于服务的x509认证</p>
+<p><code>.\openssl pkcs12 -export -in tls.crt -inkey tls.key -out tls.pfx -name &quot;Dt Platform&quot;</code></p>
+</div>
+        </div>
+    </div>
+<p>导入服务器证书，证书位置<code>Dt\Service\iis\tls.pfx</code>，私钥密码<code>dt</code>，此证书签名为<code>localhost</code>，只在开发时使用，生成环境可替换，导入新证书即可。</p>
+<p>然后右键“Default Web Site”-&gt;编辑绑定-&gt;添加-&gt;选择https-&gt;选择ssl证书，也可以使用IIS Express提供的证书。</p>
+<p>当使用<code>KestrelServer</code>时需要将证书复制到服务的根目录：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="hl"><span class="lnt">43
+</span></span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// KestrelServer 监听设置</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;p_options&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">ConfigureKestrelListen</span><span class="p">(</span><span class="n">KestrelServerOptions</span> <span class="n">p_options</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">sect</span> <span class="p">=</span> <span class="n">Kit</span><span class="p">.</span><span class="n">Config</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&#34;KestrelListen&#34;</span><span class="p">).</span><span class="n">GetChildren</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// service.json 中无配置</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">sect</span><span class="p">.</span><span class="n">Any</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 使用 launchSettings.json 中配置，</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 都无配置使用缺省：http://localhost:5000; https://localhost:5001</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Log</span><span class="p">.</span><span class="n">Information</span><span class="p">(</span><span class="s">&#34;service.json无监听配置，使用默认&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 根据 service.json 的 KestrelListen 节配置设置监听</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 可以监听多个Url，每个监听的Url配置一次</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">sect</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 使用协议：http https</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">scheme</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">GetValue</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">&#34;Scheme&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">address</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">GetValue</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">&#34;Address&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">port</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">GetValue</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;(</span><span class="s">&#34;Port&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="s">&#34;https&#34;</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="n">scheme</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// https协议</span>
+</span></span><span class="line"><span class="cl">                <span class="n">p_options</span><span class="p">.</span><span class="n">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">address</span><span class="p">),</span> <span class="n">port</span><span class="p">,</span> <span class="n">listenOptions</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">// 浏览器要求http2.0协议必须采用https通信，http2.0协议和https之间本来没有依赖关系！</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">// 系统默认 Http1AndHttp2</span>
+</span></span><span class="line"><span class="cl">                    <span class="c1">//listenOptions.Protocols = HttpProtocols.Http1AndHttp2;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                    <span class="kt">string</span> <span class="n">cerFileName</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">GetValue</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">&#34;Certificate:FileName&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="kt">string</span> <span class="n">cerPwd</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">GetValue</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(</span><span class="s">&#34;Certificate:Password&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">try</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">cerFileName</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="c1">// 加载X509证书</span>
+</span></span><span class="line hl"><span class="cl">                            <span class="n">listenOptions</span><span class="p">.</span><span class="n">UseHttps</span><span class="p">(</span><span class="k">new</span> <span class="n">X509Certificate2</span><span class="p">(</span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="n">AppContext</span><span class="p">.</span><span class="n">BaseDirectory</span><span class="p">,</span> <span class="s">&#34;etc/config/&#34;</span><span class="p">,</span> <span class="n">cerFileName</span><span class="p">),</span> <span class="n">cerPwd</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                            <span class="c1">// 无证书使用默认localhost证书</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">listenOptions</span><span class="p">.</span><span class="n">UseHttps</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Log</span><span class="p">.</span><span class="n">Information</span><span class="p">(</span><span class="s">$&#34;监听：{listenOptions}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Log</span><span class="p">.</span><span class="n">Error</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="s">$&#34;Kestrel加载X509证书文件[{cerFileName}]时异常&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// http协议，无X509证书</span>
+</span></span><span class="line"><span class="cl">                <span class="n">p_options</span><span class="p">.</span><span class="n">Listen</span><span class="p">(</span><span class="n">IPAddress</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">address</span><span class="p">),</span> <span class="n">port</span><span class="p">,</span> <span class="n">listenOptions</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Log</span><span class="p">.</span><span class="n">Information</span><span class="p">(</span><span class="s">$&#34;监听：{listenOptions}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>对称加密是加密和解密使用同一个密钥；非对称加密使用一对非对称的私有密钥和公开密钥，发送密文的一方使用对方的公开密钥进行加密处理，对方收到被加密的信息后，再使用自己的私有密钥进行解密，对称密钥的好处是解密的效率比较快，非对称加密的好处是传输的内容不能被破解。HTTPS采用对称加密和非对称加密两者并用的混合加密机制，过程如下
+<figure><a class="lightgallery" href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/12.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/12.png" data-thumbnail="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/12.png" data-sub-html="<h2>HTTPS加密和解密</h2>">
+        <img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/12.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/12.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/12.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/12.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/12.png" width="1080" height="993" />
+    </a><figcaption class="image-caption">HTTPS加密和解密</figcaption>
+    </figure></p>
+<h4 id="承载模式">承载模式</h4>
+<p>将服务部署在IIS时有两种承载模式：进程(w3wp)外承载和进程内承载。</p>
+<p>进程外承载时<code>CreateDefaultBuilder</code>将 <code>Kestrel</code> 服务器配置为 Web 服务器，如下图：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/13.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/13.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/13.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/13.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/13.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/13.png" width="644" height="107" /></p>
+<p>进程内承载时<code>CreateDefaultBuilder</code>将<code>IISHttpServer</code>配置为 Web 服务器，相较进程外承载提供更优的性能，因为请求并不通过环回适配器进行代理，可提供明显更高的请求吞吐量，默认采用进程内承载，参见：
+<a href="https://docs.microsoft.com/zh-cn/aspnet/core/host-and-deploy/iis/in-process-hosting?view=aspnetcore-5.0" target="_blank" rel="noopener noreffer">https://docs.microsoft.com/zh-cn/aspnet/core/host-and-deploy/iis/in-process-hosting?view=aspnetcore-5.0</a></p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/14.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/14.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/14.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/14.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/14.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/14.png" width="589" height="107" /></p>
+<p>IIS同样支持启动多个服务进程提高响应，对于无状态服务非常有效。</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/15.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/15.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/15.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/15.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/15.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/15.png" width="443" height="253" /></p>
+<h4 id="添加服务">添加服务</h4>
+<p>可以运行批处理文件 \Dt\Service\iis\xxx.bat自动添加服务；</p>
+<p>也可以手动添加服务，过程如下：</p>
+<p>因每个asp.net core应用需要占用独立应用池，先创建应用池，命名规则<code>appName-svcName</code>：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/16.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/16.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/16.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/16.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/16.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/16.png" width="302" height="312" /></p>
+<p>网站右键-&gt;添加应用程序-&gt;别名为<code>appName-svcName</code>，路径为服务的发布目录，开发时为项目目录，注意web.config文件：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/17.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/17.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/17.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/17.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/17.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/17.png" width="518" height="432" /></p>
+<h4 id="调试服务">调试服务</h4>
+<p>VS中主要有两种调试服务方式，一种是直接启动应用的方式，另一种是部署到IIS或IIS Express进行调试。</p>
+<p>系统采用部署到IIS的调试方法。老版本的VS调试IIS上的asp.net应用时需要采用“附加到进程 w3wp”的方式，新版本更方便，初次启动调试时自动创建应用池和应用，代码修改后重新编译时能自动停止应用池，再次启动调试时会同步启动应用池，并且支持调试服务的启动部分。因应用池命名的原因，请使用上节的bat添加服务。注意在关闭VS时会自动停止所有调试过的应用池，可以手动运行startpool.bat启动所有应用池。</p>
+<p>调试服务时可访问：<code>https://localhost/dt-xxx/.admin</code> -&gt; 选择Api -&gt; 填写完整参数值 -&gt; 点击调试按钮。
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/18.png" data-srcset="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/18.png, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/18.png 1.5x, /dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/18.png 2x" data-sizes="auto" alt="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/18.png" title="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/18.png" width="596" height="267" /></p>
+<h3 id="k8s部署">k8s部署</h3>
+<p>k8s的概念和环境安装过程请参见下一章介绍。</p>
+<p>在开发环境和生产环境都可以使用k8s模式部署服务，k8s模式是通过<code>helm-&gt;k8s-&gt;docker</code>在容器内运行服务，该模式启动慢、耗资源、附加到远程调试无法调试服务的启动部分，运行前需要生成镜像、使用Helm部署到容器、附加到远程pod等过程，所以该模式部署繁琐耗时，不适合在开发过程中使用，适合于生产环境的云部署。</p>
+<p>k8s模式下的服务需要一系列步骤才能运行：编译生成docker镜像、运行Helm打包脚本部署到k8s、附加到远程pod进行调试等，为方便部署和远程调试，开发工具使用VS Code，利用VS Code提供的任务，将一系列步骤打包成一个任务运行，任务定义参见<code>.vscode\tasks.json</code>，详细步骤参见<code>dt\Service\k8s</code>目录下的<code>debug.ps1</code>脚本文件、chart模板、服务配置。k8s远程调试参见<code>.vscode\launch.json</code>配置。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <section class="post-tags"></section>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://daotingh.gitee.io/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/" data-title="服务"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://daotingh.gitee.io/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/" data-title="服务"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+</article><div class="toc" id="toc-auto">
+                <h2 class="toc-title">目录</h2>
+                <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#服务配置">服务配置</a>
+      <ul>
+        <li><a href="#获取配置值">获取配置值</a></li>
+        <li><a href="#globaljson">global.json</a></li>
+        <li><a href="#servicejson">service.json</a></li>
+        <li><a href="#modeljson">model.json</a></li>
+      </ul>
+    </li>
+    <li><a href="#微服务">微服务</a>
+      <ul>
+        <li><a href="#部署">部署</a></li>
+        <li><a href="#内置服务">内置服务</a></li>
+        <li><a href="#内核模型服务cm">内核模型服务(cm)</a></li>
+        <li><a href="#消息服务msg">消息服务(msg)</a></li>
+        <li><a href="#文件服务fsm">文件服务(fsm)</a>
+          <ul>
+            <li><a href="#卷">卷</a></li>
+            <li><a href="#上传">上传</a></li>
+            <li><a href="#下载">下载</a></li>
+            <li><a href="#浏览">浏览</a></li>
+            <li><a href="#网页发布">网页发布</a></li>
+          </ul>
+        </li>
+        <li><a href="#宇宙服务cosm">宇宙服务(cosm)</a></li>
+        <li><a href="#承载wasmboot">承载wasm(boot)</a></li>
+      </ul>
+    </li>
+    <li><a href="#mysql">MySql</a></li>
+    <li><a href="#api授权控制">Api授权控制</a></li>
+    <li><a href="#面向切面编程aop">面向切面编程AOP</a></li>
+    <li><a href="#服务部署">服务部署</a>
+      <ul>
+        <li><a href="#web服务器">Web服务器</a></li>
+        <li><a href="#iis部署">IIS部署</a>
+          <ul>
+            <li><a href="#安装iisdt-docsdocs1开始1开发环境安装-iis"><a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/1%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#%E5%AE%89%E8%A3%85-iis">安装IIS</a></a></li>
+            <li><a href="#https配置">https配置</a></li>
+            <li><a href="#承载模式">承载模式</a></li>
+            <li><a href="#添加服务">添加服务</a></li>
+            <li><a href="#调试服务">调试服务</a></li>
+          </ul>
+        </li>
+        <li><a href="#k8s部署">k8s部署</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div></div>
+    </div>
+</div>
+            </main>
+            <footer class="footer">
+                <div class="footer-container"><div class="footer-line">搬运工</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/dt-docs/" target="_blank">Daoting</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div>
+            </footer>
+        </div>
+
+        <div id="fixed-buttons">
+            <a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/dt-docs/js/theme.min.js"></script>
+    </body>
+</html>

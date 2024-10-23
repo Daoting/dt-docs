@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>概述 - 搬运工</title>
+        <meta name="Description" content="利用 C# &#43; XAML 进行快速业务开发的跨平台框架">
+        <meta name="application-name" content="搬运工">
+        <meta name="apple-mobile-web-app-title" content="搬运工">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <link rel="shortcut icon" type="image/x-icon" href="/dt-docs/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/dt-docs/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/dt-docs/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/dt-docs/apple-touch-icon.png">
+        <link rel="mask-icon" href="/dt-docs/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="manifest" href="/dt-docs/site.webmanifest">
+        <link rel="canonical" href="https://daotingh.gitee.io/dt-docs/docs/" />
+        <link rel="alternate" href="/dt-docs/docs/index.xml" type="application/rss+xml" title="搬运工">
+        <link rel="feed" href="/dt-docs/docs/index.xml" type="application/rss+xml" title="搬运工"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/dt-docs/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    </head>
+    <body data-header-desktop="fixed" data-header-mobile="auto">
+        <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+        <div id="mask"></div>
+        <div class="wrapper">
+            <header class="desktop" id="header-desktop">
+                <div class="header-wrapper">
+                    <div class="header-title">
+                        <a href="/dt-docs/" title="搬运工"><img class="lazyload logo" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/favicon-32x32.png" data-srcset="/dt-docs/favicon-32x32.png, /dt-docs/favicon-32x32.png 1.5x, /dt-docs/favicon-32x32.png 2x" data-sizes="auto" alt="/dt-docs/favicon-32x32.png" title="/dt-docs/favicon-32x32.png" />搬运工</a>
+                    </div>
+                    <div class="menu">
+                        <div class="menu-inner"><a class="menu-item" href="/dt-docs/posts/"> 文章 </a><a class="menu-item active" href="/dt-docs/docs/"> 教程 </a><a class="menu-item" href="https://github.com/daoting/dt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span>
+                            <span class="menu-item search" id="search-desktop">
+                                <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                                <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                                    <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                                    <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <span class="search-button search-loading" id="search-loading-desktop">
+                                    <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                            <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <header class="mobile" id="header-mobile">
+                <div class="header-container">
+                    <div class="header-wrapper">
+                        <div class="header-title">
+                            <a href="/dt-docs/" title="搬运工"><img class="lazyload logo" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/favicon-32x32.png" data-srcset="/dt-docs/favicon-32x32.png, /dt-docs/favicon-32x32.png 1.5x, /dt-docs/favicon-32x32.png 2x" data-sizes="auto" alt="/dt-docs/favicon-32x32.png" title="/dt-docs/favicon-32x32.png" />搬运工</a>
+                        </div>
+                        <div class="menu-toggle" id="menu-toggle-mobile">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="menu" id="menu-mobile">
+                        <div class="search-wrapper">
+                            <div class="search mobile" id="search-mobile">
+                                <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                                <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                                    <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                                    <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <span class="search-button search-loading" id="search-loading-mobile">
+                                    <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                                取消
+                            </a>
+                        </div>
+                        <a class="menu-item" href="/dt-docs/posts/" title="">文章</a>
+                        <a class="menu-item" href="/dt-docs/docs/" title="">教程</a>
+                        <a class="menu-item" href="https://github.com/daoting/dt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a>
+                        <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                            <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <div class="search-dropdown desktop">
+                <div id="search-dropdown-desktop"></div>
+            </div>
+            <div class="search-dropdown mobile">
+                <div id="search-dropdown-mobile"></div>
+            </div>
+            <main class="main"><div class="doc-frame">
+    <aside class="doc-tree">
+        <div id="content-mobile">
+  <button class="fas fa-bars" type="button" onclick="var nav = document.getElementById('td-section-nav'); nav.style.display = (nav.style.display == 'block') ? 'none' : 'block' ">
+  </button>
+</div>
+<nav class="td-sidebar-nav" id="td-section-nav">
+  <ul class="td-sidebar-nav__section">
+    <li>
+  <a href="/dt-docs/docs/" title="概述" class="td-sidebar-link active tree-root"><span>概述</span></a>
+  <ul  class="ul-1" >
+    <li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/" title="开始" class="td-sidebar-link"><span>开始</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/1%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="开发环境" class="td-sidebar-link"><span>开发环境</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/2%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/" title="创建空项目" class="td-sidebar-link"><span>创建空项目</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/3%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/" title="小试牛刀" class="td-sidebar-link"><span>小试牛刀</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/4%E6%90%AC%E8%BF%90%E5%B7%A5%E6%A0%B7%E4%BE%8B/" title="搬运工样例" class="td-sidebar-link"><span>搬运工样例</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/" title="基础" class="td-sidebar-link"><span>基础</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/1%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84/" title="总体架构" class="td-sidebar-link"><span>总体架构</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/2%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/" title="基础功能" class="td-sidebar-link"><span>基础功能</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/3%E9%A2%86%E5%9F%9F%E5%B1%82/" title="领域层" class="td-sidebar-link"><span>领域层</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/" title="服务" class="td-sidebar-link"><span>服务</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/" title="客户端" class="td-sidebar-link"><span>客户端</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/1%E5%9F%BA%E7%A1%80/" title="基础" class="td-sidebar-link"><span>基础</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/2%E7%95%8C%E9%9D%A2%E6%A1%86%E6%9E%B6/" title="界面框架" class="td-sidebar-link"><span>界面框架</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/3fv/" title="Fv" class="td-sidebar-link"><span>Fv</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/" title="Lv" class="td-sidebar-link"><span>Lv</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/5tab/" title="Tab" class="td-sidebar-link"><span>Tab</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/6%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6/" title="基础控件" class="td-sidebar-link"><span>基础控件</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/" title="发布部署" class="td-sidebar-link"><span>发布部署</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/1%E6%9C%8D%E5%8A%A1/" title="服务" class="td-sidebar-link"><span>服务</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/2win%E5%BA%94%E7%94%A8/" title="Win应用" class="td-sidebar-link"><span>Win应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/3android%E5%BA%94%E7%94%A8/" title="Android应用" class="td-sidebar-link"><span>Android应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/4ios%E5%BA%94%E7%94%A8/" title="iOS应用" class="td-sidebar-link"><span>iOS应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/5wasm%E5%BA%94%E7%94%A8/" title="Wasm应用" class="td-sidebar-link"><span>Wasm应用</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul>
+</nav>
+
+
+    </aside>
+    <div class="doc-main">
+        <div class="container">
+            <article class="page single"><h1 class="single-title animate__animated animate__flipInX">概述</h1><div class="post-meta">
+                    <div class="post-meta-line">
+                        <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2789 字&nbsp;
+                        <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+                </div><div class="content" id="content"><p>搬运工全名“数据的搬运工(Data Transfer)”，缩写<code>dt</code>，是一个利用 <code>c# + xaml</code> 进行快速业务开发的跨平台框架。</p>
+<h2 id="定位">定位</h2>
+<p>搬运工采用.net技术栈，看到 <code>c# + xaml</code> 和 <code>跨平台</code>字眼容易联想到<code>maui</code>技术，但搬运工客户端并非基于<code>maui</code>技术，而是采用<a href="https://github.com/unoplatform/uno" target="_blank" rel="noopener noreffer">Uno Platform</a>跨平台方案。因为<code>maui</code>的<code>xaml</code>延续<code>Xamarin.Forms</code>的标准，<code>xaml</code>命名写法和基础的测量、布局与传统的<code>xaml</code>大不相同，对于原来使用<code>wpf silverlight uwp winui</code>的人员需要重新学习，并且采用这些技术的旧项目很难升级到<code>maui</code>，贫道曾尝试将旧控件升级到<code>maui</code>，发现基本重写，遂放弃。前几年微软有个统一<code>xaml</code>规范的项目，但也不疾而终。两种<code>xaml</code>标准成了技术选型的鸿沟，搬运工选择传统<code>xaml</code>标准，因此打算采用<code>maui</code>技术的朋友请慢走。</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>适用人群<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>熟悉 <code>asp.net core wpf silverlight uwp 或 winui</code></li>
+<li>打算升级旧项目以支持在Windows、浏览器(WebAssembly)、手机上跨平台运行</li>
+<li>继续采用<code>c# + xaml</code>开发支持跨平台的新项目</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h2 id="前生今世">前生今世</h2>
+<p>能阅读到此处的朋友应该都是同道中人😸，技术日新月异，尤其前端技术迭代更快，先给道友们讲述一下搬运工的前生。</p>
+<p>2009年贫道接手一个新项目，是医院的信息系统，对技术选型没有要求，但必需是B/S架构，因为B/S架构的产品在市场叫得响，是香饽饽。平心而论，这个项目更适合C/S架构，因为对前端的交互要求非常高，比如挂号、收费等操作都需要行如流水的键盘操作，快捷键用的多、界面刷新快，这些都是web的弱项，但迫于市场驱动、迎合用户心里，必需采用B/S架构。那时前端正流行ajax，jquery用的还不怎么多，js开发是痛苦的，因为弱类型、无法编译导致js代码非常随意，多人协作更是让人摸不着边际，经过近两个月的开发贫道决定放弃js，采用当时很火的siverlight，只试用一周siverlight3.0，就彻底征服了贫道，对于这个项目简直完美！到siverlight4.0发布时项目接近完成。</p>
+<p>但很快siverlight被微软放弃，一项技术几年时间就从火热走入消亡，我们的产品宣传也删除siverlight字眼😇，避免被对手攻击。其实直到今天也想不出能替代siverlight的技术，包括现在的blazor、uno版的WebAssembly，在性能、用户体验、调试上差很多，但不管怎样也要准备技术升级，况且产品还需要支持在手机上跨平台运行。</p>
+<p>2018年开始尝试将部分功能移植到<code>Xamarin.Forms</code>，发现此<code>xaml</code>并非传统<code>xaml</code>，移植基本等于重写，放弃。尝试移植到<code>uwp</code>倒是很顺畅，但无法实现手机跨平台并且还有很多安全限制。经过一番折腾后发现无路可走，贫道仰天长叹，<code>青丝白发一瞬间，年华老去向谁言</code>，人生能有几个十年，除了挣那碎银几两，一切如梦如烟。</p>
+<p>2018年底在github上搜到<a href="https://github.com/unoplatform/uno" target="_blank" rel="noopener noreffer">Uno Platform</a>，迫不及待地尝鲜，把已经移植到<code>uwp</code>的部分引用<code>Uno</code>包编译竟然直接成功，并能在android模拟器上运行，虽然只是简单功能，但贫道眼里泛起希望、感激的泪光，找到组织了，那时<code>Uno</code>刚刚开源，才200多star。<code>Uno</code>想法非常简单，就是一个桥接器，把uwp/winui应用完整的迁移到其它平台，目前已支持 iOS Android WebAssembly macOS Linux。</p>
+<div class="details admonition quote open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-quote-right fa-fw" aria-hidden="true"></i>引用<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>
+<p>在iOS，Android和macOS上，Uno依靠.NET在canvas上绘制UI。</p>
+</li>
+<li>
+<p>在WebAssembly上，Uno平台直接依赖于WASM运行时，这是 of.NET 的一部分。</p>
+</li>
+<li>
+<p>在Linux上，Uno依靠Skia在canvas上绘制UI。</p>
+</li>
+<li>
+<p>总之，Uno 平台允许你在所有这些平台上运行单个代码库、C# 和 XAML 应用。</p>
+<p><a href="https://platform.uno/how-it-works/" target="_blank" rel="noopener noreffer">Uno 如何工作</a></p>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+<p>2019年7月贫道在github上创建<a href="https://github.com/daoting/dt" target="_blank" rel="noopener noreffer">搬运工</a>，从0行代码开始，投入到<code>c# + xaml</code> 的跨平台阵营。跨平台本身就是一个妥协过程，不像开发单纯的windows应用无需顾忌太多，跨平台的开发过程总是跌跌撞撞，经常出现在一个平台上运行异常而其它正常的情况，有时是Uno的bug、有时是原生的应用不规范、有时是平台特殊的原因、有时是运气不佳😂，一个问题能卡上好几天，回想起这几年的日子，怎能以一个<code>爽</code>字了得。</p>
+<p>由于叛徒的出卖，微软放弃<code>uwp</code>转投<code>winui</code>，为了跟进Uno，2022年7月停止<code>uwp</code>版的开发，将<code>uwp</code>版的搬运工迁移到<a href="https://github.com/Daoting/dt-uwp" target="_blank" rel="noopener noreffer">新库</a>不再维护，全力主攻<code>winui</code>版，2022年10月升级基本完成，到最近发布的<a href="https://github.com/Daoting/dt/releases/tag/4.0.1" target="_blank" rel="noopener noreffer">4.0.1</a>，算是完成了搬运工的主体功能。</p>
+<h2 id="为什么">为什么</h2>
+<p>以下是道友们比较关心的问题，开始使用搬运工之前需要明确：</p>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>1<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>既然 Uno 已经提供跨平台，为何还需要搬运工？</p>
+<ul>
+<li>搬运工是一个整体，除了提供前端跨平台外，还包括多个通用的微服务，如消息服务、文件服务等</li>
+<li>搬运工的核心在<code>快速业务开发</code>上，让道友们少踩技术坑</li>
+<li>理想很丰满，现实很骨感，Uno从2018年一路走来，经历多次大的变动，从最初支持<code>uwp</code>到支持<code>winui</code>，bug不断，虽然现在比较稳定，但出现问题也会劝退很多道友</li>
+<li>使用搬运工开发，Uno完全透明像不存在一样，前端控件都已做跨平台适配</li>
+</ul>
+</div>
+        </div>
+    </div>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>2<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Uno 比 maui 有何优点？</p>
+<ul>
+<li>Uno采用<code>wpf silverlight uwp winui</code>的传统<code>xaml</code>，maui采用自定义<code>xaml</code></li>
+<li>使用<code>winui</code>开发的应用和Uno一毛钱关系没有，纯原生，但使用maui开发的windows应用在<code>winui</code>外包裹一层</li>
+<li>Uno支持WebAssembly，maui不支持Web</li>
+</ul>
+</div>
+        </div>
+    </div>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>3<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>搬运工主要提供哪些功能？</p>
+<ul>
+<li>搬运工由客户端和服务端两部分组成，是一套用于快速构建业务系统的基础技术实现和规范集，本身与具体业务无关</li>
+<li>服务端全面采用.NET云原生开发，提供4个通用的微服务，利用这些预定义的内容可直接快速的开发出符合常规要求的业务系统；</li>
+<li>客户端采用 <code>.NET + WinAppSdk(WinUI) + Uno</code>，通过<a href="https://github.com/unoplatform/uno" target="_blank" rel="noopener noreffer">Uno Platform</a>支持在Windows、浏览器(WebAssembly)、手机上跨平台运行，包括一系列可复用的前端控件和各种基础功能模块</li>
+<li>同时，客户端和服务端两部分都支持独立使用，也可根据规范在不同层面、不同粒度下扩展框架，从而满足特定的业务需求</li>
+</ul>
+</div>
+        </div>
+    </div>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>4<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>搬运工是旧项目升级，还是从0行开始的新项目？</p>
+<ul>
+<li>从0行开始的新项目，前端控件都已做跨平台适配</li>
+<li>搬运工客户端和服务端都采用当前主流的.NET版本</li>
+</ul>
+</div>
+        </div>
+    </div>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>5<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>搬运工主要有哪些特色？</p>
+<ul>
+<li>自适应式界面布局，内置两种界面模式：windows模式和Phone模式，能随界面大小的变化在两种模式之间切换，使大小屏幕无缝融合，详见<a href="/dt-docs/docs/3%e5%ae%a2%e6%88%b7%e7%ab%af/2%e7%95%8c%e9%9d%a2%e6%a1%86%e6%9e%b6/" rel="">界面框架</a></li>
+<li>实现客户端领域层和服务端领域层代码相同，既可以将业务放在客户端处理也可以稍加修改放在服务端处理，完美实现技术与业务解耦、业务逻辑解耦、业务封装复用等关键功能，为道友们提供一种易懂易用的框架风格，详见<a href="/dt-docs/docs/2%e5%9f%ba%e7%a1%80/1%e6%80%bb%e4%bd%93%e6%9e%b6%e6%9e%84/#%e6%80%bb%e4%bd%93%e6%9e%b6%e6%9e%84" rel="">总体架构</a></li>
+<li>丰富的日志输出，客户端和服务端日志输出方法相同，两端的通信内容、业务处理过程等一览无余，详见<a href="/dt-docs/docs/2%e5%9f%ba%e7%a1%80/2%e5%9f%ba%e7%a1%80%e5%8a%9f%e8%83%bd/#%e6%97%a5%e5%bf%97" rel="">日志</a></li>
+<li>提供Visual Studio扩展工具，提高开发效率，详见<a href="/dt-docs/docs/1%e5%bc%80%e5%a7%8b/1%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83/#%e5%ae%89%e8%a3%85%e6%90%ac%e8%bf%90%e5%b7%a5%e6%89%a9%e5%b1%95" rel="">扩展工具</a></li>
+<li>&hellip;</li>
+</ul>
+</div>
+        </div>
+    </div>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>6<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>搬运工始终开源吗？</p>
+<ul>
+<li>始终开源、任意复制、任意修改。</li>
+</ul>
+</div>
+        </div>
+    </div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <section class="post-tags"></section>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://daotingh.gitee.io/dt-docs/docs/" data-title="概述"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://daotingh.gitee.io/dt-docs/docs/" data-title="概述"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+</article><div class="toc" id="toc-auto">
+                <h2 class="toc-title">目录</h2>
+                <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#定位">定位</a></li>
+    <li><a href="#前生今世">前生今世</a></li>
+    <li><a href="#为什么">为什么</a></li>
+  </ul>
+</nav></div>
+            </div></div>
+    </div>
+</div>
+            </main>
+            <footer class="footer">
+                <div class="footer-container"><div class="footer-line">搬运工</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/dt-docs/" target="_blank">Daoting</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div>
+            </footer>
+        </div>
+
+        <div id="fixed-buttons">
+            <a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/dt-docs/js/theme.min.js"></script>
+    </body>
+</html>

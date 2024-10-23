@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Lv - 搬运工</title>
+        <meta name="Description" content="利用 C# &#43; XAML 进行快速业务开发的跨平台框架">
+        <meta name="application-name" content="搬运工">
+        <meta name="apple-mobile-web-app-title" content="搬运工">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <link rel="shortcut icon" type="image/x-icon" href="/dt-docs/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/dt-docs/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/dt-docs/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/dt-docs/apple-touch-icon.png">
+        <link rel="mask-icon" href="/dt-docs/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="manifest" href="/dt-docs/site.webmanifest">
+        <link rel="canonical" href="https://daotingh.gitee.io/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/" />
+        <link rel="alternate" href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/index.xml" type="application/rss+xml" title="搬运工">
+        <link rel="feed" href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/index.xml" type="application/rss+xml" title="搬运工"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/dt-docs/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    </head>
+    <body data-header-desktop="fixed" data-header-mobile="auto">
+        <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+        <div id="mask"></div>
+        <div class="wrapper">
+            <header class="desktop" id="header-desktop">
+                <div class="header-wrapper">
+                    <div class="header-title">
+                        <a href="/dt-docs/" title="搬运工"><img class="lazyload logo" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/favicon-32x32.png" data-srcset="/dt-docs/favicon-32x32.png, /dt-docs/favicon-32x32.png 1.5x, /dt-docs/favicon-32x32.png 2x" data-sizes="auto" alt="/dt-docs/favicon-32x32.png" title="/dt-docs/favicon-32x32.png" />搬运工</a>
+                    </div>
+                    <div class="menu">
+                        <div class="menu-inner"><a class="menu-item" href="/dt-docs/posts/"> 文章 </a><a class="menu-item" href="/dt-docs/docs/"> 教程 </a><a class="menu-item" href="https://github.com/daoting/dt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span>
+                            <span class="menu-item search" id="search-desktop">
+                                <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                                <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                                    <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                                    <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <span class="search-button search-loading" id="search-loading-desktop">
+                                    <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                            <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <header class="mobile" id="header-mobile">
+                <div class="header-container">
+                    <div class="header-wrapper">
+                        <div class="header-title">
+                            <a href="/dt-docs/" title="搬运工"><img class="lazyload logo" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/favicon-32x32.png" data-srcset="/dt-docs/favicon-32x32.png, /dt-docs/favicon-32x32.png 1.5x, /dt-docs/favicon-32x32.png 2x" data-sizes="auto" alt="/dt-docs/favicon-32x32.png" title="/dt-docs/favicon-32x32.png" />搬运工</a>
+                        </div>
+                        <div class="menu-toggle" id="menu-toggle-mobile">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="menu" id="menu-mobile">
+                        <div class="search-wrapper">
+                            <div class="search mobile" id="search-mobile">
+                                <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                                <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                                    <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                                    <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <span class="search-button search-loading" id="search-loading-mobile">
+                                    <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                                取消
+                            </a>
+                        </div>
+                        <a class="menu-item" href="/dt-docs/posts/" title="">文章</a>
+                        <a class="menu-item" href="/dt-docs/docs/" title="">教程</a>
+                        <a class="menu-item" href="https://github.com/daoting/dt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a>
+                        <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                            <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <div class="search-dropdown desktop">
+                <div id="search-dropdown-desktop"></div>
+            </div>
+            <div class="search-dropdown mobile">
+                <div id="search-dropdown-mobile"></div>
+            </div>
+            <main class="main"><div class="doc-frame">
+    <aside class="doc-tree">
+        <div id="content-mobile">
+  <button class="fas fa-bars" type="button" onclick="var nav = document.getElementById('td-section-nav'); nav.style.display = (nav.style.display == 'block') ? 'none' : 'block' ">
+  </button>
+</div>
+<nav class="td-sidebar-nav" id="td-section-nav">
+  <ul class="td-sidebar-nav__section">
+    <li>
+  <a href="/dt-docs/docs/" title="概述" class="td-sidebar-link tree-root"><span>概述</span></a>
+  <ul  class="ul-1" >
+    <li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/" title="开始" class="td-sidebar-link"><span>开始</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/1%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="开发环境" class="td-sidebar-link"><span>开发环境</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/2%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/" title="创建空项目" class="td-sidebar-link"><span>创建空项目</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/3%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/" title="小试牛刀" class="td-sidebar-link"><span>小试牛刀</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/4%E6%90%AC%E8%BF%90%E5%B7%A5%E6%A0%B7%E4%BE%8B/" title="搬运工样例" class="td-sidebar-link"><span>搬运工样例</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/" title="基础" class="td-sidebar-link"><span>基础</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/1%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84/" title="总体架构" class="td-sidebar-link"><span>总体架构</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/2%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/" title="基础功能" class="td-sidebar-link"><span>基础功能</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/3%E9%A2%86%E5%9F%9F%E5%B1%82/" title="领域层" class="td-sidebar-link"><span>领域层</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/" title="服务" class="td-sidebar-link"><span>服务</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/" title="客户端" class="td-sidebar-link"><span>客户端</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/1%E5%9F%BA%E7%A1%80/" title="基础" class="td-sidebar-link"><span>基础</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/2%E7%95%8C%E9%9D%A2%E6%A1%86%E6%9E%B6/" title="界面框架" class="td-sidebar-link"><span>界面框架</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/3fv/" title="Fv" class="td-sidebar-link"><span>Fv</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/" title="Lv" class="td-sidebar-link active"><span>Lv</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/5tab/" title="Tab" class="td-sidebar-link"><span>Tab</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/6%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6/" title="基础控件" class="td-sidebar-link"><span>基础控件</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/" title="发布部署" class="td-sidebar-link"><span>发布部署</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/1%E6%9C%8D%E5%8A%A1/" title="服务" class="td-sidebar-link"><span>服务</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/2win%E5%BA%94%E7%94%A8/" title="Win应用" class="td-sidebar-link"><span>Win应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/3android%E5%BA%94%E7%94%A8/" title="Android应用" class="td-sidebar-link"><span>Android应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/4ios%E5%BA%94%E7%94%A8/" title="iOS应用" class="td-sidebar-link"><span>iOS应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/5wasm%E5%BA%94%E7%94%A8/" title="Wasm应用" class="td-sidebar-link"><span>Wasm应用</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul>
+</nav>
+
+
+    </aside>
+    <div class="doc-main">
+        <div class="container">
+            <article class="page single"><h1 class="single-title animate__animated animate__flipInX">Lv</h1><div class="post-meta">
+                    <div class="post-meta-line">
+                        <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 8510 字&nbsp;
+                        <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 17 分钟&nbsp;</div>
+                </div><div class="content" id="content"><p>Lv为列表控件(ListView)，因使用频率高采用缩写作为控件名称，<strong>无编辑功能</strong>，涉及的主要类型关系如下图所示：
+<figure><a class="lightgallery" href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/1.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/1.png" data-thumbnail="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/1.png" data-sub-html="<h2>类关系图</h2>">
+        <img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/1.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/1.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/1.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/1.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/1.png" width="1249" height="1154" />
+    </a><figcaption class="image-caption">类关系图</figcaption>
+    </figure></p>
+<h2 id="视图类型">视图类型</h2>
+<p><code>Lv.ViewMode</code>提供三种视图类型：表格(<code>Table</code>)、列表(<code>List</code>)、磁贴(<code>Tile</code>)，默认为<code>List</code>。</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png" width="750" height="448" />
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png" width="750" height="545" />
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png" width="501" height="409" /></p>
+<p><code>Lv.View</code>为行/项目模板，支持<code>DataTemplate</code>、<code>DataTemplateSelector</code>、<code>Cols</code>列定义 或 <code>IRowView</code>，是<code>Lv</code>的默认<code>xaml</code>内容。</p>
+<h3 id="列定义">列定义</h3>
+<p>当<code>Lv.View</code>为<code>Cols</code>列定义时，支持所有视图类型：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;a:Lv</span> <span class="na">x:Name=</span><span class="s">&#34;_lv&#34;</span> <span class="na">ViewMode=</span><span class="s">&#34;Table&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;a:Cols&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Col</span> <span class="na">ID=</span><span class="s">&#34;xm&#34;</span> <span class="na">Title=</span><span class="s">&#34;姓名&#34;</span> <span class="na">Width=</span><span class="s">&#34;120&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Col</span> <span class="na">ID=</span><span class="s">&#34;bh&#34;</span> <span class="na">Title=</span><span class="s">&#34;编号&#34;</span> <span class="na">Width=</span><span class="s">&#34;80&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Col</span> <span class="na">ID=</span><span class="s">&#34;chushengrq&#34;</span> <span class="na">Title=</span><span class="s">&#34;出生日期&#34;</span> <span class="na">Width=</span><span class="s">&#34;120&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Col</span> <span class="na">ID=</span><span class="s">&#34;shenfenzh&#34;</span> <span class="na">Title=</span><span class="s">&#34;身份证号码&#34;</span> <span class="na">Width=</span><span class="s">&#34;200&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Col</span> <span class="na">ID=</span><span class="s">&#34;xb&#34;</span> <span class="na">Title=</span><span class="s">&#34;性别&#34;</span> <span class="na">Width=</span><span class="s">&#34;60&#34;</span> <span class="na">FontSize=</span><span class="s">&#34;12&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Col</span> <span class="na">ID=</span><span class="s">&#34;hunfou&#34;</span> <span class="na">Title=</span><span class="s">&#34;婚否&#34;</span> <span class="na">Width=</span><span class="s">&#34;60&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Col</span> <span class="na">ID=</span><span class="s">&#34;shengao&#34;</span> <span class="na">Title=</span><span class="s">&#34;身高&#34;</span> <span class="na">Width=</span><span class="s">&#34;60&#34;</span> <span class="na">FontStyle=</span><span class="s">&#34;Italic&#34;</span> <span class="na">FontWeight=</span><span class="s">&#34;Bold&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Col</span> <span class="na">ID=</span><span class="s">&#34;bumen&#34;</span> <span class="na">Title=</span><span class="s">&#34;所属部门&#34;</span> <span class="na">Width=</span><span class="s">&#34;100&#34;</span> <span class="na">Foreground=</span><span class="s">&#34;White&#34;</span> <span class="na">Background=</span><span class="s">&#34;Gray&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Col</span> <span class="na">ID=</span><span class="s">&#34;note&#34;</span> <span class="na">Title=</span><span class="s">&#34;备注&#34;</span> <span class="na">Width=</span><span class="s">&#34;150&#34;</span> <span class="na">RowSpan=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/a:Cols&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/a:Lv&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<code>ViewMode</code>为<code>Table</code>显示为普通的表格：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/2.png" width="750" height="448" /></p>
+<p><code>ViewMode</code>为<code>List</code>显示为表单列表：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/5.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/5.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/5.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/5.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/5.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/5.png" width="626" height="748" /></p>
+<p><code>ViewMode</code>为<code>Tile</code>显示为表单磁贴：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/6.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/6.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/6.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/6.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/6.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/6.png" width="892" height="612" /></p>
+<h3 id="行项目模板定义">行/项目模板定义</h3>
+<p>行/项目模板定义适用于视图类型为列表或磁贴的情况，磁贴与列表的不同主要是<code>ViewMode</code>为<code>Tile</code>。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;a:Lv</span> <span class="na">x:Name=</span><span class="s">&#34;_lv&#34;</span> <span class="na">ViewMode=</span><span class="s">&#34;Table&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;Grid</span> <span class="na">Padding=</span><span class="s">&#34;6&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;Auto&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;ColumnDefinition</span> <span class="na">Width=</span><span class="s">&#34;*&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/Grid.ColumnDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;Auto&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;RowDefinition</span> <span class="na">Height=</span><span class="s">&#34;Auto&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/Grid.RowDefinitions&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;Border</span> <span class="na">Background=</span><span class="s">&#34;{StaticResource 主蓝}&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">Height=</span><span class="s">&#34;50&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">Width=</span><span class="s">&#34;50&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">VerticalAlignment=</span><span class="s">&#34;Center&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">&#34;{Binding Index}&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="na">FontSize=</span><span class="s">&#34;30&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="na">Foreground=</span><span class="s">&#34;White&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="na">VerticalAlignment=</span><span class="s">&#34;Center&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="na">TextAlignment=</span><span class="s">&#34;Center&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/Border&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;StackPanel</span> <span class="na">Margin=</span><span class="s">&#34;10,0,0,0&#34;</span> <span class="na">VerticalAlignment=</span><span class="s">&#34;Center&#34;</span> <span class="na">Grid.Column=</span><span class="s">&#34;1&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;a:Dot</span> <span class="na">ID=</span><span class="s">&#34;xm&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;StackPanel</span> <span class="na">Orientation=</span><span class="s">&#34;Horizontal&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;a:Dot</span> <span class="na">ID=</span><span class="s">&#34;xb&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;a:Dot</span> <span class="na">ID=</span><span class="s">&#34;chushengrq&#34;</span> <span class="na">Margin=</span><span class="s">&#34;20,0,0,0&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;StackPanel</span> <span class="na">Grid.Row=</span><span class="s">&#34;1&#34;</span> <span class="na">Grid.ColumnSpan=</span><span class="s">&#34;2&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;a:Dot</span> <span class="na">ID=</span><span class="s">&#34;shenfenzh&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;a:Dot</span> <span class="na">ID=</span><span class="s">&#34;bumen&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;a:Dot</span> <span class="na">ID=</span><span class="s">&#34;note&#34;</span> <span class="na">Call=</span><span class="s">&#34;Def.小灰&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/StackPanel&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/Grid&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/DataTemplate&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/a:Lv&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/3.png" width="750" height="545" />
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/4.png" width="501" height="409" /></p>
+<h2 id="数据源">数据源</h2>
+<p><code>Lv</code>的数据源有两种类型：<code>普通数据源</code> 和 <code>分页数据源</code>。</p>
+<p>所有数据源类型都支持动态设置排序、过滤、分组操作，其属性如下：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置过滤回调</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">Predicate</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="n">Filter</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置排序条件</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">SortDescription</span> <span class="n">SortDesc</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置分组列名</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">string</span> <span class="n">GroupName</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h3 id="普通数据源">普通数据源</h3>
+<p>通过<code>Data</code>属性获取和设置，类型为<code>INotifyList</code>，常用数据源类型有<code>Table</code> 和 <code>Nl&lt;T&gt;</code>。</p>
+<p><code>Table</code> 类型在客户端和服务端都能使用，一般作为数据库查询结果，也可手动创建，并且子类<code>Table&lt;TEntity&gt;</code>支持实体操作，详细参见<a href="/dt-docs/docs/2%e5%9f%ba%e7%a1%80/2%e5%9f%ba%e7%a1%80%e5%8a%9f%e8%83%bd/#table%e6%93%8d%e4%bd%9c" rel="">Table操作</a>。</p>
+<p><code>Nl&lt;T&gt;</code>不同于<code>List&lt;T&gt;</code>，它是具有集合变化通知的泛型列表，是<code>NotifyList</code>的缩写。</p>
+<p>遵循<code>MVVM</code>的设计模式，集合变化时(如增删行数据)能直接反映到前端UI，所以<code>Lv</code>增删行时只能通过<code>Data</code>数据源进行，未提供其他方法，所有操作只针对数据而不是UI。当需要批量操作数据时，为达到高效只刷新一次UI，除使用以上批量增删方法外还可以使用Defer()用来延迟触发集合变化事件，用法如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">using</span> <span class="p">(</span><span class="n">tbl</span><span class="p">.</span><span class="n">Defer</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">row</span> <span class="k">in</span> <span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tbl</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">row</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>从设置Data到UI显示的过程为：Data(源) -&gt; LvDataView(排序、过滤、分组处理) -&gt; LvItem(数据+Style+UI) -&gt; LvRow (内容布局、数据绑定)，整个流程如下图所示：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/7.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/7.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/7.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/7.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/7.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/7.png" width="599" height="922" /></p>
+<h3 id="分页数据源">分页数据源</h3>
+<p>分页数据源的属性为<code>PageData</code>，在滚动栏滚动到最低端时加载下一页数据，滚动到最上端时加载上一页数据，动态加载数据最终还是操作<code>Lv.Data</code>。分页数据源类型为<code>PageData</code>，通过<code>NextPage</code>回调方法或<code>Sql</code>获取下一页数据，获取新页数据的优先级为：<code>NextPage &gt; Sql &gt; SqlStr</code>，<code>InsertTop</code>属性控制新数据是否插入头部(默认插入尾部)，调用<code>PageData.LoadPageData()</code>方法加载新页数据，使用过程如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnPageData</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_isTbl</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">PageData</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PageData</span> <span class="p">{</span> <span class="n">NextPage</span> <span class="p">=</span> <span class="n">OnNextPage</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnTopPageData</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_isTbl</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">PageData</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PageData</span> <span class="p">{</span> <span class="n">NextPage</span> <span class="p">=</span> <span class="n">OnNextPage</span><span class="p">,</span> <span class="n">InsertTop</span> <span class="p">=</span> <span class="k">true</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnPageObjs</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_isTbl</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">PageData</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PageData</span> <span class="p">{</span> <span class="n">NextPage</span> <span class="p">=</span> <span class="n">OnNextPage</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnNextPage</span><span class="p">(</span><span class="n">PageData</span> <span class="n">p_pd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">INotifyList</span> <span class="n">ls</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">_isTbl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ls</span> <span class="p">=</span> <span class="n">SampleData</span><span class="p">.</span><span class="n">CreatePersonsTbl</span><span class="p">(</span><span class="n">p_pd</span><span class="p">.</span><span class="n">PageSize</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ls</span> <span class="p">=</span> <span class="n">SampleData</span><span class="p">.</span><span class="n">CreatePersonsList</span><span class="p">(</span><span class="n">p_pd</span><span class="p">.</span><span class="n">PageSize</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p_pd</span><span class="p">.</span><span class="n">LoadPageData</span><span class="p">(</span><span class="n">ls</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h2 id="行内容ui">行内容UI</h2>
+<p><code>Lv</code>可视树结构如下图所示：</p>
+<ul>
+<li><code>Lv</code>内容由<code>LvPanel</code>承载；</li>
+<li><code>LvPanel</code>继承自<code>Panel</code>，负责<code>LvRow</code>的生成和布局；</li>
+<li><code>LvRow</code>也继承自<code>Panel</code>，负责行内容的生成和布局；</li>
+<li>行内容由单元格UI和静态UI组成，在控件外部定义，通过<code>Lv.View</code>属性指定，<code>View</code>的类型可以为<code>DataTemplate、DataTemplateSelector、Cols</code>列定义 或 <code>IRowView</code>。</li>
+</ul>
+<p><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>所以<code>Lv</code>的界面主要通过<code>View</code>和<code>ViewMode</code>控制。</p>
+<p><code>ViewMode</code>控制行与行之间的布局关系，如表格和列表的行与行是自上而下布局的，磁贴是先水平后垂直布局的；</p>
+<p><code>View</code>只控制行内容，是业务开发的重点。</p>
+</div>
+        </div>
+    </div>
+<figure><a class="lightgallery" href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/8.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/8.png" data-thumbnail="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/8.png" data-sub-html="<h2>Lv可视树结构</h2>">
+        <img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/8.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/8.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/8.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/8.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/8.png" width="1009" height="259" />
+    </a><figcaption class="image-caption">Lv可视树结构</figcaption>
+    </figure></p>
+<p>根据View的不同类型介绍如下：</p>
+<h3 id="cols">Cols</h3>
+<p>列定义支持所有视图类型，行内容由所有列(<code>Cols</code>)组成，根据每个列定义(<code>Col</code>)生成<code>Dot</code>作为单元格容器。</p>
+<p><code>ViewMode</code>为表格视图时每项为表格的一行，列表视图的每行、磁贴视图的每项为一个表单，使用场景较少，<a href="#%e5%88%97%e5%ae%9a%e4%b9%89" rel="">运行时UI参见</a>。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">除Cols外其他View类型都不支持表格视图。</div>
+        </div>
+    </div>
+<h3 id="datatemplate">DataTemplate</h3>
+<p>当每行UI格式相同只是数据不同时适用，支持虚拟行模式，定义和UI显示参见<a href="#%e8%a1%8c%e9%a1%b9%e7%9b%ae%e6%a8%a1%e6%9d%bf%e5%ae%9a%e4%b9%89" rel="">行/项目模板定义</a>。</p>
+<h3 id="templateselector">TemplateSelector</h3>
+<p>根据行数据动态获取行数据模板再根据行数据模板创建行内容的方式，适用于不同数据采用不同行内容和行样式的情况，自由度相对较大，布局时不支持虚拟行方式，如聊天目录：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/9.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/9.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/9.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/9.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/9.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/9.png" width="405" height="325" /></p>
+<p>使用方法如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="hl"><span class="lnt">16
+</span></span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">LvListSelector</span> <span class="p">:</span> <span class="n">Win</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">LvListSelector</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">        <span class="n">_lv</span><span class="p">.</span><span class="n">View</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ListItemSelector</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Male</span> <span class="p">=</span> <span class="p">(</span><span class="n">DataTemplate</span><span class="p">)</span><span class="n">Resources</span><span class="p">[</span><span class="s">&#34;Male&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Lady</span> <span class="p">=</span> <span class="p">(</span><span class="n">DataTemplate</span><span class="p">)</span><span class="n">Resources</span><span class="p">[</span><span class="s">&#34;Lady&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_lv</span><span class="p">.</span><span class="n">Data</span> <span class="p">=</span> <span class="n">SampleData</span><span class="p">.</span><span class="n">CreatePersonsTbl</span><span class="p">(</span><span class="m">50</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">ListItemSelector</span> <span class="p">:</span> <span class="n">DataTemplateSelector</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">DataTemplate</span> <span class="n">Male</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">DataTemplate</span> <span class="n">Lady</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">protected</span> <span class="k">override</span> <span class="n">DataTemplate</span> <span class="n">SelectTemplateCore</span><span class="p">(</span><span class="kt">object</span> <span class="n">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(((</span><span class="n">LvItem</span><span class="p">)</span><span class="n">item</span><span class="p">).</span><span class="n">Row</span><span class="p">.</span><span class="n">Str</span><span class="p">(</span><span class="s">&#34;xb&#34;</span><span class="p">)</span> <span class="p">==</span> <span class="s">&#34;男&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Male</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Lady</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h3 id="irowview">IRowView</h3>
+<p><code>IRowView</code>是创建行内容自由度最大的方式，当使用<code>DataTemplateSelector</code>需要大量<code>DataTemplate</code>或每个<code>DataTemplate</code>只有细微差别时，可以使用<code>IRowView</code>方式替代，该方式为古老的创建行方法，最大缺点是无法像使用<code>DataTemplate</code>那样在<code>xaml</code>中定义事件，如<code>Button.Click</code>，只能在创建UI时硬编码。该方式不支持虚拟行，创建时直接生成最终界面，无需<code>Dot</code>或绑定，但也支持数据修改后同步显示的效果。</p>
+<p>当数据源行数较少且每行UI都有差别时，该方式是效率最高的，如<code>NavList</code>就采用该方式。</p>
+<p>外部通过代码创建的UI可以包含绑定，也可以根据行数据直接生成静态UI。如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="hl"><span class="lnt">12
+</span></span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">LvRowView</span> <span class="p">:</span> <span class="n">Win</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">LvRowView</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">        <span class="n">_lv</span><span class="p">.</span><span class="n">View</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MyRowView</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_lv</span><span class="p">.</span><span class="n">Data</span> <span class="p">=</span> <span class="n">SampleData</span><span class="p">.</span><span class="n">CreatePersonsTbl</span><span class="p">(</span><span class="m">50</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyRowView</span> <span class="p">:</span> <span class="n">IRowView</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">UIElement</span> <span class="n">Create</span><span class="p">(</span><span class="n">LvItem</span> <span class="n">p_item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">new</span> <span class="n">TextBlock</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span> <span class="p">=</span> <span class="n">p_item</span><span class="p">.</span><span class="n">Row</span><span class="p">.</span><span class="n">Str</span><span class="p">(</span><span class="s">&#34;xm&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Margin</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Thickness</span><span class="p">(</span><span class="m">10</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Foreground</span> <span class="p">=</span> <span class="p">(</span><span class="n">p_item</span><span class="p">.</span><span class="n">Row</span><span class="p">.</span><span class="n">Str</span><span class="p">(</span><span class="s">&#34;xb&#34;</span><span class="p">)</span> <span class="p">==</span> <span class="s">&#34;男&#34;</span><span class="p">)</span> <span class="p">?</span> <span class="n">Res</span><span class="p">.</span><span class="n">BlackBrush</span> <span class="p">:</span> <span class="n">Res</span><span class="p">.</span><span class="n">RedBrush</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h2 id="单元格ui">单元格UI</h2>
+<p>单元格UI是指表格中的单元格界面、列表/磁贴行数据的每项对应的界面，整个<code>Lv</code>控件界面是由这些单元格UI以行的布局规则组成，所有单元格UI决定了<code>Lv</code>的显示内容。</p>
+<p>从数据源到单元格UI的依赖关系如下图所示：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/10.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/10.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/10.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/10.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/10.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/10.png" width="281" height="303" /></p>
+<h3 id="viewitem">ViewItem</h3>
+<p>在<code>Lv</code>控件中，<code>ViewItem</code>扮演非常重要的角色，它是数据源中的每行数据和<code>Lv</code>中的每行UI的中间对象，属于<code>MVVM</code>的<code>VM</code>，<code>Lv</code>表格中的每行、列表中的每行、磁贴中的每项的<code>DataContext</code>就是<code>ViewItem</code>对象。 <code>ViewItem</code>主要负责两方面功能：</p>
+<ol>
+<li>负责监听数据源的变化，保证数据修改、删除时能实时的更新到界面；</li>
+<li>负责控制行样式，包括前景、背景、字体大小粗细等样式，这些样式会应用到每个单元格UI；</li>
+</ol>
+<h3 id="dot">Dot</h3>
+<p><code>Dot</code>继承自<code>ContentPresenter</code>，作为单元格UI的容器，负责展示<code>Table</code>数据源的<code>Cell</code>、普通对象的属性、或根据行数据动态生成UI。</p>
+<p>它主要通过<code>DataContextChanged</code>事件生成或更新单元格内容，<code>DataContext</code>为<code>ViewItem</code>对象，除<code>Dot</code>的5种样式采用<code>OneTime</code>绑定到<code>ViewItem</code>外，所有内部元素只依靠切换 <code>DataContext</code> 更新，Dot的定义：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="hl"><span class="lnt"> 7
+</span></span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="hl"><span class="lnt">52
+</span></span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="hl"><span class="lnt">55
+</span></span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">Dot</span> <span class="p">:</span> <span class="n">ContentPresenter</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">Dot</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 系统默认大小14，uwp初次测量结果偏小</span>
+</span></span><span class="line"><span class="cl">        <span class="n">FontSize</span> <span class="p">=</span> <span class="n">_defaultFontSize</span><span class="p">;</span>
+</span></span><span class="line hl"><span class="cl">        <span class="n">DataContextChanged</span> <span class="p">+=</span> <span class="n">OnDataContextChanged</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 获取设置Dot内容对应的数据对象的属性名，null或空时对应数据对象本身</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">ID</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 获取设置自定义单元格UI的方法名，多个方法名用逗号隔开，形如：Def.Icon,Def.小灰</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Call</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 获取设置格式串，null或空时按默认显示，如：时间格式、小数位格式、枚举类型名称</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;para&gt;也是自定义单元格UI方法的参数&lt;/para&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Format</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 获取设置内容为空时是否自动隐藏Dot，默认true</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;para&gt;隐藏时Padding 或 Margin 不再占用位置！&lt;/para&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;para&gt;若false，内容为空时仍然占位&lt;/para&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;para&gt;未处理Table模式的Dot，因其负责画右下边线！&lt;/para&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">bool</span> <span class="n">AutoHide</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">OnDataContextChanged</span><span class="p">(</span><span class="n">FrameworkElement</span> <span class="n">sender</span><span class="p">,</span> <span class="n">DataContextChangedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ViewItem</span> <span class="n">vi</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">NewValue</span> <span class="k">as</span> <span class="n">ViewItem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">vi</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">_isInit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_isInit</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="cm">/*****************************************************************************************/</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 只在初次触发 DataContextChanged 构造内部元素！</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 初次触发发生在加载 DataTemplate 后设置 DataContext 时，还未在可视树上！</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 若在 OnApplyTemplate 或 Loaded 中绑定在uno上已晚！</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// Dot及内部元素的只有以下5种样式采用OneTime绑定，其余依靠切换 DataContext 更新Dot！！！</span>
+</span></span><span class="line"><span class="cl">            <span class="cm">/*****************************************************************************************/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// 构造内部元素</span>
+</span></span><span class="line hl"><span class="cl">            <span class="n">Content</span> <span class="p">=</span> <span class="n">GetCellUI</span><span class="p">(</span><span class="n">vi</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// 设置初始值</span>
+</span></span><span class="line hl"><span class="cl">            <span class="n">_set</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="n">CallArgs</span><span class="p">(</span><span class="n">vi</span><span class="p">,</span> <span class="k">this</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// 优先级：直接设置 &gt; ViewItem属性，未直接设置的绑定ViewItem中的行样式</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">vi</span><span class="p">.</span><span class="n">Host</span><span class="p">.</span><span class="n">IsCustomItemStyle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">ReadLocalValue</span><span class="p">(</span><span class="n">ForegroundProperty</span><span class="p">)</span> <span class="p">==</span> <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">UnsetValue</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">SetBinding</span><span class="p">(</span><span class="n">ForegroundProperty</span><span class="p">,</span> <span class="k">new</span> <span class="n">Binding</span> <span class="p">{</span> <span class="n">Path</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PropertyPath</span><span class="p">(</span><span class="s">&#34;Foreground&#34;</span><span class="p">),</span> <span class="n">Mode</span> <span class="p">=</span> <span class="n">BindingMode</span><span class="p">.</span><span class="n">OneTime</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">ReadLocalValue</span><span class="p">(</span><span class="n">BackgroundProperty</span><span class="p">)</span> <span class="p">==</span> <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">UnsetValue</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">SetBinding</span><span class="p">(</span><span class="n">BackgroundProperty</span><span class="p">,</span> <span class="k">new</span> <span class="n">Binding</span> <span class="p">{</span> <span class="n">Path</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PropertyPath</span><span class="p">(</span><span class="s">&#34;Background&#34;</span><span class="p">),</span> <span class="n">Mode</span> <span class="p">=</span> <span class="n">BindingMode</span><span class="p">.</span><span class="n">OneTime</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">ReadLocalValue</span><span class="p">(</span><span class="n">FontWeightProperty</span><span class="p">)</span> <span class="p">==</span> <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">UnsetValue</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">SetBinding</span><span class="p">(</span><span class="n">FontWeightProperty</span><span class="p">,</span> <span class="k">new</span> <span class="n">Binding</span> <span class="p">{</span> <span class="n">Path</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PropertyPath</span><span class="p">(</span><span class="s">&#34;FontWeight&#34;</span><span class="p">),</span> <span class="n">Mode</span> <span class="p">=</span> <span class="n">BindingMode</span><span class="p">.</span><span class="n">OneTime</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">ReadLocalValue</span><span class="p">(</span><span class="n">FontStyleProperty</span><span class="p">)</span> <span class="p">==</span> <span class="n">DependencyProperty</span><span class="p">.</span><span class="n">UnsetValue</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">SetBinding</span><span class="p">(</span><span class="n">FontStyleProperty</span><span class="p">,</span> <span class="k">new</span> <span class="n">Binding</span> <span class="p">{</span> <span class="n">Path</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PropertyPath</span><span class="p">(</span><span class="s">&#34;FontStyle&#34;</span><span class="p">),</span> <span class="n">Mode</span> <span class="p">=</span> <span class="n">BindingMode</span><span class="p">.</span><span class="n">OneTime</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">FontSize</span> <span class="p">==</span> <span class="n">_defaultFontSize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">SetBinding</span><span class="p">(</span><span class="n">FontSizeProperty</span><span class="p">,</span> <span class="k">new</span> <span class="n">Binding</span> <span class="p">{</span> <span class="n">Path</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PropertyPath</span><span class="p">(</span><span class="s">&#34;FontSize&#34;</span><span class="p">),</span> <span class="n">Mode</span> <span class="p">=</span> <span class="n">BindingMode</span><span class="p">.</span><span class="n">OneTime</span> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">_set</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="n">CallArgs</span><span class="p">(</span><span class="n">vi</span><span class="p">,</span> <span class="k">this</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h4 id="默认单元格ui">默认单元格UI</h4>
+<p>通过<code>ID</code>指定当前<code>Dot</code>要展示的数据源中的列名或属性名称，为<code>null</code>或空时对应<code>DataContext</code>本身，当未设置<code>Call</code>属性时，<code>Dot</code>的内容根据数据源自动生成，称为<code>默认单元格UI</code>，如<code>bool</code>类型显示为<code>CheckBox</code>、<code>Icons</code>类型显示图标、<code>int double</code>等数值类型右对齐、自动显示两位小数、<code>DateTime</code>只显示年-月-日、<code>Color</code>类型直接显示颜色等等。</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/11.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/11.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/11.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/11.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/11.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/11.png" width="723" height="167" /></p>
+<h4 id="自定义单元格ui">自定义单元格UI</h4>
+<p><code>Call</code>属性非常重要，当默认单元格UI无法满足需求时，<strong>它是自定义单元格UI的唯一方法</strong>。</p>
+<p><code>Call</code>是字符串类型，记录自定义单元格UI的方法名，多个方法名用<code>逗号</code>隔开，大小写不敏感，也可以使用汉字，形如：<code>Def.Icon,Def.小灰</code>，这些方法会被顺序调用，比如：<code>Def.AutoDate,Def.小灰</code>，<code>Def</code>是类名，<code>AutoDate</code>是方法名，两个方法顺序调用，实现自适应时间转换(如 昨天，09:13, 2015-04-09)，并且深灰小字样式。</p>
+<p><code>Def</code>是系统内置类型，主要包括以下常用方法：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 常用的单元格UI类型</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="na">[LvCall]</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">Def</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 显示为图标字符</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 显示为CheckBox字符</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">CheckBox</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 显示为图片</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Image</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 显示为文件列表链接</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">FileLink</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 显示为枚举类型的名称</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">EnumText</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 自适应时间转换器，如 昨天，09:13, 2015-04-09</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">AutoDate</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 红底白字的警告圈样式</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Warning</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 深灰小字</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="err">小灰</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 黑底白字</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="err">黑白</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 蓝底白字</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="err">蓝白</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 红底白字</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;param name=&#34;e&#34;&gt;&lt;/param&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="err">红白</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>效果如下：</p>
+<p><figure><a class="lightgallery" href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/12.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/12.png" data-thumbnail="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/12.png" data-sub-html="<h2>Def</h2>">
+        <img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/12.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/12.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/12.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/12.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/12.png" width="1374" height="204" />
+    </a><figcaption class="image-caption">Def</figcaption>
+    </figure></p>
+<p><code>Def.Image</code>目前主要支持两类图片路径<code>ms-appx</code>和文件服务路径，因uno平台原因<code>ms-appdata</code>和完整网络路径暂不支持，从文件服务下载的图片会缓存在本地，以备下次加载。</p>
+<p><code>Def.File</code>显示“文件列表链接”，点击链接显示文件列表对话框，若要在<code>Lv</code>中显示文件列表内容请直接使用<code>FileList</code>，但因占用区域太大不适合用在表格视图模式下。</p>
+<p><code>Call</code>方法所属的类型应有<code>[LvCall]</code>标签，方法原型：静态方法无返回值，所有用到的数据源、UI、Set事件等由<code>Env</code>参数提供，该类型可以通过VS扩展工具自动添加：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/13.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/13.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/13.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/13.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/13.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/13.png" width="519" height="391" /></p>
+<p>样例中的实现效果：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/14.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/14.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/14.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/14.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/14.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/14.png" width="916" height="196" /></p>
+<p>典型的<code>Call</code>方法如下所示：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="hl"><span class="lnt"> 4
+</span></span><span class="lnt"> 5
+</span><span class="hl"><span class="lnt"> 6
+</span></span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Format</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">tb</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TextBlock</span> <span class="p">{</span> <span class="n">Style</span> <span class="p">=</span> <span class="n">Res</span><span class="p">.</span><span class="n">LvTextBlock</span><span class="p">,</span>  <span class="p">};</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">e</span><span class="p">.</span><span class="n">UI</span> <span class="p">=</span> <span class="n">tb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">    <span class="n">e</span><span class="p">.</span><span class="n">Set</span> <span class="p">+=</span> <span class="n">c</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tb</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">GetVal</span><span class="p">&lt;</span><span class="kt">double</span><span class="p">&gt;(</span><span class="s">&#34;shengao&#34;</span><span class="p">).</span><span class="n">ToString</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">Format</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p><code>Call</code>方法主要分成两部分：</p>
+<ul>
+<li>一部分是设置单元格内容<code>e.UI</code>，相当于<code>DataTemplate</code>，但不包括绑定；</li>
+<li>另一部分是附加<code>Set</code>事件，<code>Set</code>事件通过<code>Dot.DataContextChanged</code>事件触发，主要完成更新UI显示内容或更新样式的功能，附加<code>Set</code>事件的方法通常为<code>lambda</code>方法，采用<code>lambda</code>方法方便使用外部变量，相当于绑定中的赋值过程，但<code>Call</code>方法支持异步、可直接赋值，更方便直观。异步如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="hl"><span class="lnt"> 6
+</span></span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">AsyncFunc</span><span class="p">(</span><span class="n">Env</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">tb</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TextBlock</span> <span class="p">{</span> <span class="n">Style</span> <span class="p">=</span> <span class="n">Res</span><span class="p">.</span><span class="n">LvTextBlock</span><span class="p">,</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="p">.</span><span class="n">UI</span> <span class="p">=</span> <span class="n">tb</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl">    <span class="n">e</span><span class="p">.</span><span class="n">Set</span> <span class="p">+=</span> <span class="k">async</span> <span class="n">c</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tb</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">().</span><span class="n">Next</span><span class="p">(</span><span class="m">1000</span><span class="p">).</span><span class="n">ToString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p><code>Set</code>事件的参数类型为<code>CallArgs</code>，通用的数据处理可以采用<code>CallArgs</code>扩展方法的方式复用，这些扩展方法相当于绑定中的转换器如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">MyCallArgsEx</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">IsHeigher</span><span class="p">(</span><span class="k">this</span> <span class="n">CallArgs</span> <span class="n">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">c</span><span class="p">.</span><span class="n">Double</span> <span class="p">&gt;</span> <span class="m">1.8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>因此自定义单元格UI的复用分两个级别：</p>
+<ul>
+<li>粗粒度的直接复用<code>Call</code>方法</li>
+<li>细粒度的复用<code>CallArgs</code>扩展方法。</li>
+</ul>
+</div>
+        </div>
+    </div>
+<p>表格中的<code>Col</code>定义只是一个载体，在创建可视元素时仍采用<code>Dot</code>作为单元格UI的容器，并且将<code>Col</code>的属性复制到<code>Dot</code>，所以<code>Col.Call</code>的设置等同于<code>Dot.Call</code>。</p>
+<p>建议行模板中尽可能的使用<code>Dot</code>，当无法使用<code>Dot</code>完成需求时，也可以采用传统的绑定方式，如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;Ellipse</span> <span class="na">Visibility=</span><span class="s">&#34;{Binding [Unread], Converter={StaticResource CvBoolToVisible}}&#34;</span> <span class="na">Fill=</span><span class="s">&#34;Red&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>还有一种情况就是单元格的内容为普通字符串，但无法从数据源中直接获得，例如<code>double</code>数值转带<code>%</code>的值，这时可以通过<code>Call</code>方式但比较麻烦，当数据源为<code>Entity</code>时可以为实体类增加只读属性，内部会自动将<code>Dot</code>绑定到该属性值，非常方便。如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 带%的利率，绑定到Dot时使用的属性值！</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">string</span> <span class="n">RatePercent</span> <span class="p">=&gt;</span> <span class="p">((</span><span class="kt">double</span><span class="p">)</span><span class="k">this</span><span class="p">[</span><span class="s">&#34;Rate&#34;</span><span class="p">]).</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;P&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">a</span><span class="p">:</span><span class="n">Dot</span> <span class="n">ID</span><span class="p">=</span><span class="s">&#34;RatePercent&#34;</span> <span class="p">/&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+若很多地方都需要该转换，则可通过统一的<code>Call</code>方法实现，看具体使用场景。</p>
+<h3 id="行样式">行样式</h3>
+<p>行样式放在此处说明是因为行样式的最终实现由<code>Dot</code>完成，行样式包括以下5个属性，通过<code>Lv.ItemStyle</code>回调方法设置。使用样例：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="n">_lv</span><span class="p">.</span><span class="n">ItemStyle</span> <span class="p">=</span> <span class="n">e</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">row</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Row</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="p">.</span><span class="n">Background</span> <span class="p">=</span> <span class="n">row</span><span class="p">.</span><span class="n">Date</span><span class="p">(</span><span class="s">&#34;chushengrq&#34;</span><span class="p">).</span><span class="n">Month</span> <span class="p">==</span> <span class="m">9</span> <span class="p">?</span> <span class="n">Res</span><span class="p">.</span><span class="err">浅黄</span> <span class="p">:</span> <span class="n">Res</span><span class="p">.</span><span class="n">WhiteBrush</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="p">.</span><span class="n">Foreground</span> <span class="p">=</span> <span class="n">row</span><span class="p">.</span><span class="n">Double</span><span class="p">(</span><span class="s">&#34;Shengao&#34;</span><span class="p">)</span> <span class="p">&gt;</span> <span class="m">1.75</span> <span class="p">?</span> <span class="n">Res</span><span class="p">.</span><span class="n">RedBrush</span> <span class="p">:</span> <span class="n">Res</span><span class="p">.</span><span class="n">BlackBrush</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="p">.</span><span class="n">FontWeight</span> <span class="p">=</span> <span class="n">row</span><span class="p">.</span><span class="n">Str</span><span class="p">(</span><span class="s">&#34;bumen&#34;</span><span class="p">)</span> <span class="p">==</span> <span class="s">&#34;循环门诊&#34;</span> <span class="p">?</span> <span class="n">FontWeights</span><span class="p">.</span><span class="n">Bold</span> <span class="p">:</span> <span class="n">FontWeights</span><span class="p">.</span><span class="n">Normal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="p">.</span><span class="n">FontStyle</span> <span class="p">=</span> <span class="n">row</span><span class="p">.</span><span class="n">Str</span><span class="p">(</span><span class="s">&#34;bumen&#34;</span><span class="p">)</span> <span class="p">==</span> <span class="s">&#34;内分泌门诊&#34;</span> <span class="p">?</span> <span class="n">FontStyle</span><span class="p">.</span><span class="n">Italic</span> <span class="p">:</span> <span class="n">FontStyle</span><span class="p">.</span><span class="n">Normal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/15.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/15.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/15.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/15.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/15.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/15.png" width="801" height="247" /></p>
+<h2 id="选择模式">选择模式</h2>
+<p><code>Lv.SelectionMode</code>选择模式共三种：<code>None,Single,Multiple</code>，默认单选<code>Single</code>，可以动态切换，多选状态时行头显示选择框，<code>None</code>时无选择样式。</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/16.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/16.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/16.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/16.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/16.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/16.png" width="615" height="459" />
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/17.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/17.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/17.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/17.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/17.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/17.png" width="616" height="460" /></p>
+<p>单选模式时常用<code>ItemClick</code>事件，每次点击行时都触发，通过参数<code>ItemClickArgs.IsChanged</code>判断当前点击行是否和上次点击行相同，事件定义：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnRowClick</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">ItemClick</span> <span class="p">+=</span> <span class="n">OnRowChanged</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnRowChanged</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ItemClickArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Data</span> <span class="k">is</span> <span class="n">Row</span> <span class="n">row</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Row</span> <span class="n">old</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">OldData</span> <span class="k">as</span> <span class="n">Row</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Data</span> <span class="k">is</span> <span class="n">Person</span> <span class="n">per</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Person</span> <span class="n">old</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">OldData</span> <span class="k">as</span> <span class="n">Person</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">ItemClickArgs</span> <span class="p">:</span> <span class="n">EventArgs</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 当前点击行是否和上次点击行相同</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsChanged</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 当前点击行</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">object</span> <span class="n">Data</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 上次点击行</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">object</span> <span class="n">OldData</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// 当前点击的Row</span>
+</span></span><span class="line"><span class="cl">    <span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">Row</span> <span class="n">Row</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>属性HasSelected判断当前是否有选择行，该属性常用来绑定到有选择行时的操作，如删除：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;删除&#34;</span> <span class="na">Icon=</span><span class="s">&#34;垃圾箱&#34;</span> <span class="na">Click=</span><span class="s">&#34;OnDel&#34;</span> <span class="na">IsEnabled=</span><span class="s">&#34;{Binding HasSelected,ElementName=_lv}&#34;</span> <span class="nt">/&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>和选择相关的属性包括：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置选择模式，默认Single</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">SelectionMode</span> <span class="n">SelectionMode</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取当前选择的行列表</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="n">SelectedItems</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置当前选定行，设置null时清空选择，多选时为返回最后选择行</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">object</span> <span class="n">SelectedItem</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置选定行的索引，-1无选定行，设置-1清空选择</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">int</span> <span class="n">SelectedIndex</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取选择的行数</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">int</span> <span class="n">SelectedCount</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取当前选择的Row列表</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Row</span><span class="p">&gt;</span> <span class="n">SelectedRows</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取当前选定的Row</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">Row</span> <span class="n">SelectedRow</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取是否有选择行</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">bool</span> <span class="n">HasSelected</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>在单选和多选之间切换的功能：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">a</span><span class="p">:</span><span class="n">Menu</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">a</span><span class="p">:</span><span class="n">Mi</span> <span class="n">ID</span><span class="p">=</span><span class="s">&#34;全选&#34;</span> <span class="n">Icon</span><span class="p">=</span><span class="s">&#34;正确&#34;</span> <span class="n">Click</span><span class="p">=</span><span class="s">&#34;OnSelectAll&#34;</span> <span class="n">Visibility</span><span class="p">=</span><span class="s">&#34;Collapsed&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">a</span><span class="p">:</span><span class="n">Mi</span> <span class="n">ID</span><span class="p">=</span><span class="s">&#34;选择&#34;</span> <span class="n">Icon</span><span class="p">=</span><span class="s">&#34;全选&#34;</span> <span class="n">Click</span><span class="p">=</span><span class="s">&#34;OnMultiMode&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">a</span><span class="p">:</span><span class="n">Mi</span> <span class="n">ID</span><span class="p">=</span><span class="s">&#34;取消&#34;</span> <span class="n">Icon</span><span class="p">=</span><span class="s">&#34;全选&#34;</span> <span class="n">Click</span><span class="p">=</span><span class="s">&#34;OnCancelMulti&#34;</span> <span class="n">Visibility</span><span class="p">=</span><span class="s">&#34;Collapsed&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">a</span><span class="p">:</span><span class="n">Menu</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnSelectAll</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Mi</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">SelectAll</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnMultiMode</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Mi</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">SelectionMode</span> <span class="p">=</span> <span class="n">Base</span><span class="p">.</span><span class="n">SelectionMode</span><span class="p">.</span><span class="n">Multiple</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Menu</span><span class="p">.</span><span class="n">HideExcept</span><span class="p">(</span><span class="s">&#34;删除&#34;</span><span class="p">,</span> <span class="s">&#34;全选&#34;</span><span class="p">,</span> <span class="s">&#34;取消&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnCancelMulti</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">Mi</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">SelectionMode</span> <span class="p">=</span> <span class="n">Base</span><span class="p">.</span><span class="n">SelectionMode</span><span class="p">.</span><span class="n">Single</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Menu</span><span class="p">.</span><span class="n">ShowExcept</span><span class="p">(</span><span class="s">&#34;删除&#34;</span><span class="p">,</span> <span class="s">&#34;全选&#34;</span><span class="p">,</span> <span class="s">&#34;取消&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h2 id="分组">分组</h2>
+<p>所有视图类型都支持分组，效果如下图所示：</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/18.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/18.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/18.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/18.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/18.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/18.png" width="597" height="593" />
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/19.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/19.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/19.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/19.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/19.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/19.png" width="602" height="622" />
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/20.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/20.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/20.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/20.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/20.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/20.png" width="601" height="702" /></p>
+<p>涉及到分组相关的属性包括：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置顶部是否显示分组导航，默认true</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">bool</span> <span class="n">ShowGroupHeader</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置分组列名</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="kt">string</span> <span class="n">GroupName</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置分组模板，和GroupContext配合使用</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">DataTemplate</span> <span class="n">GroupTemplate</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// 获取设置分组模板的数据上下文类型，和GroupTemplate配合使用，需继承自GroupContext</span>
+</span></span><span class="line"><span class="cl"><span class="cs">/// &lt;/summary&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="n">Type</span> <span class="n">GroupContext</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>自定义分组模板的样例：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="hl"><span class="lnt"> 5
+</span></span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="hl"><span class="lnt">36
+</span></span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="hl"><span class="lnt">41
+</span></span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">a</span><span class="p">:</span><span class="n">Lv</span> <span class="n">x</span><span class="p">:</span><span class="n">Name</span><span class="p">=</span><span class="s">&#34;_lv&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">DataTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="n">a</span><span class="p">:</span><span class="n">Dot</span> <span class="n">ID</span><span class="p">=</span><span class="s">&#34;xm&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">DataTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line hl"><span class="cl">    <span class="p">&lt;</span><span class="n">a</span><span class="p">:</span><span class="n">Lv</span><span class="p">.</span><span class="n">GroupTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="n">DataTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="n">StackPanel</span> <span class="n">Padding</span><span class="p">=</span><span class="s">&#34;10,0,10,0&#34;</span> <span class="n">Orientation</span><span class="p">=</span><span class="s">&#34;Horizontal&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="n">StackPanel</span> <span class="n">Orientation</span><span class="p">=</span><span class="s">&#34;Horizontal&#34;</span> <span class="n">Padding</span><span class="p">=</span><span class="s">&#34;10,4,10,4&#34;</span> <span class="n">Background</span><span class="p">=</span><span class="s">&#34;Black&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">TextBlock</span> <span class="n">Text</span><span class="p">=</span><span class="s">&#34;人数&#34;</span> <span class="n">Foreground</span><span class="p">=</span><span class="s">&#34;White&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">TextBlock</span> <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding Count}&#34;</span> <span class="n">Foreground</span><span class="p">=</span><span class="s">&#34;White&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;/</span><span class="n">StackPanel</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="n">StackPanel</span> <span class="n">Orientation</span><span class="p">=</span><span class="s">&#34;Horizontal&#34;</span> <span class="n">Padding</span><span class="p">=</span><span class="s">&#34;10,4,10,4&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">TextBlock</span> <span class="n">Text</span><span class="p">=</span><span class="s">&#34;平均身高&#34;</span> <span class="n">Foreground</span><span class="p">=</span><span class="s">&#34;White&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">TextBlock</span> <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding Average}&#34;</span> <span class="n">Foreground</span><span class="p">=</span><span class="s">&#34;White&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;/</span><span class="n">StackPanel</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="n">StackPanel</span> <span class="n">Orientation</span><span class="p">=</span><span class="s">&#34;Horizontal&#34;</span> <span class="n">Padding</span><span class="p">=</span><span class="s">&#34;10,4,10,4&#34;</span> <span class="n">Background</span><span class="p">=</span><span class="s">&#34;Gray&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">TextBlock</span> <span class="n">Text</span><span class="p">=</span><span class="s">&#34;最高&#34;</span> <span class="n">Foreground</span><span class="p">=</span><span class="s">&#34;White&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">TextBlock</span> <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding Max}&#34;</span> <span class="n">Foreground</span><span class="p">=</span><span class="s">&#34;White&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;/</span><span class="n">StackPanel</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="n">StackPanel</span> <span class="n">Orientation</span><span class="p">=</span><span class="s">&#34;Horizontal&#34;</span> <span class="n">Padding</span><span class="p">=</span><span class="s">&#34;10,4,10,4&#34;</span> <span class="n">Background</span><span class="p">=</span><span class="s">&#34;Green&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">TextBlock</span> <span class="n">Text</span><span class="p">=</span><span class="s">&#34;最矮&#34;</span> <span class="n">Foreground</span><span class="p">=</span><span class="s">&#34;White&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">TextBlock</span> <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding Min}&#34;</span> <span class="n">Foreground</span><span class="p">=</span><span class="s">&#34;White&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;/</span><span class="n">StackPanel</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;/</span><span class="n">StackPanel</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="n">DataTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">a</span><span class="p">:</span><span class="n">Lv</span><span class="p">.</span><span class="n">GroupTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">a</span><span class="p">:</span><span class="n">Lv</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">LvGroupTemplate</span> <span class="p">:</span> <span class="n">Win</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">LvGroupTemplate</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">_lv</span><span class="p">.</span><span class="n">GroupName</span> <span class="p">=</span> <span class="s">&#34;bumen&#34;</span><span class="p">;</span>
+</span></span><span class="line hl"><span class="cl">        <span class="n">_lv</span><span class="p">.</span><span class="n">GroupContext</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">MyGroupContext</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_lv</span><span class="p">.</span><span class="n">Data</span> <span class="p">=</span> <span class="n">SampleData</span><span class="p">.</span><span class="n">CreatePersonsTbl</span><span class="p">(</span><span class="m">100</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyGroupContext</span> <span class="p">:</span> <span class="n">GroupContext</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Sum</span> <span class="p">=&gt;</span> <span class="n">SumDouble</span><span class="p">(</span><span class="s">&#34;shengao&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Average</span> <span class="p">=&gt;</span> <span class="n">AverageDouble</span><span class="p">(</span><span class="s">&#34;shengao&#34;</span><span class="p">).</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;n2&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Max</span> <span class="p">=&gt;</span> <span class="n">MaxDouble</span><span class="p">(</span><span class="s">&#34;shengao&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">double</span> <span class="n">Min</span> <span class="p">=&gt;</span> <span class="n">MinDouble</span><span class="p">(</span><span class="s">&#34;shengao&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<h2 id="上下文菜单">上下文菜单</h2>
+<p>上下文菜单的定义统一通过附件依赖属性<code>Ex.Menu</code>，如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;a:Lv</span> <span class="na">x:Name=</span><span class="s">&#34;_lv&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;a:Ex.Menu&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Menu&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;保存&#34;</span> <span class="na">Icon=</span><span class="s">&#34;保存&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;搜索&#34;</span> <span class="na">Icon=</span><span class="s">&#34;搜索&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/a:Menu&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/a:Ex.Menu&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/a:Lv&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>触发上下文菜单的方式：windows系统为鼠标右键，phone模式通过点击标识按钮。</p>
+<p><img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/21.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/21.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/21.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/21.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/21.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/21.png" width="631" height="349" />
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/22.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/22.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/22.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/22.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/22.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/22.png" width="418" height="721" /></p>
+<h2 id="工具栏">工具栏</h2>
+<p><code>Lv</code>工具栏主要放置排序列、筛选、切换视图模式等菜单项，它和数据行、分组一起布局。</p>
+<ul>
+<li>
+<p>当<code>ScrollViewer</code>在<code>Lv</code>外部时，工具栏未达到可视区顶部时和数据行一起滚动，到达顶部后停留在顶部显示；
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/23.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/23.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/23.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/23.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/23.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/23.png" width="520" height="338" /></p>
+</li>
+<li>
+<p>当<code>ScrollViewer</code>在<code>Lv</code>内部时，工具栏始终在顶部显示。
+<img class="lazyload" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/24.png" data-srcset="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/24.png, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/24.png 1.5x, /dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/24.png 2x" data-sizes="auto" alt="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/24.png" title="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/24.png" width="492" height="286" /></p>
+</li>
+</ul>
+<p>工具栏定义如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;a:Lv</span> <span class="na">x:Name=</span><span class="s">&#34;_lv&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;a:Lv.Toolbar&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;a:Menu&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;姓名&#34;</span> <span class="na">CmdParam=</span><span class="s">&#34;xm&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;出生日期&#34;</span> <span class="na">CmdParam=</span><span class="s">&#34;chushengrq desc&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;视图&#34;</span> <span class="na">Icon=</span><span class="s">&#34;汉堡&#34;</span> <span class="na">ShowInPhone=</span><span class="s">&#34;Icon&#34;</span> <span class="na">Click=</span><span class="s">&#34;OnToggleViewMode&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;筛选&#34;</span> <span class="na">Icon=</span><span class="s">&#34;漏斗&#34;</span> <span class="na">CmdParam=</span><span class="s">&#34;#Filter&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;设置&#34;</span> <span class="na">Icon=</span><span class="s">&#34;设置&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;增加&#34;</span> <span class="na">Icon=</span><span class="s">&#34;加号&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;a:Mi</span> <span class="na">ID=</span><span class="s">&#34;删除&#34;</span> <span class="na">Icon=</span><span class="s">&#34;删除&#34;</span> <span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/a:Menu&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/a:Lv.Toolbar&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/a:Lv&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>
+<p>通过<code>Mi</code>的<code>CmdParam</code>可以指定排序列<code>ID</code>，初次点击降序时添加<code>desc</code>后缀；</p>
+</li>
+<li>
+<p><code>#Filter</code>表示系统提供的默认筛选功能，对数据源所有列都可进行筛选，通常提供给管理员使用；</p>
+</li>
+<li>
+<p>排序和默认筛选不需要<code>Click</code>事件，指定<code>CmdParam</code>即可执行，其他功能请在<code>Click</code>事件中处理，如切换视图模型。</p>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h2 id="下拉刷新">下拉刷新</h2>
+<p><code>Lv</code>下拉刷新内部使用<code>RefreshContainer</code>控件，在iOS android上映射为平台本地控件，性能好。使用下拉刷新分三步：</p>
+<ul>
+<li>
+<p>设置<code>Lv</code>属性 <code>PullToRefresh=&quot;True&quot;</code>；
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;a:Lv</span> <span class="na">x:Name=</span><span class="s">&#34;_lv&#34;</span> <span class="na">PullToRefresh=</span><span class="s">&#34;True&#34;</span><span class="nt">&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+</li>
+<li>
+<p>附加<code>Lv</code>事件<code>RefreshRequested</code>，在事件中刷新数据，如：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="hl"><span class="lnt"> 5
+</span></span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="hl"><span class="lnt"> 8
+</span></span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">public</span> <span class="n">LvPullToRefresh</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">InitializeComponent</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">Data</span> <span class="p">=</span> <span class="n">SampleData</span><span class="p">.</span><span class="n">CreatePersonsTbl</span><span class="p">(</span><span class="m">10</span><span class="p">);</span>
+</span></span><span class="line hl"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">RefreshRequested</span> <span class="p">+=</span> <span class="n">OnRefreshRequested</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line hl"><span class="cl"><span class="k">async</span> <span class="k">void</span> <span class="n">OnRefreshRequested</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">AsyncEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Wait</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">Delay</span><span class="p">(</span><span class="m">2000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">tbl</span> <span class="p">=</span> <span class="n">_lv</span><span class="p">.</span><span class="n">Table</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_lv</span><span class="p">.</span><span class="n">Data</span> <span class="p">=</span> <span class="n">SampleData</span><span class="p">.</span><span class="n">CreatePersonsTbl</span><span class="p">(</span><span class="n">tbl</span><span class="p">.</span><span class="n">Count</span> <span class="p">+</span> <span class="m">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+</li>
+<li>
+<p>增加刷新按钮，调用<code>Lv.RequestRefresh()</code>方法，供无触摸屏的win刷新使用
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cs" data-lang="cs"><span class="line"><span class="cl"><span class="k">void</span> <span class="n">OnRequestRefresh</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_lv</span><span class="p">.</span><span class="n">RequestRefresh</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div></p>
+</li>
+</ul>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>建议<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>
+<p>列表控件<code>Lv</code>采用虚拟行和真实行两种模式进行布局，当未采用行模板选择器且不自动行高时使用虚拟行模式，此方式节省资源、交互流畅，但行高固定(以第一行为标准)、行模板相同，在业务需求允许的情况下<strong>尽可能使用虚拟行模式</strong>。</p>
+</li>
+<li>
+<p><code>LvPanel</code>类包含整个布局算法，windows模式和Phone模式同样支持，分组行始终以真实行绘制，当虚拟行、真实行混排又支持多种视图类型时算法较复杂。</p>
+</li>
+<li>
+<p>当<code>Lv</code>为列表或磁贴模式时，<strong>行模板内尽可能使用<code>Dot</code>显示数据</strong>，<code>Dot</code>作为行模板的占位格(继承自<code>ContentPresenter</code>)，具有写法简洁、能根据数据类型生成可视元素、缓存可视元素、支持视图扩展等优势。</p>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <section class="post-tags"></section>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://daotingh.gitee.io/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/" data-title="Lv"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://daotingh.gitee.io/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/" data-title="Lv"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+</article><div class="toc" id="toc-auto">
+                <h2 class="toc-title">目录</h2>
+                <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#视图类型">视图类型</a>
+      <ul>
+        <li><a href="#列定义">列定义</a></li>
+        <li><a href="#行项目模板定义">行/项目模板定义</a></li>
+      </ul>
+    </li>
+    <li><a href="#数据源">数据源</a>
+      <ul>
+        <li><a href="#普通数据源">普通数据源</a></li>
+        <li><a href="#分页数据源">分页数据源</a></li>
+      </ul>
+    </li>
+    <li><a href="#行内容ui">行内容UI</a>
+      <ul>
+        <li><a href="#cols">Cols</a></li>
+        <li><a href="#datatemplate">DataTemplate</a></li>
+        <li><a href="#templateselector">TemplateSelector</a></li>
+        <li><a href="#irowview">IRowView</a></li>
+      </ul>
+    </li>
+    <li><a href="#单元格ui">单元格UI</a>
+      <ul>
+        <li><a href="#viewitem">ViewItem</a></li>
+        <li><a href="#dot">Dot</a>
+          <ul>
+            <li><a href="#默认单元格ui">默认单元格UI</a></li>
+            <li><a href="#自定义单元格ui">自定义单元格UI</a></li>
+          </ul>
+        </li>
+        <li><a href="#行样式">行样式</a></li>
+      </ul>
+    </li>
+    <li><a href="#选择模式">选择模式</a></li>
+    <li><a href="#分组">分组</a></li>
+    <li><a href="#上下文菜单">上下文菜单</a></li>
+    <li><a href="#工具栏">工具栏</a></li>
+    <li><a href="#下拉刷新">下拉刷新</a></li>
+  </ul>
+</nav></div>
+            </div></div>
+    </div>
+</div>
+            </main>
+            <footer class="footer">
+                <div class="footer-container"><div class="footer-line">搬运工</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/dt-docs/" target="_blank">Daoting</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div>
+            </footer>
+        </div>
+
+        <div id="fixed-buttons">
+            <a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/dt-docs/js/theme.min.js"></script>
+    </body>
+</html>

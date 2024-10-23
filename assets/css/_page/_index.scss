@@ -1,0 +1,13 @@
+.page {
+  width: 890px;
+  padding: 0 15px;
+
+  @include blur;
+}
+
+@import "_default";
+@import "_single";
+@import "_special";
+@import "_archive";
+@import "_home";
+@import "_404";

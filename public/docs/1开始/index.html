@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>开始 - 搬运工</title>
+        <meta name="Description" content="利用 C# &#43; XAML 进行快速业务开发的跨平台框架">
+        <meta name="application-name" content="搬运工">
+        <meta name="apple-mobile-web-app-title" content="搬运工">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <link rel="shortcut icon" type="image/x-icon" href="/dt-docs/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/dt-docs/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/dt-docs/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/dt-docs/apple-touch-icon.png">
+        <link rel="mask-icon" href="/dt-docs/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="manifest" href="/dt-docs/site.webmanifest">
+        <link rel="canonical" href="https://daotingh.gitee.io/dt-docs/docs/1%E5%BC%80%E5%A7%8B/" />
+        <link rel="alternate" href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/index.xml" type="application/rss+xml" title="搬运工">
+        <link rel="feed" href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/index.xml" type="application/rss+xml" title="搬运工"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/dt-docs/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    </head>
+    <body data-header-desktop="fixed" data-header-mobile="auto">
+        <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+        <div id="mask"></div>
+        <div class="wrapper">
+            <header class="desktop" id="header-desktop">
+                <div class="header-wrapper">
+                    <div class="header-title">
+                        <a href="/dt-docs/" title="搬运工"><img class="lazyload logo" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/favicon-32x32.png" data-srcset="/dt-docs/favicon-32x32.png, /dt-docs/favicon-32x32.png 1.5x, /dt-docs/favicon-32x32.png 2x" data-sizes="auto" alt="/dt-docs/favicon-32x32.png" title="/dt-docs/favicon-32x32.png" />搬运工</a>
+                    </div>
+                    <div class="menu">
+                        <div class="menu-inner"><a class="menu-item" href="/dt-docs/posts/"> 文章 </a><a class="menu-item" href="/dt-docs/docs/"> 教程 </a><a class="menu-item" href="https://github.com/daoting/dt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span>
+                            <span class="menu-item search" id="search-desktop">
+                                <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                                <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                                    <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                                    <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <span class="search-button search-loading" id="search-loading-desktop">
+                                    <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                            <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <header class="mobile" id="header-mobile">
+                <div class="header-container">
+                    <div class="header-wrapper">
+                        <div class="header-title">
+                            <a href="/dt-docs/" title="搬运工"><img class="lazyload logo" src="/dt-docs/svg/loading.min.svg" data-src="/dt-docs/favicon-32x32.png" data-srcset="/dt-docs/favicon-32x32.png, /dt-docs/favicon-32x32.png 1.5x, /dt-docs/favicon-32x32.png 2x" data-sizes="auto" alt="/dt-docs/favicon-32x32.png" title="/dt-docs/favicon-32x32.png" />搬运工</a>
+                        </div>
+                        <div class="menu-toggle" id="menu-toggle-mobile">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="menu" id="menu-mobile">
+                        <div class="search-wrapper">
+                            <div class="search mobile" id="search-mobile">
+                                <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                                <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                                    <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                                    <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                                </a>
+                                <span class="search-button search-loading" id="search-loading-mobile">
+                                    <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                                取消
+                            </a>
+                        </div>
+                        <a class="menu-item" href="/dt-docs/posts/" title="">文章</a>
+                        <a class="menu-item" href="/dt-docs/docs/" title="">教程</a>
+                        <a class="menu-item" href="https://github.com/daoting/dt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a>
+                        <a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                            <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <div class="search-dropdown desktop">
+                <div id="search-dropdown-desktop"></div>
+            </div>
+            <div class="search-dropdown mobile">
+                <div id="search-dropdown-mobile"></div>
+            </div>
+            <main class="main"><div class="doc-frame">
+    <aside class="doc-tree">
+        <div id="content-mobile">
+  <button class="fas fa-bars" type="button" onclick="var nav = document.getElementById('td-section-nav'); nav.style.display = (nav.style.display == 'block') ? 'none' : 'block' ">
+  </button>
+</div>
+<nav class="td-sidebar-nav" id="td-section-nav">
+  <ul class="td-sidebar-nav__section">
+    <li>
+  <a href="/dt-docs/docs/" title="概述" class="td-sidebar-link tree-root"><span>概述</span></a>
+  <ul  class="ul-1" >
+    <li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/" title="开始" class="td-sidebar-link active"><span>开始</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/1%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="开发环境" class="td-sidebar-link"><span>开发环境</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/2%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/" title="创建空项目" class="td-sidebar-link"><span>创建空项目</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/3%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80/" title="小试牛刀" class="td-sidebar-link"><span>小试牛刀</span></a>
+</li><li>
+  <a href="/dt-docs/docs/1%E5%BC%80%E5%A7%8B/4%E6%90%AC%E8%BF%90%E5%B7%A5%E6%A0%B7%E4%BE%8B/" title="搬运工样例" class="td-sidebar-link"><span>搬运工样例</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/" title="基础" class="td-sidebar-link"><span>基础</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/1%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84/" title="总体架构" class="td-sidebar-link"><span>总体架构</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/2%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD/" title="基础功能" class="td-sidebar-link"><span>基础功能</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/3%E9%A2%86%E5%9F%9F%E5%B1%82/" title="领域层" class="td-sidebar-link"><span>领域层</span></a>
+</li><li>
+  <a href="/dt-docs/docs/2%E5%9F%BA%E7%A1%80/4%E6%9C%8D%E5%8A%A1/" title="服务" class="td-sidebar-link"><span>服务</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/" title="客户端" class="td-sidebar-link"><span>客户端</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/1%E5%9F%BA%E7%A1%80/" title="基础" class="td-sidebar-link"><span>基础</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/2%E7%95%8C%E9%9D%A2%E6%A1%86%E6%9E%B6/" title="界面框架" class="td-sidebar-link"><span>界面框架</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/3fv/" title="Fv" class="td-sidebar-link"><span>Fv</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/4lv/" title="Lv" class="td-sidebar-link"><span>Lv</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/5tab/" title="Tab" class="td-sidebar-link"><span>Tab</span></a>
+</li><li>
+  <a href="/dt-docs/docs/3%E5%AE%A2%E6%88%B7%E7%AB%AF/6%E5%9F%BA%E7%A1%80%E6%8E%A7%E4%BB%B6/" title="基础控件" class="td-sidebar-link"><span>基础控件</span></a>
+</li>
+  </ul>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/" title="发布部署" class="td-sidebar-link"><span>发布部署</span></a>
+  <ul >
+    <li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/1%E6%9C%8D%E5%8A%A1/" title="服务" class="td-sidebar-link"><span>服务</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/2win%E5%BA%94%E7%94%A8/" title="Win应用" class="td-sidebar-link"><span>Win应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/3android%E5%BA%94%E7%94%A8/" title="Android应用" class="td-sidebar-link"><span>Android应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/4ios%E5%BA%94%E7%94%A8/" title="iOS应用" class="td-sidebar-link"><span>iOS应用</span></a>
+</li><li>
+  <a href="/dt-docs/docs/4%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/5wasm%E5%BA%94%E7%94%A8/" title="Wasm应用" class="td-sidebar-link"><span>Wasm应用</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+  </ul>
+</nav>
+
+
+    </aside>
+    <div class="doc-main">
+        <div class="container">
+            <article class="page single"><h1 class="single-title animate__animated animate__flipInX">开始</h1><div class="post-meta">
+                    <div class="post-meta-line">
+                        <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 98 字&nbsp;
+                        <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;</div>
+                </div><div class="content" id="content"><p>万事开头难，再好的语言描述也不如比划一下更直观，这一章首先描述如何搭建开发环境，然后介绍如何创建项目并在10分钟内运行第一个应用，不能让道友们失望。</p>
+<p>好吧，光说不练假把式，Let&rsquo;s go! 👉</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <section class="post-tags"></section>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://daotingh.gitee.io/dt-docs/docs/1%E5%BC%80%E5%A7%8B/" data-title="开始"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 百度" data-sharer="baidu" data-url="https://daotingh.gitee.io/dt-docs/docs/1%E5%BC%80%E5%A7%8B/" data-title="开始"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@6.20.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+</div>
+</article></div>
+    </div>
+</div>
+            </main>
+            <footer class="footer">
+                <div class="footer-container"><div class="footer-line">搬运工</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/dt-docs/" target="_blank">Daoting</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+                </div>
+            </footer>
+        </div>
+
+        <div id="fixed-buttons">
+            <a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.1/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"lightgallery":true,"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/dt-docs/js/theme.min.js"></script>
+    </body>
+</html>
