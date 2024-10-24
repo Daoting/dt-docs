@@ -1,21 +1,7 @@
 ---
 weight: 2
-title: "Hello World"
-date: 2023-03-27T14:10:09+08:00
-lastmod: 2023-03-27T14:10:09+08:00
-draft: false
-author: "Daoting"
-authorLink: ""
-description: "描述"
-images: []
-resources:
-- name: "featured-image"
-  src: "fw.png"
-
+title: "扩展语法"
 tags: []
-categories: []
-
-lightgallery: true
 ---
 
 内容摘要

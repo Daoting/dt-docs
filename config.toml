@@ -38,25 +38,6 @@ enableEmoji = true
 # 菜单配置
 [menu]
   [[menu.main]]
-    weight = 1
-    identifier = "posts"
-    # 你可以在名称 (允许 HTML 格式) 之前添加其他信息, 例如图标
-    pre = ""
-    # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
-    post = ""
-    name = "文章"
-    url = "/posts/"
-    # 当您将鼠标悬停在此菜单链接上时, 将显示标题
-    title = ""
-  [[menu.main]]
-    weight = 2
-    identifier = "docs"
-    pre = ""
-    post = ""
-    name = "教程"
-    url = "/docs/"
-    title = ""
-  [[menu.main]]
     weight = 3
     identifier = "github"
     pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
@@ -69,7 +50,7 @@ enableEmoji = true
   defaultTheme = "auto"
   # public git repo url only then enableGitInfo is true
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
-  gitRepo = "https://github.com/daotingh/dt-docs"
+  gitRepo = "https://github.com/daoting/dt-docs"
   # 哪种哈希函数用来 SRI, 为空时表示不使用 SRI
   # ["sha256", "sha384", "sha512", "md5"]
   fingerprint = ""

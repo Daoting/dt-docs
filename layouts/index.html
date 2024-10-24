@@ -1,48 +1,5 @@
+{{- define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end -}}
+
 {{- define "content" -}}
-{{- $params := .Scratch.Get "params" -}}
-{{- $profile := .Site.Params.home.profile -}}
-{{- $posts := .Site.Params.home.posts -}}
-
-<div class="home-container">
-    <section class="item-profile">
-        {{- $avatar := $profile.avatarURL -}}
-        {{- with $profile.gravatarEmail -}}
-            {{- $avatar = md5 . | printf "https://www.gravatar.com/avatar/%v?s=240&d=mp" -}}
-        {{- end -}}
-        {{- if $avatar }}
-        <div class="home-avatar">
-            {{- $menus := $.Site.Menus.main | default slice -}}
-            {{- with index $menus 1 -}}
-            {{- $url := .URL | relLangURL -}}
-            {{- with .Page -}}
-                {{- $url = .RelPermalink -}}
-            {{- end }}
-            <a href="{{ $url }}"{{ with .Title | default .Name }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
-                {{ dict "Src" $avatar | partial "plugin/image.html" }}
-            </a>
-            {{- else -}}
-                {{- dict "Src" $avatar | partial "plugin/image.html" -}}
-            {{- end }}
-        </div>
-        {{- end -}}
-
-        {{- with $profile.subtitle }}
-        <div class="home-title">
-            {{- if $profile.typeit -}}
-            {{- $id := dict "Content" . "Scratch" $.Scratch | partial "function/id.html" }}
-            <div id="{{ $id }}" class="typeit"></div>
-            {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}}
-            {{- else -}}
-                {{- . -}}
-            {{- end }}
-        </div>
-        {{- end -}}
-
-    </section>
-    <section class="item-blank">
-    </section>
-    <section class="item-section gray">
-        
-    </section>
-</div>
+{{ partial "docs.html" . }}
 {{- end -}}

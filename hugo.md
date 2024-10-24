@@ -8,8 +8,8 @@
 
 #### content
 存放md文件，该目录下可以自行创建若干个子目录来便于对文章进行分类，这些子目录被称为section
-* _index.md 生成子目录页
-* index.md 生成内容页
+* _index.md 生成目录页，使用对应的section.html模板
+* index.md 生成内容页，使用对应的single.html模板
 * md文件顶部用 ---- 包围的内容为前置参数，在生成html页时用
 * <!--more--> 前面的为内容摘要，在文章列表中显示
 * md文件顶部的date lastmod不要超过当前机器时间，否则整个目录不输出！！！教训
@@ -18,8 +18,10 @@
 * 存放用于渲染html页面的模板文件
 * layouts/_default/baseof.html 是生成网站所有页面的模板，通过 partial 和 block 进行区域扩展
 * 站点首页模板 layouts/index.html
-* 列表目录页模板 layouts/_default/section.html
-* 详细内容页模板 layouts/_default/single.html
+* 列表页模板：多级目录时首先查找对应目录的section.html，缺省使用layouts/_default/section.html
+* 详细页模板：多级目录时首先查找对应目录的single.html，缺省使用layouts/_default/single.html
+* block "blockname"：将当前页模板中定义的(define "blockname")内容替换到当前位置
+* partial "xx.html"：运行partials目录下的"xx.html"文件脚本，生成的字符串替换到当前位置
 
 ### static
 * 存放静态内容：图片、css、js等，发布时目录下的所有文件及子目录复制到public目录下
