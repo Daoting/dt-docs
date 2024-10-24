@@ -76,7 +76,7 @@ tags: []
 }
 {{< /highlight >}}
 
-1. 切换到 service.json 文件，检查确保`DbKey`节的值和 global.json 中的一致，将顶部的`Mode`节设置为`SingletonSvc`。详细参见[服务配置](/dt-docs/docs/2基础/4服务/)
+1. 切换到 service.json 文件，检查确保`DbKey`节的值和 global.json 中的一致，将顶部的`Mode`节设置为`SingletonSvc`。详细参见[服务配置](/dt-docs/2基础/4服务/)
 {{< highlight json "hl_lines=6 9" >}}
 {
   // 设置运行模式，共三种，默认Svc模式

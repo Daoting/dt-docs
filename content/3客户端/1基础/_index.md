@@ -51,7 +51,7 @@ public partial class CrudX : EntityX<CrudX>
 }
 {{< /highlight >}}
 
-每个Sqlite库对应一个操作类，该类负责数据的`CRUD`，如`AtState、AtModel`分别为`state.db`和`model.db`的操作类，详细操作参见[领域层](/dt-docs/docs/2基础/3领域层/)。
+每个Sqlite库对应一个操作类，该类负责数据的`CRUD`，如`AtState、AtModel`分别为`state.db`和`model.db`的操作类，详细操作参见[领域层](/dt-docs/2基础/3领域层/)。
 
 
 

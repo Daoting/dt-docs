@@ -712,7 +712,7 @@ public class Interceptor2 : IInterceptor
 
 
 ## 服务部署
-服务端环境的安装部署主要包括`平台服务、数据库、RabbitMQ、Redis、k8s、IIS`等，参见[开发环境安装](/dt-docs/docs/1开始/1开发环境/)。
+服务端环境的安装部署主要包括`平台服务、数据库、RabbitMQ、Redis、k8s、IIS`等，参见[开发环境安装](/dt-docs/1开始/1开发环境/)。
 
 本节主要介绍平台服务的两种部署方式：
 * IIS部署
@@ -753,7 +753,7 @@ public class Interceptor2 : IInterceptor
 ### IIS部署
 在开发或部署到`windows server`时首选`IIS`，和传统`asp.net`应用不同，`IIS`只作为反向代理使用。
 
-#### [安装IIS](/dt-docs/docs/1开始/1开发环境/#安装-iis)
+#### [安装IIS](/dt-docs/1开始/1开发环境/#安装-iis)
 
 #### https配置
 `http2.0`协议比`http1.1`更高效，本来`http2.0`协议和`https`之间没有依赖关系，但主流浏览器和`.net`都要求采用`http2.0`协议通信必须启用`https`。

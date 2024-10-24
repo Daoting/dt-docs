@@ -114,7 +114,7 @@ public string GroupName
 ### 普通数据源
 通过`Data`属性获取和设置，类型为`INotifyList`，常用数据源类型有`Table` 和 `Nl<T>`。
 
-`Table` 类型在客户端和服务端都能使用，一般作为数据库查询结果，也可手动创建，并且子类`Table<TEntity>`支持实体操作，详细参见[Table操作](/dt-docs/docs/2基础/2基础功能/#table操作)。
+`Table` 类型在客户端和服务端都能使用，一般作为数据库查询结果，也可手动创建，并且子类`Table<TEntity>`支持实体操作，详细参见[Table操作](/dt-docs/2基础/2基础功能/#table操作)。
 
 `Nl<T>`不同于`List<T>`，它是具有集合变化通知的泛型列表，是`NotifyList`的缩写。
 

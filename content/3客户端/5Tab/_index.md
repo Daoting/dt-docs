@@ -196,4 +196,4 @@ protected virtual void OnClosed()
 
 ![](2.png)
 
-单实体框架已在[小试牛刀](/dt-docs/docs/1开始/3小试牛刀)中介绍。
+单实体框架已在[小试牛刀](/dt-docs/1开始/3小试牛刀)中介绍。
