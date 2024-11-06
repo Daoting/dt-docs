@@ -10,7 +10,7 @@ tags: []
 ## 实体
 遵循`ORM`的映射规则，实体类和数据库中的表或视图一一映射。
 
-一个实体类分3个文件：`.tbl.cs  .sql.cs  .cs`，可通过VS扩展工具自动生成，`.tbl.cs`文件包括表的映射属性和构造方法，表结构修改时需要重新生成，因此不可手动修改，避免被覆盖。
+一个实体类分2个文件：`.tbl.cs  .cs`，可通过VS扩展工具自动生成，`.tbl.cs`文件包括表的映射属性和构造方法，表结构修改时需要重新生成，因此不可手动修改，避免被覆盖。
 ![](7.png)
 ![](4.png)
 {{< highlight cs >}}
@@ -55,21 +55,14 @@ public partial class CrudX : EntityX<CrudX>
 
 `.tbl.cs`文件中类的标签有两种：`Tbl` `Sqlite`，对应远程库和本地`sqlite`库，除标签不同外，领域层的所有操作不区分远程库和本地 `Sqlite`库，实体读写、业务逻辑、领域服务写法完全相同：
 {{< highlight cs "hl_lines=2 6" >}}
-// 该实体是表 demo_crud 的映射，可通过 demo 服务进行数据读写
-[Tbl("demo_crud", "demo")]
+// 该实体是表 demo_crud 的映射
+[Tbl("demo_crud")]
 public partial class CrudX : EntityX<CrudX>
 
 // 该实体存储在 local 库的 Crud 表
 [Sqlite("local")]
 public partial class CrudX : EntityX<CrudX>
 {{< /highlight >}}
-
-{{< admonition >}}
-
-`Tbl`标签的参数有两个，第一个是表名，第二个是服务名，服务名可以在表注释中以`#svcname#`为开头定义，这样自动生成实体类的标签中包含了服务名，否则请手动填写。
-
-![](37.png)
-{{< /admonition >}}
 
 
 ## 业务逻辑
@@ -321,17 +314,13 @@ public abstract class EntityX<TEntity> : Entity
 }
 {{< /highlight >}}
 
-当使用通用静态方法查询数据创建实体时，每个查询只是sql和参数不同，这些查询很多时候是需要复用的，通常将这些查询封装成静态方法放在`.cs`文件，将用到的sql语句放在`.sql.cs`文件，因此`.cs`文件内容主要包括三类：
+当使用通用静态方法查询数据创建实体时，每个查询只是sql和参数不同，这些查询很多时候是需要复用的，通常将这些查询封装成静态方法放在`.cs`文件，将用到的sql语句作为常量放在`.cs`文件的尾部，因此`.cs`文件内容主要包括4类：
 1. 重写InitHook方法，存放业务逻辑；
 2. 静态New方法，构造实体；
 3. 可复用的静态查询方法，构造实体列表；
+4. sql语句常量
 
-为何将用到的sql语句放在`.sql.cs`文件？
-1. sql语句作为字符串直接混在代码中显的比较乱；
-2. 复杂的sql语句不换行阅读困难；
-3. 若多行的sql语句混杂引号，需要复制sql语句放在工具中调试时困难；
-
-以下为`.sql.cs`文件中sql语句的通用写法：
+以下是sql语句的通用写法：
 1. sql语句作为常量字符串 const string；
 2. 以@标记的字符串；
 3. sql语句多行时第一行和最后行都为空，方便复制调试；
@@ -498,138 +487,33 @@ public static class EntityEx
 每个模块都包含一个或多个领域服务类，主要处理涉及多种实体的交叉业务逻辑或无法确定放在何处的功能。
 
 ### 客户端
-客户端领域服务类的命名以`Ds`为后缀，无状态，所有方法、属性、事件等都为静态，领域服务类继承自`DomainSvc<T,T>`。和`EntityX<T>`相同，将当前领域服务类作为泛型参数传递到基类，使每个领域服务类保证有一套只属于自己的静态变量。
+客户端领域服务类的命名以`Ds`为后缀，无状态，所有方法、属性、事件等都为静态，领域服务类继承自`DomainSvc<T>`。和`EntityX<T>`相同，将当前领域服务类作为泛型参数传递到基类，使每个领域服务类保证有一套只属于自己的静态变量。
 
 {{< highlight cs >}}
 /// <summary>
 /// 领域服务的抽象基类
 /// </summary>
 /// <typeparam name="TDomainSvc">当前领域服务的类型，保证静态变量属于各自的领域服务类型</typeparam>
-/// <typeparam name="TAccessInfo">用于获取IDataAccess对象</typeparam>
-public abstract class DomainSvc<TDomainSvc, TAccessInfo>
+public abstract class DomainSvc<TDomainSvc>
     where TDomainSvc : class
-    where TAccessInfo : AccessInfo, new()
 {
-    /*************************************************************************/
+    /**********************************************************************************************************************************************************/
     // 泛型类型：
     // 对象是类的实例，提供具体类型参数的泛型类是泛型类型的实例
-    // 若将当前类型作为泛型类的类型参数，如 AbcDs : DomainSvc<AbcDs, Info>
+    // 若将cm服务的类型作为类型参数，如 AbcDs : DomainSvc<AtCm.Info>
     // 则AbcDs是该泛型基类的实例类，泛型基类中保证有一套只属于AbcDs类的静态变量实例！
     // 因此类型参数相同的泛型类的静态成员相同
-    /**************************************************************************/
+    /***********************************************************************************************************************************************************/
 
     /// <summary>
     /// 日志对象，日志属性中包含来源
     /// </summary>
-    protected static readonly ILogger _log = Log.ForContext<TDomainSvc>();
-
-    /// <summary>
-    /// 获取领域层数据访问对象
-    /// </summary>
-    protected static readonly IDataAccess _da = new TAccessInfo().GetDataAccess();
+    protected static readonly ILogger _log = Log.ForContext("src", typeof(TDomainSvc).FullName);
 }
 {{< /highlight >}}
 
-基类中只包含两个变量：`_log _da`，`_log`较于Log的优点是日志属性中包含来源:
+基类中只包含变量：`_log`，`_log`较于Log的优点是日志属性中包含来源:
 ![](9.png)
-
-`_da`包含所有的数据访问方法，除普通的查询方法外，还包含获取实体写入器方法`NewWriter()`，该方法返回`IEntityWriter`，实体写入器对所有实体的的持久化做统一管理，解决领域模型存储和变更工作，使用写入器添加待保存和删除的实体或实体列表，最后调用写入器的`Commit`方法在一个事务内批量处理所有待保存、待删除的实体数据，失败时回滚！提交成功后，若存在领域事件，则发布事件；对于新增、修改的实体进行状态复位。
-
-以上整个过程和同类型实体持久化相同，都是通过`IEntityWriter`实现：
-{{< highlight cs >}}
-/// <summary>
-/// 实体写入器，对所有实体的的持久化做统一管理，解决领域模型存储和变更工作
-/// <para>写入器在一个事务内批量处理所有待保存、待删除的实体数据，失败时回滚</para>
-/// <para>无论提交成功失败都清空状态，准备下次提交！</para>
-/// </summary>
-public interface IEntityWriter
-{
-    /// <summary>
-    /// 添加待保存的实体，最后由Commit统一提交
-    /// </summary>
-    /// <typeparam name="TEntity">实体类型</typeparam>
-    /// <param name="p_entity">待保存的实体</param>
-    /// <returns></returns>
-    Task Save<TEntity>(TEntity p_entity)
-        where TEntity : Entity;
-
-    /// <summary>
-    /// 添加Table中新增、修改、删除的待保存实体，最后由Commit统一提交
-    /// <para>删除行通过Table的ExistDeleted DeletedRows判断获取</para>
-    /// </summary>
-    /// <typeparam name="TEntity">实体类型</typeparam>
-    /// <param name="p_tbl">实体表</param>
-    /// <returns></returns>
-    Task Save<TEntity>(Table<TEntity> p_tbl)
-        where TEntity : Entity;
-
-    /// <summary>
-    /// 批量添加一对多的父实体和所有子实体中新增、修改、删除的待保存实体，最后由Commit统一提交
-    /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
-    /// <param name="p_entity"></param>
-    /// <returns></returns>
-    Task SaveWithChild<TEntity>(TEntity p_entity)
-        where TEntity : Entity;
-
-    /// <summary>
-    /// 添加列表中新增、修改的待保存实体，最后由Commit统一提交
-    /// </summary>
-    /// <typeparam name="TEntity">实体类型</typeparam>
-    /// <param name="p_list">实体列表</param>
-    /// <returns></returns>
-    Task Save<TEntity>(IEnumerable<TEntity> p_list)
-        where TEntity : Entity;
-
-    /// <summary>
-    /// 添加待删除的实体，最后由Commit统一提交
-    /// </summary>
-    /// <typeparam name="TEntity">实体类型</typeparam>
-    /// <param name="p_entity">待删除的实体</param>
-    /// <returns></returns>
-    Task Delete<TEntity>(TEntity p_entity)
-        where TEntity : Entity;
-
-    /// <summary>
-    /// 批量添加待删除的实体，最后由Commit统一提交
-    /// </summary>
-    /// <typeparam name="TEntity">实体类型</typeparam>
-    /// <param name="p_list">待删除实体列表</param>
-    /// <returns></returns>
-    Task Delete<TEntity>(IList<TEntity> p_list)
-        where TEntity : Entity;
-
-    /// <summary>
-    /// 先根据主键获取该实体，然后添加到待删除，最后由Commit统一提交
-    /// </summary>
-    /// <typeparam name="TEntity">实体类型</typeparam>
-    /// <param name="p_id">主键</param>
-    /// <returns></returns>
-    Task DelByID<TEntity>(object p_id)
-        where TEntity : Entity;
-
-    /// <summary>
-    /// 先根据主键批量获取该实体，然后添加到待删除，最后由Commit统一提交
-    /// </summary>
-    /// <typeparam name="TEntity">实体类型</typeparam>
-    /// <param name="p_ids">主键列表</param>
-    /// <returns></returns>
-    Task DelByIDs<TEntity>(IList p_ids)
-        where TEntity : Entity;
-
-    /// <summary>
-    /// 一个事务内批量处理所有待保存、待删除的实体数据，失败时回滚
-    /// <para>无论提交成功失败都清空状态，准备下次提交！</para>
-    /// <para>处理成功后，对于每个实体：</para>
-    /// <para>1. 调用保存后或删除后回调</para>
-    /// <para>2. 对于新增或修改的实体进行状态复位</para>
-    /// <para>3. 若存在领域事件，则发布事件</para>
-    /// </summary>
-    /// <param name="p_isNotify">是否提示保存结果，客户端有效</param>
-    /// <returns>是否成功</returns>
-    Task<bool> Commit(bool p_isNotify = true);
-}
-{{< /highlight >}}
 
 总体而言，**客户端能处理绝大部分业务功能，无法实现或影响效率的功能还需要服务端实现**。
 

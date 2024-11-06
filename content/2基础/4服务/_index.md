@@ -445,17 +445,9 @@ public override void Configure(IApplicationBuilder p_app, IDictionary<string, Re
 同样浏览缩略图时若无缩略图自动取原图。
 
 #### 网页发布
-文件服务还提供静态网页浏览的功能，和`cm`服务中的发布模块配合。文件服务中有两个目录的文件与发布相关：`drive/editor`目录是`html`富文本编辑器，`drive/g`是动态生成的网页，目录结构如下：
+文件服务还提供静态网页浏览的功能，和`cm`服务中的发布模块配合。文件服务中与发布相关：`drive/g`是动态生成的网页，目录结构如下：
 
 ![](11.png)
-
-`editor`目录包含`froala`编辑器的所有文件，默认编辑器在`editor\html\default.html`页面。`g`目录下保存生成的静态网页，以“年月”格式的目录作为网页的二级分类。因生成的网页中采用相对路径，如插入的图片或视频为“../../drv/v0/26/2D/91789217609150464.mp4”，并且为了保证生成的网页和`froala`中编辑的内容都能正常显示，禁止修改目录结构。
-
-`html`编辑器用于编辑网页内容，编辑后的网页内容可以保存在数据库或根据模板生成完整网页。
-
-`html`编辑器使用`Froala Editor(V3.1.1)`，功能强大界面美观但收费，在`froala_editor.min.js`或`froala_editor.pkgd.min.js`文件中搜索`new Image`，删除以下代码：
-
-搜索`POWERED_BY`，删除左下角logo链接：
 
 
 ### 宇宙服务(cosm)
@@ -519,18 +511,6 @@ public override void Configure(IApplicationBuilder p_app, IDictionary<string, Re
 将`boot`部署到`IIS`时通常以项目名命名webapp名，如：https://localhost/fz，平台服务和`boot`的典型部署如下图所示：
 
 ![](20.png)
-
-
-
-
-
-
-
-## MySql
-`MySqlAccess`为MySql数据库访问类，继承IDataAccess接口，所有外部方法全部采用异步操作，基于开源项目 `MySqlConnector` 和 `Dapper`，`MySqlConnector`实现标准的`Ado.net`，高性能、原生异步`I/O`，`Dapper`提供精简ORM功能，主打高性能，性能接近`Ado.net`。
-
-
-
 
 
 ## Api授权控制
