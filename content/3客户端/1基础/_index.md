@@ -138,20 +138,6 @@ public partial class Kit
 
 
 
-## 基础选项
-基础选项属于客户端缓存的内容，sqlite模型库的`OmOption`表，是按分类组织的选项，主要用于字符串选择的场景，如性别、民族、学历、地区等分类选项，常用作`CList`的数据源，设置`Ex`属性为分类名称`Option#XX`即可。
-{{< highlight xml >}}
-<a:CList ID="code" Title="民族" Ex="Option#民族" />
-<a:CList ID="degree" Title="学历" Ex="Option#学历" />
-{{< /highlight >}}
-
-选项的内容可以增删，调整后需要“更新模型”。
-![](4.png)
-
-
-
-
-
 ## 提醒与通知
 `app`激活时使用`Kit.Msg Kit.Warn Kit.Error`提示消息，不使用通知。
 
@@ -460,36 +446,67 @@ public static partial class BgJob
 
 
 ## 资源文件
-资源文件是项目中不可缺少的部分，它的生成操作主要有：嵌入的资源、内容、AndroidAsset、BundleResource，这些生成操作可分为两类：
+资源文件是项目中不可缺少的部分，它的生成操作主要有：嵌入的资源、内容、AndroidAsset、BundleResource等，这些生成操作最终可分为两类：嵌入文件和内容文件。
 
-### 嵌入的资源
-“嵌入的资源”是将文件内容嵌入在生成的dll文件中，所有平台用法相同，都是获取嵌入资源的文件流，约定资源文件统一放在项目的Res目录下，如：
+为了更方便使用，搬运工项目模板中将这两类文件统一放在项目的`Files`目录
 
-![](5.png)
+![](3.png)
 
-获取嵌入资源的文件流：
+### 嵌入文件
+嵌入的资源是将文件内容嵌入在生成的dll文件中，支持中文文件名。
+
+所有平台用法相同，都是获取嵌入资源的文件流，约定统一放在项目的`Files\Embed`目录下，并提供`ResKit.GetStream()`获取嵌入资源的文件流：
+
 {{< highlight cs >}}
-public class ResKit
+/// <summary>
+/// 嵌入资源文件工具类
+/// </summary>
+public static class ResKit
 {
+    const string _path = "PrjName1.Entry.Files.Embed.";
+
     /// <summary>
-    /// 返回资源文件流，需要在外部关闭流
+    /// 返回资源文件流，需要在外部关闭流，文件在 Files\Embed 目录
     /// </summary>
-    /// <param name="p_fileName">文件名，在Res下含子目录时需要添加子目录前缀如：Excel.1040.xlsx</param>
+    /// <param name="p_fileName">文件名，在 Files\Embed 下含子目录时需要添加子目录前缀如：Excel.1040.xlsx</param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
     public static Stream GetStream(string p_fileName)
     {
         Assembly assembly = typeof(ResKit).Assembly;
-        Stream stream = assembly.GetManifestResourceStream($"Dt.UIDemo.Res.{p_fileName}");
+        Stream stream = assembly.GetManifestResourceStream(_path + p_fileName);
         if (stream == null)
-            throw new Exception("未发现资源文件：" + p_fileName );
+            throw new Exception("未找到资源文件：" + p_fileName);
         return stream;
+    }
+
+    /// <summary>
+    /// 返回资源文件内容，文件在 Files\Embed 目录
+    /// </summary>
+    /// <param name="p_fileName">文件名，在 Files\Embed 下含子目录时需要添加子目录前缀如：Excel.1040.xlsx</param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public static string GetText(string p_fileName)
+    {
+        try
+        {
+            Assembly assembly = typeof(ResKit).Assembly;
+            using (var stream = assembly.GetManifestResourceStream(_path + p_fileName))
+            using (var reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
+        }
+        catch
+        {
+            throw new Exception("未找到资源文件：" + p_fileName);
+        }
     }
 }
 {{< /highlight >}}
 
-### 输出内容
-另一类是将资源文件打包输出到app的某个目录下，不同平台生成操作不同：
+### 内容文件
+内容文件是将资源文件打包输出到app的某个目录下，不同平台生成操作不同：
 
 * `Content`在所有平台都有效，资源文件可以放在任意位置；
 * `AndroidAsset`只在android有效，并且要求资源文件必须放在`Android\Assets`目录下，输出目录不包括Android这级，项目目录及apk包内输出目录如下：
@@ -499,19 +516,8 @@ public class ResKit
 
 * `BundleResource`只在iOS有效，资源文件放在`iOS\Resources`目录下；
 
+为了统一内容文件的路径，项目中只使用`Content`，并约定统一放在项目的`Files\Content`目录下，**文件名只可字母数字，中文名在android下出错**，代码中的访问路径如：`ms-appx:///PrjName1.Entry/Files/Content/Lottie/abc.json`
+
 {{< admonition >}}
-统一资源文件的路径：
-* 普通资源文件的生成操作：android为`AndroidAsset`，iOS为`BundleResource`，win wasm为`Content`。约定放在`ms-appx:///Assets`目录下，这就需要在android项目中资源文件放在`Android\Assets\Assets`目录下，在iOS项目中资源文件放在`iOS\Resources\Assets`目录下，在win项目中资源文件放在`Assets`目录下。一般将实际资源文件放在win项目中的`Assets`下，其他项目以链接方式引用。
-
-* 图片资源文件的生成操作统一为`内容`，约定放在`ms-appx:///Images`目录下，如：`<Image Source="ms-appx:///Images/logo.png" />` 在各平台的文件位置相同，都放在项目的根目录`Images`下。
+禁止将内容文件放在当前项目的 Assets 目录下，在android会包含两份重复的文件
 {{< /admonition >}}
-
-
-
-
-
-
-## 通讯录
-通讯录联系人列表的加载过程
-
-![](3.png)
