@@ -107,8 +107,8 @@ public object GetCenter()
 {{< /highlight >}}
 
 
-## TreeView
-树控件在设计和使用上类似于`Lv`，功能上较`Lv`简单。
+## Tv
+树控件Tv全称TreeView，在设计和使用上类似于`Lv`，功能上较`Lv`简单。
 
 ### 数据源
 数据源需要实现`ITreeData`接口，主要为加载分层数据用：
