@@ -57,6 +57,139 @@ public partial class CrudX : EntityX<CrudX>
 
 
 
+## 资源文件
+资源文件是项目中不可缺少的部分，它的生成操作主要有：嵌入的资源、内容、AndroidAsset、BundleResource等，这些生成操作最终可分为两类：嵌入文件和内容文件。
+
+为了更方便使用，搬运工项目模板中将这两类文件统一放在项目的`Files`目录
+
+![](3.png)
+
+### 嵌入文件
+嵌入的资源是将文件内容嵌入在生成的dll文件中，支持中文文件名。
+
+所有平台用法相同，都是获取嵌入资源的文件流，约定统一放在项目的`Files\Embed`目录下，并提供`ResKit.GetStream()`获取嵌入资源的文件流：
+
+{{< highlight cs >}}
+/// <summary>
+/// 嵌入资源文件工具类
+/// </summary>
+public static class ResKit
+{
+    const string _path = "PrjName1.Entry.Files.Embed.";
+
+    /// <summary>
+    /// 返回资源文件流，需要在外部关闭流，文件在 Files\Embed 目录
+    /// </summary>
+    /// <param name="p_fileName">文件名，在 Files\Embed 下含子目录时需要添加子目录前缀如：Excel.1040.xlsx</param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public static Stream GetStream(string p_fileName)
+    {
+        Assembly assembly = typeof(ResKit).Assembly;
+        Stream stream = assembly.GetManifestResourceStream(_path + p_fileName);
+        if (stream == null)
+            throw new Exception("未找到资源文件：" + p_fileName);
+        return stream;
+    }
+
+    /// <summary>
+    /// 返回资源文件内容，文件在 Files\Embed 目录
+    /// </summary>
+    /// <param name="p_fileName">文件名，在 Files\Embed 下含子目录时需要添加子目录前缀如：Excel.1040.xlsx</param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public static string GetText(string p_fileName)
+    {
+        try
+        {
+            Assembly assembly = typeof(ResKit).Assembly;
+            using (var stream = assembly.GetManifestResourceStream(_path + p_fileName))
+            using (var reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();
+            }
+        }
+        catch
+        {
+            throw new Exception("未找到资源文件：" + p_fileName);
+        }
+    }
+}
+{{< /highlight >}}
+
+### 内容文件
+内容文件是将资源文件打包输出到app的某个目录下，不同平台生成操作不同：
+
+* `Content`在所有平台都有效，资源文件可以放在任意位置；
+* `AndroidAsset`只在android有效，并且要求资源文件必须放在`Android\Assets`目录下，输出目录不包括Android这级，项目目录及apk包内输出目录如下：
+
+![](6.png)
+![](7.png)
+
+* `BundleResource`只在iOS有效，资源文件放在`iOS\Resources`目录下；
+
+为了统一内容文件的路径，项目中只使用`Content`，并约定统一放在项目的`Files\Content`目录下，**文件名只可字母数字，中文名在android下出错**，代码中的访问路径如：`ms-appx:///PrjName1.Entry/Files/Content/Lottie/abc.json`
+
+{{< admonition >}}
+禁止将内容文件放在当前项目的 Assets 目录下，在android会包含两份重复的文件
+{{< /admonition >}}
+
+
+
+
+
+## 提醒与通知
+`app`激活时使用`Kit.Msg Kit.Warn Kit.Error`提示消息，不使用通知。
+
+通知一般和后台任务配合，用来在`app`退出时提醒用户，通知的功能主要两部分：显示标题和内容；点击通知后打开或激活`app`并显示通知的关联页。推送通知使用`Kit.Toast`方法：
+{{< highlight cs >}}
+public partial class Kit
+{
+    /// <summary>
+    /// 发布消息提示
+    /// </summary>
+    /// <param name="p_content">显示内容</param>
+    /// <param name="p_delaySeconds">
+    /// 几秒后自动关闭，默认3秒
+    /// <para>大于0：启动定时器自动关闭，点击也关闭</para>
+    /// <para>0：不自动关闭，但点击关闭</para>
+    /// <para>小于0：始终不关闭，只有程序控制关闭</para>
+    /// </param>
+    public static NotifyInfo Msg(string p_content, int p_delaySeconds = 3)
+
+    /// <summary>
+    /// 警告提示
+    /// </summary>
+    /// <param name="p_content">显示内容</param>
+    /// <param name="p_delaySeconds">
+    /// 几秒后自动关闭，默认5秒
+    /// <para>大于0：启动定时器自动关闭，点击也关闭</para>
+    /// <para>0：不自动关闭，但点击关闭</para>
+    /// <para>小于0：始终不关闭，只有程序控制关闭</para>
+    /// </param>
+    public static NotifyInfo Warn(string p_content, int p_delaySeconds = 5)
+
+    /// <summary>
+    /// 显示错误对话框
+    /// </summary>
+    /// <param name="p_content">消息内容</param>
+    /// <param name="p_title">标题</param>
+    public static void Error(string p_content, string p_title = null)
+
+    /// <summary>
+    /// 显示系统通知，iOS只有app在后台或关闭时才显示！其他平台始终显示
+    /// </summary>
+    /// <param name="p_title">标题</param>
+    /// <param name="p_content">内容</param>
+    /// <param name="p_startInfo">点击通知的启动参数</param>
+    public static void Toast(string p_title, string p_content, AutoStartInfo p_startInfo = null)
+}
+{{< /highlight >}}
+
+
+
+
+
 ## 当前用户
 可以通过静态类`Kit`访问与当前登录用户相关的信息，包括具有的权限、用户参数等。
 {{< highlight cs >}}
@@ -134,57 +267,6 @@ public partial class Kit
 ## 启动过程
 ![](1.png "启动过程")
 
-
-
-
-
-## 提醒与通知
-`app`激活时使用`Kit.Msg Kit.Warn Kit.Error`提示消息，不使用通知。
-
-通知一般和后台任务配合，用来在`app`退出时提醒用户，通知的功能主要两部分：显示标题和内容；点击通知后打开或激活`app`并显示通知的关联页。推送通知使用`Kit.Toast`方法：
-{{< highlight cs >}}
-public partial class Kit
-{
-    /// <summary>
-    /// 发布消息提示
-    /// </summary>
-    /// <param name="p_content">显示内容</param>
-    /// <param name="p_delaySeconds">
-    /// 几秒后自动关闭，默认3秒
-    /// <para>大于0：启动定时器自动关闭，点击也关闭</para>
-    /// <para>0：不自动关闭，但点击关闭</para>
-    /// <para>小于0：始终不关闭，只有程序控制关闭</para>
-    /// </param>
-    public static NotifyInfo Msg(string p_content, int p_delaySeconds = 3)
-
-    /// <summary>
-    /// 警告提示
-    /// </summary>
-    /// <param name="p_content">显示内容</param>
-    /// <param name="p_delaySeconds">
-    /// 几秒后自动关闭，默认5秒
-    /// <para>大于0：启动定时器自动关闭，点击也关闭</para>
-    /// <para>0：不自动关闭，但点击关闭</para>
-    /// <para>小于0：始终不关闭，只有程序控制关闭</para>
-    /// </param>
-    public static NotifyInfo Warn(string p_content, int p_delaySeconds = 5)
-
-    /// <summary>
-    /// 显示错误对话框
-    /// </summary>
-    /// <param name="p_content">消息内容</param>
-    /// <param name="p_title">标题</param>
-    public static void Error(string p_content, string p_title = null)
-
-    /// <summary>
-    /// 显示系统通知，iOS只有app在后台或关闭时才显示！其他平台始终显示
-    /// </summary>
-    /// <param name="p_title">标题</param>
-    /// <param name="p_content">内容</param>
-    /// <param name="p_startInfo">点击通知的启动参数</param>
-    public static void Toast(string p_title, string p_content, AutoStartInfo p_startInfo = null)
-}
-{{< /highlight >}}
 
 
 
@@ -440,84 +522,3 @@ public static partial class BgJob
         }
     }
 {{< /highlight >}}
-
-
-
-
-
-## 资源文件
-资源文件是项目中不可缺少的部分，它的生成操作主要有：嵌入的资源、内容、AndroidAsset、BundleResource等，这些生成操作最终可分为两类：嵌入文件和内容文件。
-
-为了更方便使用，搬运工项目模板中将这两类文件统一放在项目的`Files`目录
-
-![](3.png)
-
-### 嵌入文件
-嵌入的资源是将文件内容嵌入在生成的dll文件中，支持中文文件名。
-
-所有平台用法相同，都是获取嵌入资源的文件流，约定统一放在项目的`Files\Embed`目录下，并提供`ResKit.GetStream()`获取嵌入资源的文件流：
-
-{{< highlight cs >}}
-/// <summary>
-/// 嵌入资源文件工具类
-/// </summary>
-public static class ResKit
-{
-    const string _path = "PrjName1.Entry.Files.Embed.";
-
-    /// <summary>
-    /// 返回资源文件流，需要在外部关闭流，文件在 Files\Embed 目录
-    /// </summary>
-    /// <param name="p_fileName">文件名，在 Files\Embed 下含子目录时需要添加子目录前缀如：Excel.1040.xlsx</param>
-    /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    public static Stream GetStream(string p_fileName)
-    {
-        Assembly assembly = typeof(ResKit).Assembly;
-        Stream stream = assembly.GetManifestResourceStream(_path + p_fileName);
-        if (stream == null)
-            throw new Exception("未找到资源文件：" + p_fileName);
-        return stream;
-    }
-
-    /// <summary>
-    /// 返回资源文件内容，文件在 Files\Embed 目录
-    /// </summary>
-    /// <param name="p_fileName">文件名，在 Files\Embed 下含子目录时需要添加子目录前缀如：Excel.1040.xlsx</param>
-    /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    public static string GetText(string p_fileName)
-    {
-        try
-        {
-            Assembly assembly = typeof(ResKit).Assembly;
-            using (var stream = assembly.GetManifestResourceStream(_path + p_fileName))
-            using (var reader = new StreamReader(stream))
-            {
-                return reader.ReadToEnd();
-            }
-        }
-        catch
-        {
-            throw new Exception("未找到资源文件：" + p_fileName);
-        }
-    }
-}
-{{< /highlight >}}
-
-### 内容文件
-内容文件是将资源文件打包输出到app的某个目录下，不同平台生成操作不同：
-
-* `Content`在所有平台都有效，资源文件可以放在任意位置；
-* `AndroidAsset`只在android有效，并且要求资源文件必须放在`Android\Assets`目录下，输出目录不包括Android这级，项目目录及apk包内输出目录如下：
-
-![](6.png)
-![](7.png)
-
-* `BundleResource`只在iOS有效，资源文件放在`iOS\Resources`目录下；
-
-为了统一内容文件的路径，项目中只使用`Content`，并约定统一放在项目的`Files\Content`目录下，**文件名只可字母数字，中文名在android下出错**，代码中的访问路径如：`ms-appx:///PrjName1.Entry/Files/Content/Lottie/abc.json`
-
-{{< admonition >}}
-禁止将内容文件放在当前项目的 Assets 目录下，在android会包含两份重复的文件
-{{< /admonition >}}
