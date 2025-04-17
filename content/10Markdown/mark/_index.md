@@ -166,6 +166,8 @@ Bug
 分段
 {{< bilibili id=BV1TJ411C7An p=3 >}}
 
+自动播放
+{{< bilibili id=BV1Sx411T7QQ autoplay=true >}}
 
 ## 双排
 
