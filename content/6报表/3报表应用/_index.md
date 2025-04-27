@@ -164,3 +164,6 @@ _rpt.LoadReport(new RptInfo { Uri = "local://rptdemo/综合" });
 _rpt.LoadReport(new RptInfo { Uri = "ms-appx:///Demo.UI/Files/Content/zh.rpt" });
 _rpt.LoadReport(new RptInfo { Uri = "embedded://Demo.UI/Demo.UI.Files.Embed.模板.综合.rpt" });
 {{< /highlight >}}
+
+内部过程比较复杂：
+![](4.png)
