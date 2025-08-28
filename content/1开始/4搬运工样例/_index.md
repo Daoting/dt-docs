@@ -12,8 +12,19 @@ dt项目有多个分支，用到的主要是master infras分支
 
 ![](1.png)
 
-* master分支包含Client Service Demo三个子目录，分别是搬运工客户端、服务端、样例。
-* infras分支是Dt.Infras包的源码，包含搬运工客户端 Excel Chart Pdf等基础控件，因被第三方警告，[可能用到的部分模型代码未经授权](https://github.com/Daoting/dt/issues/102)，故采取分支的方式提供给大家，好东西要分享！
+### master分支
+包含`Service Client Demo`三个子目录，分别是搬运工服务端、客户端、样例。
+
+1. `Service`目录的子目录`iis k8s`是部署在两平台上的脚本，src是`Dt.Service`包的源码，参见[平台提供五个内置微服务](/dt-docs/2基础/3服务/#内置服务)
+
+1. `Client`目录是`Dt.Client`包的源码，包含`Dt.Core Dt.Base Dt.Mgr`三个项目
+
+1. `Demo`目录是搬运工使用样例的源码，`Demo.UI`项目是控件样例，`Demo.Crud`项目是基础增删改查样例，`Demo.Lob`项目是业务样例，`Demo.Svc`是服务端项目。`Demo.sln`和 `Client-Demo.sln`都是Demo解决方案， `Demo.sln`是引用`Dt.Client`包方式，`Client-Demo.sln`是直接引用`Dt.Core Dt.Base Dt.Mgr`项目的方式，方便调试`Dt.Client`源码，查看运行过程或复现bug。
+![](a.png)
+
+
+### infras分支
+是Dt.Infras包的源码，包含搬运工客户端 Excel Chart Pdf等基础控件，因被第三方警告，[可能用到的部分模型代码未经授权](https://github.com/Daoting/dt/issues/102)，故采取分支的方式提供给大家，好东西要分享！
 
 因此
 1. 要运行或调试搬运工样例请在本地克隆或下载 [dt 库](https://github.com/daoting/dt) 的master分支
@@ -28,11 +39,11 @@ dt项目有多个分支，用到的主要是master infras分支
 ## 只用控件
 若只想查看控件样例，可以不初始化数据库、不启动服务、不进行任何配置。
 
-VS打开解决方案Demo\Demo-win.sln，将Demo.Win项目设置为启动项目，F5启动调试，因服务未运行无法连接，连接超时后只显示控件样例页面。
+VS打开解决方案`Demo\Demo.sln` 或 `Client\Client-Demo.sln`，`Demo.sln`是引用`Dt.Client`包方式，`Client-Demo.sln`是直接引用`Dt.Core Dt.Base Dt.Mgr`项目的方式。将`Demo`项目设置为启动项目，F5启动调试，因服务未运行无法连接，连接超时后只显示控件样例页面。
 
-![](2.png)
+![](2.png "控件样例")
 
-Demo.UI是控件样例项目，在控件样例主页选择任意控件即可进行功能测试，设置断点可跟踪调试控件运行过程，详细调试过程请参考 [调试搬运工](/dt-docs/1开始/3调试搬运工)
+`Demo.UI`是控件样例项目，在控件样例主页选择任意控件即可进行功能测试，设置断点可跟踪调试控件运行过程，详细调试过程请参考 [调试搬运工](/dt-docs/1开始/3调试搬运工)
 
 ## 初始化数据库
 和创建新项目相同，首先需要初始化数据库，采用客户端方式初始化，[参见更多初始化方式](/dt-docs/1开始/2创建项目/#初始化数据库)
@@ -40,9 +51,7 @@ Demo.UI是控件样例项目，在控件样例主页选择任意控件即可进�
 通过客户端初始化数据库没有连接服务，是纯粹的两层结构，直连数据库
 {{< /admonition >}}
 
-1. VS打开解决方案Demo\Demo-win.sln，将Demo.Win 项目设为启动项目，ctrl + F5 启动应用，因为未启动服务，所以客户端启动后会提示服务器连接失败。
-
-![](2.png)
+1. VS打开解决方案`Demo\Demo.sln` 或 `Client\Client-Demo.sln`，将`Demo`项目设为启动项目，ctrl + F5 启动应用，因为未启动服务，所以客户端启动后会提示服务器连接失败，如上图。
 
 2. 按下快捷键：ctrl + enter 唤出系统面板，点击数据库初始化
 
@@ -88,13 +97,13 @@ Demo.UI是控件样例项目，在控件样例主页选择任意控件即可进�
 ## 启动客户端
 保持服务运行状态。
 
-1. VS打开解决方案Demo\Demo-win.sln，将Demo.Win项目设置为启动项目，F5启动调试，初次运行会显示用户协议和隐私政策对话框
+1. VS打开解决方案`Demo\Demo.sln` 或 `Client\Client-Demo.sln`，将`Demo`项目设置为启动项目，F5启动调试，初次运行会显示用户协议和隐私政策对话框
 
 ![](11.png) 
 
 2. 若服务未运行或客户端配置无法连接，连接超时后只显示控件样例页面，**所以若只想查看控件样例，也可以不初始化数据库、不启动服务、不进行任何配置**
 
-![](12.png) 
+![](2.png "控件样例") 
 
 3. 点击同意后进入登录页面，输入预留手机号13511111111，默认密码1111，然后点击登 录，登录成功后进入主页，若失败可双击标题查看系统日志
 
