@@ -40,7 +40,7 @@ iOS 开发需要有 Mac 主机，有关将 Visual Studio 连接到 Mac 生成主
 
 ![](12.png)
 
-若下载 Visual Studio 扩展慢，也可[手动下载最新搬运工扩展压缩包](https://github.com/daoting/dt/releases/latest)，下载后解压安装扩展，安装成功后可在 VS -> 扩展 -> 管理扩展 中查看。
+**因搬运工扩展近期无法上传(重定向方式已无效)，最新版请[手动下载最新搬运工扩展压缩包](https://github.com/daoting/dt/releases/latest)**，下载后解压安装扩展，安装成功后可在 VS -> 扩展 -> 管理扩展 中查看。
 
 ![](11.png)
 
