@@ -11,7 +11,7 @@ tags: []
 * 文件`global.json`中存储全局配置，全局配置包括应用名称、所有涉及的数据库连接串、rabbitmq配置、redis配置等，是系统内所有微服务需要的公共配置。
 * 文件`service.json`中存储当前服务的配置，内容包括默认数据源、各种控制参数等。
 * 文件`logger.json`是单独提供给日志的配置文件。系统配置未包含环境变量。
-* 文件`model.json`是cm服务导出模型库时的配置文件。
+* 文件`kestrel.json`是启动KestrelServer时的监听设置。
 
 当服务部署在`K8s`时，路径`/etc/config/`下的`json`配置文件作为集群的`configMap`资源，以`Volume`的方式加载到`Pod`中，最后释放到服务的`app/etc/config`目录下，支持动态更新配置文件，响应时间10多秒。
 
@@ -42,7 +42,8 @@ public partial class Kit
 ### global.json
 {{< highlight json >}}
 {
-  "App": "dt",
+  "AppName": "搬运工",
+
   "Database": {
     "mydt": {
       "ConnStr": "Server=10.10.1.2;Port=3306;Database=dt;Uid=dt;Pwd=dt;",
@@ -61,6 +62,7 @@ public partial class Kit
       "DbType": "postgresql"
     }
   },
+
   "RabbitMq": {
     "HostName": "10.10.1.2",
     "UserName": "dt",
@@ -68,7 +70,13 @@ public partial class Kit
     "Port": 5672,
     "HttpPort": 15672
   },
-  "Redis": "10.10.1.2,password=dt,defaultDatabase=15,allowAdmin=true"
+
+  "Redis": "10.10.1.2,password=dt,defaultDatabase=15,allowAdmin=true",
+
+  // 是否输出所有调用的Sql语句或存储过程名
+  "TraceSql": true,
+  // 是否输出所有调用的Api名称
+  "TraceRpc": true
 }
 {{< /highlight >}}
 
@@ -81,96 +89,22 @@ public partial class Kit
 ### service.json
 {{< highlight json >}}
 {
-  // 设置运行模式，共三种，默认Svc模式
-  // 1. Svc          普通微服务模式
-  // 2. SingletonSvc 单体服务模式
-  // 3. InitDb       初始化数据库模式
-  "Mode": "SingletonSvc",
+  // 服务名称，三种模式
+  // 1. ""        单体服务模式
+  // 2. "xxx"     微服务模式
+  // 3. "InitDb"  初始化数据库模式
+  "SvcName": "",
 
-  // 默认数据源键名
-  "DbKey": "mydt",
-  // 服务名称
-  "SvcName": "cosm",
-
-  // 是否输出所有调用的Sql语句或存储过程名
-  "TraceSql": true,
-  // 是否输出所有调用的Api名称
-  "TraceRpc": true,
-
-  // 启动KestrelServer时的监听设置
-  "KestrelListen": [
-    {
-      "Scheme": "https",
-      "Address": "0.0.0.0",
-      "Port": "20204"
-    }
-  ],
-
-  /************** 以下配置只在单体时有效 **************/
-  // 单体服务时合并所有微服务为一个服务，微服务包括：
-  // 1. cm msg fsm三个标准微服务
-  // 2. 当前服务
-  // 3. CustomSvcDbKey配置的服务
-
-  // 自定义服务的数据源键名
-  // 1. 可以自定义cm msg fsm服务或当前服务的数据源键名，否则采用默认数据源键名
-  // 2. 定义任意其它服务的数据源键名，实现跨多个数据源操作
-  "CustomSvcDbKey": {
-    //"svcname": "dbkey"
-  },
-
-  // cm服务用，除默认数据源外，其余需要导出到模型库的数据源键名
-  "ExportToModel": [],
-
-  // fsm服务用
-  "FixedVolume": "photo;editor;g;chat",
-  "MaxRequestBodySize": 1073741824
+  // 默认数据源键名，每个微服务还可自定义
+  "DbKey": "pgdt"
 }
 {{< /highlight >}}
 
 
-### model.json
-{{< highlight json >}}
-{
-  "OmOption": {
-    // 创建sqlite表、索引等
-    "Create": [
-      "create table if not exists OmOption (Name text not null,Category text not null)",
-      "create index if not exists \"OmOption_Category\" on \"OmOption\"(\"Category\")"
-    ],
-    // 待导出的数据
-    "Data": "select a.Name,b.Name Category from cm_option a, cm_option_group b where a.GroupID=b.ID order by Category,Dispidx",
-    // 数据源键名，省略时使用默认键名
-    "DbKey": "dt"
-  },
-  "OmReport": {
-    "Create": [
-      "create table if not exists OmReport (ID integer not null,Name text,Define text,primary key (ID))"
-    ],
-    "Data": "select id,name,define from cm_rpt"
-  },
-  "OmMenu": {
-    "Create": [
-      "create table if not exists OmMenu (ID integer not null,ParentID integer,Name text,IsGroup integer,ViewName text,Params text,Icon text,Note text,DispIdx integer,primary key (ID))"
-    ],
-    "Data": "select * from cm_menu where islocked=0 order by dispidx"
-  }
-}
-{{< /highlight >}}
-
-`model.json`是`cm`服务导出模型库时的配置文件，除了`cm`服务用到外，当一个服务配置成**单体模式**时也需要该文件。
-
-该配置文件的每一节都是要导出到sqlite的表结构及数据，当需要在客户端缓存一些其它常用数据时可以在此添加配置，上述默认的缓存内容禁止删除。OmOption是提供给下拉选择框的数据源，如学历、地区等；OmReport是报表模板；OmMenu是菜单。
-
-当配置中的数据修改后，需要更新模型库文件。
 
 
+## 服务部署
 
-
-
-## 微服务
-
-### 部署
 部署服务时支持两种模式：
 * 微服务模式，部署时各微服务单独部署，独立配置；
 * 单体模式，就是将所有微服务合并成一个服务使用，并且只一个副本，相当于传统的单体服务，适用于功能简单、用户量较少的情况，该模式部署方便、节省资源和网络通信，微服务之间的Rpc调用变成内部方法调用，EventBus还按照微服务的方式进行。
@@ -179,44 +113,34 @@ public partial class Kit
 `两种部署模式都支持每个微服务连接不同数据库。`单体模式时虽然对外是一个服务地址，但RPC请求还是区分每个微服务的。因此两种部署模式功能相同，可根据需求任意切换，一般开发时使用单体模式。
 {{< /admonition >}}
 
-如何在单体模式连接不同数据库呢？主要在`service.json`的配置上：
+如何在单体模式下实现每个微服务连接不同数据库呢？主要在每个微服务的配置上，比如`cm`在`cm.json`，`fsm`在`fsm.json`，在配置中添加`DbKey`键值，如下所示：
 {{< highlight json >}}
 {
-  // 设置运行模式，共三种，默认Svc模式
-  // 1. Svc          普通微服务模式
-  // 2. SingletonSvc 单体服务模式
-  // 3. InitDb       初始化数据库模式
-  "Mode": "SingletonSvc",
-
-  /************** 以下配置只在单体时有效 **************/
-  // 单体服务时合并所有微服务为一个服务，微服务包括：
-  // 1. cm msg fsm三个标准微服务
-  // 2. 当前服务
-  // 3. CustomSvcDbKey配置的服务
-  
-  // 自定义服务的数据源键名
-  // 1. 可以自定义cm msg fsm服务或当前服务的数据源键名，否则采用默认数据源键名
-  // 2. 定义任意其它服务的数据源键名，实现跨多个数据源操作
-  "CustomSvcDbKey": {
-    "svc1": "dbkey1",
-    "svc2": "dbkey2",
-  },
+  "DbKey": "db1",
+  ...
 }
 {{< /highlight >}}
 
-单体模式除了包括`cm msg fsm 当前服务`四个微服务外，还可以在`CustomSvcDbKey`节定义其它微服务，并指定数据源键名，实现跨多个数据源操作，当然这些微服务只提供公共`Api`。
+若微服务的配置上无`DbKey`键值，则该微服务连接`service.json`中配置的默认数据源。
 
 
 
-### 内置服务
-平台提供五个内置微服务：
+## 内置服务
+平台提供四个内置微服务：
 * 内核模型服务(cm)
 * 消息服务(msg)
 * 文件服务(fsm)
-* 宇宙服务(cosm)
-* 承载wasm服务(boot)
+* 数据服务(da)
 
-每个微服务都有独立的服务存根类(Stub)、服务配置、服务日志、sql语句字典等，Stub主要定义服务名称、注册全局服务、注册中间件等，如：
+每个微服务都是一个类库dll，有独立的程序集标签、服务存根类(Stub)、服务配置、服务日志等。
+
+程序集标签主要指定服务名称和存根类型，这些都是微服务的静态信息，在每个项目的`Properties\AssemblyInfo.cs`中定义，如：
+{{< highlight cs >}}
+[assembly: SvcStub("cm", typeof(Dt.Cm.SvcStub))]
+{{< /highlight >}}
+定义当前微服务名称`cm`，存根类型为`Dt.Cm.SvcStub`
+
+存根主要注册全局服务、注册中间件等，如：
 {{< highlight cs >}}
 /// <summary>
 /// 服务存根
@@ -245,18 +169,99 @@ public class SvcStub : Stub
 {{< /highlight >}}
 
 {{< admonition >}}
-目前平台只支持所有微服务连接同一`RabbitMq`、同一`Redis`，但每个微服务可以连接不同的数据库，详细配置见[service.json配置](#servicejson)。
+目前平台只支持所有微服务连接同一`RabbitMq`、同一`Redis`，但每个微服务可以连接不同的数据库，详细配置见以上。
 {{< /admonition >}}
 
 
-### 内核模型服务(cm)
-cm是`Core Model`的缩写，内核模型服务是平台必不可少的基础服务，客户端启动时首先连接该服务获取配置，配置包括：所有微服务地址、服务器时间、是否为单体服务等。
+### 内核服务(cm)
+cm是`Core Model`的缩写，内核模型服务是平台必不可少的基础服务，该服务**不支持多副本部署**。主要提供以下功能：
 
-还提供下载缓存在客户端的sqlite文件，有包含所有库结构的model.db文件，菜单缓存文件menu.db，报表模板缓存文件report.db，自定义缓存文件等，该服务**暂不支持多副本部署**。
+#### 配置信息
+客户端启动时首先连接该服务获取配置，包括：所有微服务地址、服务器时间、是否为单体服务等。
 
+#### 模型文件
+提供下载缓存在客户端的sqlite文件，有包含所有库结构的model.db文件，菜单缓存文件menu.db，报表模板缓存文件report.db，自定义缓存文件等，并且可以在首页手动更新模型文件。
+![](a1.png)
+
+`cm.json`中定义了生成模型文件的配置：
+{{< highlight json >}}
+{
+  "SqliteModel": {
+    // 除默认数据源外，其余需要导出到模型库的数据源键名
+    "ExportToModel": [],
+
+    // 定义sqlite文件列表
+    "Files": {
+
+      // sqlite文件，包含多表
+      "menu": {
+        // 表名
+        "OmMenu": {
+          // 创建sqlite表、索引等
+          "Create": [
+            "create table if not exists OmMenu (ID integer not null,ParentID integer,Name text,IsGroup integer,ViewName text,Params text,Icon text,Note text,DispIdx integer,primary key (ID))"
+          ],
+          // 待导出的数据
+          "Data": "select id,parent_id parentid, name, is_group isgroup, view_name viewname,params,icon,note,dispidx from cm_menu where is_locked='0' order by dispidx"
+          // 数据源键名，省略时使用默认键名
+          //"DbKey": "mydt"
+        }
+      },
+
+      "report": {
+        "OmReport": {
+          "Create": [
+            "create table if not exists OmReport (ID integer not null,Name text,Define text,primary key (ID))"
+          ],
+          "Data": "select id,name,define from cm_rpt"
+        }
+      },
+
+      "option": {
+        "OmOption": {
+          "Create": [
+            "create table if not exists OmOption (Name text not null,Category text not null)",
+            "create index if not exists \"OmOption_Category\" on \"OmOption\"(\"Category\")"
+          ],
+          "Data": "select a.name,b.name category from cm_option a, cm_option_group b where a.group_id=b.id order by category,dispidx"
+        }
+      }
+    }
+  }
+}
+{{< /highlight >}}
+该配置文件的每一节都是要导出到sqlite的表结构及数据，当需要在客户端缓存一些其它常用数据时可以在此添加配置，上述默认的缓存内容禁止删除。OmOption是提供给下拉选择框的数据源，如学历、地区等；OmReport是报表模板；OmMenu是菜单。
+
+当配置中的数据修改后，需要更新模型库文件。
+
+#### 客户端安装包
+默认首页提供最新客户端安装包、证书等下载，安装包管理参见[发布部署](/dt-docs/99%E5%8F%91%E5%B8%83%E9%83%A8%E7%BD%B2/2win%E5%BA%94%E7%94%A8/)。
+![](a2.png)
+
+#### 承载wasm网站
+wasm应用发布在`wwwroot`目录下，是一个完整的单页面静态`wasm`网站。如：
+![](a3.png)
+
+服务通过`cm.json`配置`WasmPath`静态网站的位置，可以是完整路径或相对路径：
+{{< highlight json >}}
+{
+  "WasmPath": "wasm"
+}
+{{< /highlight >}}
+
+将`wwwroot`目录下的所有静态文件放在以上配置指定的目录就完成了网站的部署。
+
+为了提高静态网站的性能，发布时默认会为所有格式的文件生成`.gz`压缩文件，文件名为原名加`.gz`扩展名，为了保证用户能正确下载`.gz`文件，在服务中添加了`RewriteGzFileMiddleware`中间件。
+
+通过`/wasm`虚拟路径即可访问wasm app。
+
+
+#### 基础模型管理
 基础模型包括基础菜单、用户、角色、权限、工作流、参数、文件目录等功能模块，数据结构如下：
 ![](1.png "数据结构")
 ![](2.png)
+
+
 
 ### 消息服务(msg)
 平台内置的基础消息服务，**支持多副本部署**，所有已注册的客户端在启动时调用服务端的`Register`方法，该`Api`采用基于`http2`协议的`ServerStream`模式，即：客户端发送一个请求，服务端返回数据流响应，**相当于在服务端和客户端建立了长连接，服务端可以实时向客户端推送信息**。
@@ -450,67 +455,10 @@ public override void Configure(IApplicationBuilder p_app, IDictionary<string, Re
 ![](11.png)
 
 
-### 宇宙服务(cosm)
-cosm服务是一个空服务，只提供公共Api，通过配置`service.json`可以实现以下功能：
-* 单体服务，适用于不需要任何自定义Api，所有功能都在客户端完成的情况。
-* 每个微服务独立部署时，若微服务只需连接不同数据库，无需自定义Api，可按照服务名、默认数据源键名配置cosm，相当于单体模式的其它微服务。
+### 数据服务(da)
+`da` 服务是一个空服务，无状态，只提供公共Api，所有的业务数据和实体系统都是通过该服务访问数据源。
 
-
-### 承载wasm(boot)
-`boot`服务不同于以上四个服务，它只是用来承载`wasm web`网站，无数据库、RabbitMq、Redis连接，无Api。
-
-wasm应用发布时默认会为`js css wasm clr`格式的文件生成`Brotli`压缩文件，文件名为原名加`br`扩展名，参见下图，参见[预压缩详情](https://platform.uno/docs/articles/external/uno.wasm.bootstrap/doc/features-pre-compression.html)
-
-![](19.png)
-
-发布后生成的`dist`目录就是一个完整的单页面静态`wasm`网站。
-`Uno.Wasm.Bootstrap.DevServer`提供的 `webapp` 包括调试代理、xaml热重载等功能，正式发布后都不需要，并且缺少自动下载同名`.br`文件的功能，因此平台提供`boot`服务作为承载wasm静态网站的`webapp`。
-
-`boot`服务通过`service.json`配置`wasm`静态网站的位置，可以是完整路径或相对路径：
-{{< highlight json >}}
-{
-  "WasmPath": "dist"
-}
-{{< /highlight >}}
-
-`boot`服务启动时加入三个中间件：
-* 第一个中间件重写请求文件路径，将存在`Brotli`压缩文件的路径指向压缩文件`.br`；
-* 第二个中间件处理访问根路径时的默认页，使用标准的`UseDefaultFiles`；
-* 第三个中间件使用标准的`UseStaticFiles`，增加支持 `.clr .br .dat` 文件类型，同时对于`.br`文件，mime类型在 `OnPrepareResponse` 时重置到非压缩文件的类型。
-
-{{< highlight cs >}}
-public override void Configure(IApplicationBuilder p_app, IDictionary<string, RequestDelegate> p_handlers)
-{
-    string pathBase = Kit.GetCfg<string>("WasmPath");
-    if (!Path.IsPathRooted(pathBase))
-    {
-        // 相对路径
-        pathBase = Path.Combine(AppContext.BaseDirectory, pathBase);
-    }
-    var fileProvider = new PhysicalFileProvider(pathBase);
-
-    p_app.UseMiddleware<RewriteBrFileMiddleware>(fileProvider);
-
-    // 该中间件处理访问根路径时的默认页，内部只重置 context.Request.Path 的值
-    // 所以必须在UseStaticFiles之前调用，最终由 StaticFiles 中间件响应默认页
-    p_app.UseDefaultFiles(new DefaultFilesOptions
-    {
-        FileProvider = fileProvider,
-        RequestPath = ""
-    });
-
-    p_app.UseStaticFiles(new StaticFileOptions
-    {
-        FileProvider = fileProvider,
-        ContentTypeProvider = _mimeTypeProvider,
-        OnPrepareResponse = SetCacheHeaders
-    });
-}
-{{< /highlight >}}
-
-将`boot`部署到`IIS`时通常以项目名命名webapp名，如：https://localhost/fz，平台服务和`boot`的典型部署如下图所示：
-
-![](20.png)
+因为无状态，在每个微服务独立部署时，**支持多副本运行**，为扩充服务运算能力提供支持。
 
 
 ## Api授权控制
