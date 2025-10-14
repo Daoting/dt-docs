@@ -22,7 +22,10 @@ tags: []
 * 单击“确定”关闭“选择证书”窗口。
 * 单击 Visual Studio 工具栏中的“保存文件”按钮
 
-默认创建的自签名证书有效期1年，也可使用 `Dt_Client.pfx`证书，密码 `dt`，有效期20年，位置在 `Demo\Platforms\Windows\Dt_Client.pfx`。
+默认创建的自签名证书有效期1年，也可使用搬运工的VS扩展生成证书，可以自定义有效期和密码。如下图，Exe项目右键 -> 创建应用包。
+
+![](a1.png)
+![](a2.png)
 
 ### 生成应用
 生成应用需要使用 msbuild 命令（从 WinAppSDK 1.5 开始不兼容），无法在VS中完成。
@@ -33,14 +36,14 @@ tags: []
 msbuild /r /p:TargetFramework=net9.0-windows10.0.19041 /p:Configuration=Release /p:Platform=x64 /p:GenerateAppxPackageOnBuild=true /p:AppxBundle=Never /p:UapAppxPackageBuildMode=Sideloading /p:AppxPackageDir="D:/Dt/Packages/" /p:AppxPackageSigningEnabled=true
 {{< /highlight >}}
 
-也可以用批处理完成此过程，参照`Demo\publish.bat`
-{{< highlight shell >}}
-call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
+也可使用搬运工的VS扩展完成此过程
 
-msbuild /r /p:TargetFramework=net9.0-windows10.0.19041 /p:Configuration=Release /p:Platform=x64 /p:GenerateAppxPackageOnBuild=true /p:AppxBundle=Never /p:UapAppxPackageBuildMode=Sideloading /p:AppxPackageDir="D:/Dt/Packages/" /p:AppxPackageSigningEnabled=true
+![](a3.png)
 
-pause
-{{< /highlight >}}
+{{< admonition >}}
+若因为IL裁剪出错，请将`Properties\PublishProfiles\win-x64.pubxml`中的 `PublishTrimmed` 设置为false，因为引用的包中有不支持IL裁剪的情况。
+{{< /admonition >}}
+
 
 ## 发布
 找到应用程序包目录，将证书文件和安装包复制到 `cm` 服务或单体服务的`package/win`目录下
