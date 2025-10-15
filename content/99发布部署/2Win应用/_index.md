@@ -13,7 +13,7 @@ tags: []
 
 ### 创建自签名证书
 
-* 在 Visual Studio 2022 中打开解决方案
+* 在 Visual Studio 中打开解决方案
 * 确保活动调试目标框架是net9.0-windows10.0.xxxxx
 * 双击文件Package.appxmanifest
 * 导航到选项卡打包
