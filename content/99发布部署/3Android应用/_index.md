@@ -38,15 +38,17 @@ keytool -genkey -v -keystore app.keystore -alias key -keyalg RSA -keysize 2048 -
 {{< /highlight >}}
 
 ## 生成应用
+1. 在 `AndroidManifest.xml` 中设置版本
 1. 选择 Release
-1. AndroidManifest.xml设置版本
 1. 生成
 
 ## 发布
-1. 项目右键选择“发布...”
-1. 发布完成后“打开文件夹”
-![](2.png "发布")
-1. 文件夹内的`*.apk`文件是app安装包，将安装包复制到 `cm` 服务或单体服务的`package/android`目录下，按格式加上版本号和cpu架构，
+1. 项目右键选择`创建应用包...`
+![](a2.png)
+1. 选择apk文件输出的目标位置，点击`创建apk包`，启动命令窗口
+![](a1.png)
+![](a3.png)
+1. 目标文件夹内的`*-Signed.apk`文件是app安装包，将安装包复制到 `cm` 服务或单体服务的`package/android`目录下，按格式加上版本号和cpu架构，
 ![](3.png "apk")
 1. 启动`cm` 服务或单体服务，浏览默认首页，如 `https://localhost:1234/`，查看安装包版本是否正确
 ![](4.png "下载页面")
