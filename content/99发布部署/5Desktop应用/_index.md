@@ -5,84 +5,109 @@ title: "桌面应用"
 tags: []
 ---
 
-## Windows ClickOnce
+## 创建 ClickOnce 包
 
-### 创建自签名证书
+支持使用 ClickOnce 将桌面应用发布到 Windows 环境。
 
-* 在 Visual Studio 中打开解决方案
-* 确保活动调试目标框架是net9.0-windows10.0.xxxxx
-* 双击文件Package.appxmanifest
-* 导航到选项卡打包
-* 单击“选择证书”按钮
-* 单击“创建”按钮，然后设置发布者公用名，然后单击“确定”。不要设置密码。
-* 单击“确定”关闭“选择证书”窗口。
-* 单击 Visual Studio 工具栏中的“保存文件”按钮
+### 配置
+发布时的配置如：
+{{< highlight xml >}}
+<Project>
+	<PropertyGroup>
+		<ApplicationVersion>5.0.0.*</ApplicationVersion>
+		<PublishDir>D:\Dt\Publish\Desktop\</PublishDir>
+		
+		<ApplicationRevision>0</ApplicationRevision>
+		<BootstrapperEnabled>True</BootstrapperEnabled>
+		<Configuration>Release</Configuration>
+		<CreateWebPageOnPublish>False</CreateWebPageOnPublish>
+		<GenerateManifests>true</GenerateManifests>
+		<Install>True</Install>
+		<InstallFrom>Disk</InstallFrom>
+		<IsRevisionIncremented>True</IsRevisionIncremented>
+		<IsWebBootstrapper>False</IsWebBootstrapper>
+		<MapFileExtensions>True</MapFileExtensions>
+		<OpenBrowserOnPublish>False</OpenBrowserOnPublish>
+		<Platform>x64</Platform>
+		<PublishProtocol>ClickOnce</PublishProtocol>
+		<PublishReadyToRun>False</PublishReadyToRun>
+		<PublishSingleFile>False</PublishSingleFile>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<SelfContained>True</SelfContained>
+		<SignatureAlgorithm>(none)</SignatureAlgorithm>
+		<SignManifests>False</SignManifests>
+		<SkipPublishVerification>false</SkipPublishVerification>
+		<TargetFramework>net9.0-desktop</TargetFramework>
+		<UpdateEnabled>False</UpdateEnabled>
+		<UpdateMode>Foreground</UpdateMode>
+		<UpdateRequired>False</UpdateRequired>
+		<WebPageFileName>Publish.html</WebPageFileName>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<!-- This section needs to be adjusted based on the target framework -->
+		<BootstrapperPackage Include="Microsoft.NetCore.DesktopRuntime.8.0.x64">
+			<Install>true</Install>
+			<ProductName>.NET Desktop Runtime 8.0.10 (x64)</ProductName>
+		</BootstrapperPackage>
+	</ItemGroup>
+</Project>
+{{< /highlight >}}
 
-默认创建的自签名证书有效期1年，也可使用搬运工的VS扩展生成证书，可以自定义有效期和密码。如下图，Exe项目右键 -> 创建应用包。
+项目模板中将以上配置保存在 `Properties\desktop-pub.props` 文件，在项目文件`xxx.csproj`中导入该配置
+{{< highlight xml "hl_lines=20" >}}
+<Project Sdk="Dt.Sdk">
+	<PropertyGroup>
+		<IsExe>true</IsExe>
 
-![](a1.png)
-![](a2.png)
+		<!-- 主题颜色，无#前缀，logo图标、启动页背景色 -->
+		<ThemeColor>1BA1E2</ThemeColor>
 
-### 生成应用
-生成应用需要使用 msbuild 命令（从 WinAppSDK 1.5 开始不兼容），无法在VS中完成。
-* windows开始菜单打开`Developer Command Prompt for VS 2022`命令窗口
-* 导航到app项目所在目录，即demo.csproj所在目录（不支持在解决方案级别生成）
-* 使用以下命令，可以自定义输出路径
+		<!-- WinAppSdk时和Package.appxmanifest模板生成AppxManifest.xml -->
+		<ApplicationTitle>搬运工</ApplicationTitle>
+		<ApplicationId>dt.Demo</ApplicationId>
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationPublisher>Daoting</ApplicationPublisher>
+		<Description>搬运工样例.</Description>
+	</PropertyGroup>
+
+	<!-- 发布时配置 -->
+	<Import Project="Properties\win-pub.props" Condition="$(IsWinAppSdk) AND '$(Configuration)' == 'Release'" />
+	<Import Project="Properties\android-pub.props" Condition="$(IsAndroid) AND '$(Configuration)' == 'Release'" />
+	<Import Project="Properties\desktop-pub.props" Condition="$(IsDesktop) AND '$(Configuration)' == 'Release'" />
+	
+	<ItemGroup>
+		<ProjectReference Include="..\Demo.Base\Demo.Base.csproj" />
+		<ProjectReference Include="..\Demo.UI\Demo.UI.csproj" />
+		<ProjectReference Include="..\Demo.Crud\Demo.Crud.csproj" />
+		<ProjectReference Include="..\Demo.Lob\Demo.Lob.csproj" />
+	</ItemGroup>
+</Project>
+{{< /highlight >}}
+
+### 生成
+使用以下命令，可以自定义输出路径
 {{< highlight shell >}}
-msbuild /r /p:TargetFramework=net9.0-windows10.0.19041 /p:Configuration=Release /p:Platform=x64 /p:GenerateAppxPackageOnBuild=true /p:AppxBundle=Never /p:UapAppxPackageBuildMode=Sideloading /p:AppxPackageDir="D:/Dt/Packages/" /p:AppxPackageSigningEnabled=true
+msbuild /m /r /target:Publish /p:Configuration=Release /p:TargetFramework=net9.0-desktop
 {{< /highlight >}}
 
 也可使用搬运工的VS扩展完成此过程
 
-![](a3.png)
-
-{{< admonition >}}
-若因为IL裁剪出错，请将`Properties\PublishProfiles\win-x64.pubxml`中的 `PublishTrimmed` 设置为false，因为引用的包中有不支持IL裁剪的情况。
-{{< /admonition >}}
+![](1.png)
 
 
 ## 发布
-找到应用程序包目录，将证书文件和安装包复制到 `cm` 服务或单体服务的`package/win`目录下
-![](1.png)
+找到应用程序包目录，将整个目录压缩成`.zip`包，并将zip包复制到 `cm` 服务或单体服务的`package/desktop`目录下
+![](2.png)
 
 启动`cm` 服务或单体服务，浏览默认首页，如 `https://localhost:1234/`，查看安装包版本是否正确
-![](2.png)
+![](3.png)
 
 发布完毕
 
 
 ## 安装
-初次安装步骤：
 * 浏览服务的默认首页
-* 点击Win10+所在行的`下载证书`链接， 然后将该证书导入到`在本地计算机`的`受信任的根证书颁发机构`
-
-![](8.png)
-![](10.png)
-
-* 下载`.msix`文件，然后双击安装，若未安装证书，会出现以下提醒
-![](9.png)
-
-初次安装总结为：`导入安全证书、安装应用。`
-
-完成初次安装后，版本升级时会自动进行，不需人工参与。
-
-
-## 升级
-App每次启动时都会检查是否有新版本程序包，若有，会根据cm服务配置提醒用户更新，`cm.json`
-{{< highlight json "hl_lines=3" >}}
-{
-  // win客户端是否强制更新到最新版本
-  "ForceUpdateWinApp": false,
-}
-{{< /highlight >}}
-当 `ForceUpdateWinApp` 为 `false` 时，App显示升级提醒，由用户选择是否更新
-![](11.png)
-
-为 `true` 时，直接自动升级，升级完成后自动重启应用
-![](12.png)
-
-**即使升级过程中手动关闭应用，也会在后台自动完成升级过程！**
-
-{{< admonition >}}
-客户端如果采用`https`的方式连接cm服务，升级时客户端会校验证书，无效时安装失败！！！
-{{< /admonition >}}
+* 点击`桌面`所在行的`.zip`链接，下载压缩包，解压并点击`setup.exe`安装
+* 安装成功后会自动启动app
