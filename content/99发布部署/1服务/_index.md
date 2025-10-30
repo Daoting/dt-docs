@@ -5,14 +5,32 @@ title: "服务"
 tags: []
 ---
 
-服务端环境的安装部署主要包括平台服务、mysql库、RabbitMQ、Redis、k8s、IIS等，本章主要介绍平台服务的两种部署方式：IIS部署、k8s部署，最初开发时使用Traefik做反向代理，windows版的Traefik使用方式和容器版类似，可以按照服务的url规则进行配置，详细配置参见traefik.toml，还特意做了“搬运工助手”工具，用于启动、停止服务和查看日志。
+服务端环境的安装部署主要包括平台服务、mysql库、RabbitMQ、Redis、k8s、IIS等，本章主要介绍平台服务的两种部署方式：IIS部署、k8s部署。
+
+最初开发时使用Traefik做反向代理，windows版的Traefik使用方式和容器版类似，可以按照服务的url规则进行配置，详细配置参见traefik.toml，还特意做了“搬运工助手”工具，用于启动、停止服务和查看日志。
 
 ##	Web服务器
 Asp.net core的web服务器有两种：KestrelServer 和 IISHttpServer。
 IISHttpServer主要用于部署在IIS并且进程内承载时使用，具体可参见下一节的“承载模式”，IISHttpServer的配置在web.config。
-其他情况都使用KestrelServer，它的监听和协议在service.json 中配置，可以监听多个Url，每个监听可以指定使用的协议、监听地址、端口、X509证书文件及密码等，如：
+其他情况都使用KestrelServer，它的监听和协议在 `etc\config\kestrel.json` 中配置，可以监听多个Url，每个监听可以指定使用的协议、监听地址、端口、X509证书文件及密码等，如：
 
-![](1.png)
+{{< highlight json >}}
+{
+  // 启动KestrelServer时的监听设置
+  "KestrelListen": [
+    {
+      "Scheme": "https",
+      "Address": "0.0.0.0",
+      "Port": "1234"
+    },
+    {
+      "Scheme": "http",
+      "Address": "0.0.0.0",
+      "Port": "9999"
+    }
+  ]
+}
+{{< /highlight >}}
 
 ## IIS部署
 在开发或部署到windows server时首选IIS，和传统asp.net应用不同，IIS只作为反向代理使用。
@@ -22,19 +40,32 @@ IISHttpServer主要用于部署在IIS并且进程内承载时使用，具体可�
 
 ### https配置
 http2.0协议比http1.1更高效，本来http2.0协议和https之间没有依赖关系，但主流浏览器和.net都要求采用http2.0协议通信必须启用https。
-平台所有服务都同时支持http1.1和http2.0协议，平台四种客户端(win wasm android ios) 与服务之间以及服务与服务之间都采用http2.0协议进行http请求，虽然http请求为http2.0但它们之间采用何种通信协议，最终取决于是否启用https，启用https时采用http2.0协议，否则仍采用http1.1协议。
+
+平台所有服务都同时支持http1.1和http2.0协议，平台所有客户端与服务之间以及服务与服务之间都采用http2.0协议进行http请求，虽然http请求为http2.0但它们之间采用何种通信协议，最终取决于是否启用https，启用https时采用http2.0协议，否则仍采用http1.1协议。
+
 因此要想采用高效的http2.0协议必须启用https通信，而要使用https需要在网站的服务器上配置https证书，IIS和k8s的traefik都需要配置该证书。
-证书可以向专门的https证书提供商进行购买，也可以自己生成，两种的区别是自己生成的证书不被浏览器信任，需要点击信任或将证书安装在“受信任的根证书颁发机构”之后才能继续访问，安装方法是将Dt\Service\iis\tls.pfx证书安装在“受信任的根证书颁发机构”，私钥密码dt。
+
+证书可以向专门的https证书提供商进行购买，也可以自己生成，两种的区别是自己生成的证书不被浏览器信任，需要点击信任或将证书安装在“受信任的根证书颁发机构”之后才能继续访问。
+
 默认情况下，IIS中的网站只提供了http绑定，要支持https绑定，首先需要pfx格式的服务器证书，以下为生成https证书的过程：
-在windows上安装Win64OpenSSL_Light-1_1_1b.exe，然后打开PowerShell(管理员)，cd到openssl.exe所在的目录
-生成私钥tls.key, 密钥位数是 2048
+
+* 在windows上安装Win64OpenSSL_Light-1_1_1b.exe，然后打开PowerShell(管理员)，cd到openssl.exe所在的目录
+* 生成私钥tls.key, 密钥位数是 2048
+{{< highlight shell >}}
 .\openssl genrsa -out tls.key 2048
-使用server.key 生成自签证书，域名localhost，有效期20年
+{{< /highlight >}}
+
+* 使用server.key 生成自签证书，域名localhost，有效期20年
+{{< highlight shell >}}
 .\openssl req -new -x509 -days 7300 -key tls.key -out tls.crt -subj /CN=localhost -addext "subjectAltName=DNS:localhost"
-生成tls.key, tls.crt文件用于以上secret资源，crt存储公钥，key存储私钥
+{{< /highlight >}}
+
+* 生成tls.key, tls.crt文件用于以上secret资源，crt存储公钥，key存储私钥
 将私钥和公钥合并成pfx证书，密码为dt，用于服务的x509认证
+{{< highlight shell >}}
 .\openssl pkcs12 -export -in tls.crt -inkey tls.key -out tls.pfx -name "Dt Platform"
-导入服务器证书，证书位置Dt\Service\iis\ tls.pfx，私钥密码dt，此证书签名为localhost，只在开发时使用，生成环境可替换，导入新证书即可。
+{{< /highlight >}}
+* 导入服务器证书，此证书签名为localhost，只在开发时使用，生成环境可替换，导入新证书即可。
 
 ![](2.png)
 
@@ -50,16 +81,18 @@ http2.0协议比http1.1更高效，本来http2.0协议和https之间没有依赖
 ### 承载模式
 ![](5.png)
 
-### 添加服务
+
+### 安装服务
+部署服务时支持两种模式，参见[服务部署](/dt-docs/2基础/3服务/#服务部署)。
+
+* 打开IIS管理器 `inetmgr`
+* 添加应用池：
+
 ![](6.png)
 
-
-### 调试服务
-VS中主要有两种调试服务方式，一种是直接启动应用的方式，另一种是部署到IIS或IIS Express进行调试，因为受到服务URL规则的限制(存在二级目录)，系统采用部署到IIS的调试方法。老版本的VS调试IIS上的asp.net应用时需要采用“附加到进程 w3wp”的方式，新版本更方便，初次启动调试时自动创建应用池和应用，代码修改后重新编译时能自动停止应用池，再次启动调试时会同步启动应用池，并且支持调试服务的启动部分。因应用池命名的原因，请使用上节的bat添加服务。注意在关闭VS时会自动停止所有调试过的应用池，可以手动运行startpool.bat启动所有应用池。
+* 添加应用程序
 
 ![](7.png)
-
-
 
 ## k8s部署
 k8s的概念和环境安装过程请参见下一章介绍。
