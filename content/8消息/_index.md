@@ -55,7 +55,7 @@ public class MsgInfo : IRpcJson
 ### 聊天消息API
 客户端聊天的收发API如下：
 {{< highlight cs >}}
-public partial class ChatDs : DomainSvc<ChatDs>
+public static class ChatDs
 {
     /// <summary>
     /// 向某用户的客户端推送聊天信息，可通过指定LetterInfo.LetterType为Undo撤回信息

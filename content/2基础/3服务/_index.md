@@ -502,7 +502,7 @@ public class AuthAttribute : Attribute
 
 例如：
 {{< highlight cs >}}
-public class TestAuth : DomainSvc
+public class TestAuth : RpcApi
 {
     [Auth]
     public string Auth()

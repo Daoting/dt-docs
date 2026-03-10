@@ -222,37 +222,11 @@ VS中选中sql语句，右键菜单点击搬运工，或 Alt + 1 快捷键可以
 每个模块都包含一个或多个领域服务类，主要处理涉及多种实体的交叉业务逻辑或无法确定放在何处的功能。
 
 ### 客户端
-客户端领域服务类的命名以`Ds`为后缀，无状态，所有方法、属性、事件等都为静态，领域服务类继承自`DomainSvc<T>`。和`EntityX<T>`相同，将当前领域服务类作为泛型参数传递到基类，使每个领域服务类保证有一套只属于自己的静态变量。
-
-{{< highlight cs >}}
-/// <summary>
-/// 领域服务的抽象基类
-/// </summary>
-/// <typeparam name="TDomainSvc">当前领域服务的类型，保证静态变量属于各自的领域服务类型</typeparam>
-public abstract class DomainSvc<TDomainSvc>
-    where TDomainSvc : class
-{
-    /**********************************************************************************************************************************************************/
-    // 泛型类型：
-    // 对象是类的实例，提供具体类型参数的泛型类是泛型类型的实例
-    // 若将cm服务的类型作为类型参数，如 AbcDs : DomainSvc<AtCm.Info>
-    // 则AbcDs是该泛型基类的实例类，泛型基类中保证有一套只属于AbcDs类的静态变量实例！
-    // 因此类型参数相同的泛型类的静态成员相同
-    /***********************************************************************************************************************************************************/
-
-    /// <summary>
-    /// 日志对象，日志属性中包含来源
-    /// </summary>
-    protected static readonly ILogger _log = Log.ForContext("src", typeof(TDomainSvc).FullName);
-}
-{{< /highlight >}}
-
-基类中只包含变量：`_log`，`_log`较于Log的优点是日志属性中包含来源:
-![](9.png)
+客户端领域服务类的命名以`Ds`为后缀，静态类，无状态。
 
 如工作流领域服务的发送业务：
 {{< highlight cs >}}
-public partial class WfiDs : DomainSvc<WfiDs>
+public static class WfiDs
 {
     /// <summary>
     /// 发送成功事件
@@ -851,12 +825,12 @@ public partial class WfiDs : DomainSvc<WfiDs>
 总体而言，**客户端能处理绝大部分业务功能，无法实现或影响效率的功能还需要服务端实现**。
 
 ### 服务端
-服务端领域服务同时也是微服务的Api，是客户端提交请求的入口。为尽最大可能的使服务端与客户端代码通用，在实现上领域服务类继承自DomainSvc并带有Api标签。
+服务端领域服务同时也是微服务的Api，是客户端提交请求的入口。
 {{< highlight cs >}}
 /// <summary>
 /// 领域服务的抽象基类，也是Rpc Api入口
 /// </summary>
-public abstract class DomainSvc
+public abstract class RpcApi
 {
     /// <summary>
     /// 获取领域层数据访问对象
