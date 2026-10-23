@@ -5,7 +5,7 @@ title: "服务"
 tags: []
 ---
 
-服务端环境的安装部署主要包括平台服务、mysql库、RabbitMQ、Redis、k8s、IIS等，本章主要介绍平台服务的两种部署方式：IIS部署、k8s部署。
+服务端环境的安装部署主要包括平台服务、mysql库、RabbitMQ、k8s、IIS等，本章主要介绍平台服务的两种部署方式：IIS部署、k8s部署。
 
 最初开发时使用Traefik做反向代理，windows版的Traefik使用方式和容器版类似，可以按照服务的url规则进行配置，详细配置参见traefik.toml，还特意做了“搬运工助手”工具，用于启动、停止服务和查看日志。
 

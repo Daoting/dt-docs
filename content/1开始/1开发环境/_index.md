@@ -59,9 +59,9 @@ iOS 开发需要有 Mac 主机，有关将 Visual Studio 连接到 Mac 生成主
 
 ## 安装 RabbitMQ
 
-RabbitMQ 是消息队列中间件，搬运工基于它实现了微服务之间的Rpc调用、事件总线、远程事件、消息广播等功能，安装过程请自行搜索。
-
 **若采用单体服务模式，可以不安装 RabbitMQ。**
+
+RabbitMQ 是消息队列中间件，搬运工基于它实现了微服务之间的Rpc调用、事件总线、远程事件、消息广播等功能，安装过程请自行搜索。
 
 {{< admonition >}}
 * 启用事件通知插件，以便搬运工检测队列变化：
@@ -69,10 +69,6 @@ RabbitMQ 是消息队列中间件，搬运工基于它实现了微服务之间�
   `rabbitmq-plugins enable rabbitmq_event_exchange`
 * 防火墙允许默认端口 5672, 15672 通过。
 {{< /admonition >}}
-
-## 安装 Redis
-
-搬运工使用Redis作为全局缓存数据库，以key-value形式存储要缓存的内容，供所有微服务使用，安装过程请自行搜索。
 
 
 ## 安装 IIS

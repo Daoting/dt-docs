@@ -347,20 +347,3 @@ public static class EntityEx
 {{< admonition warning >}}
 原则上整个系统不允许出现含 `insert update delete` 的sql语句，增删改的sql语句都由系统自动生成。
 {{< /admonition >}}
-
-
-
-## 实体对象缓存
-
-实体对象缓存属于全局缓存，服务端全局缓存使用redis内存数据库，以key-value形式存储要缓存的内容，所有服务都可访问，使用常见的过期策略，缓存的对象在整个应用中是唯一的。详见[全局缓存](/dt-docs/2基础/2基础功能/#缓存)。
-
-{{< admonition warning >}}
-实体缓存适用于**频繁使用并且基本无修改**的实体，其它情况请谨慎使用缓存。
-{{< /admonition >}}
-
-实体对象缓存涉及两方面内容：
-1. 读取缓存：`GetFromCacheFirst`用于优先从缓存读取实体
-![](19.png)
-
-2. 更新缓存：实体修改或删除后需要清除缓存，可在实体类的`InitHook`的`OnSaved OnDeleted`回调中清除，如：
-![](20.png)

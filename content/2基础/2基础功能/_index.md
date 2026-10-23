@@ -572,185 +572,70 @@ row.AddCell("ext1", "默认值");
 为了更有效的利用机器资源，平台在服务端和客户端都使用了缓存，**总体原则是榨取客户端、节约服务器**，按照使用场景可分为四种缓存方法。
 
 ### 全局缓存
-服务端全局缓存使用redis内存数据库，以`key-value`形式存储要缓存的内容，所有服务都可访问，使用常见的过期策略，[Entity的缓存](/dt-docs/2基础/3领域层/#实体缓存)就是全局缓存。
+服务端全局缓存采用两级缓存方式，一级为IMemoryCache内存缓存，二级为存储在库表cm_cache中持久化缓存，在设置缓存时支持只缓存一级或两级都缓存，支持过期策略。
 
-key只能为字符串类型，value的数据类型有5种：`String、list、hash、set、sorted set`。系统以value数据类型作为区别，提供5个类实现不类型的相关操作：`StringCache、ListCache、HashCache、SetCache、SortedSetCache`，同时在Kit中提供更加方便使用的静态方法，适合于单独一次读写操作，相关操作包括：
+全局缓存由cm服务管理，相关操作包括：
 {{< highlight cs >}}
 /// <summary>
-/// Redis缓存方法
+/// 根据键查询缓存值，获取过程：
+/// <para>1. 首先从缓存中获取，有则直接返回</para>
+/// <para>2. 无且p_persist 为true，则从数据库获取，并按照rpc json规则反序列化，将结果添加到缓存以备下次使用</para>
 /// </summary>
-public partial class Kit
-{
-    /// <summary>
-    /// 根据键查询字符串类型的缓存值
-    /// </summary>
-    /// <typeparam name="T">缓存类型</typeparam>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <returns>缓存对象</returns>
-    public static Task<T> StringGet<T>(string p_keyPrefix, object p_key = null)
+/// <param name="p_key">缓存键，字符串或简单值类型，推荐分段式串如：大类1:分组2:标识</param>
+/// <param name="p_persist">缓存中无时是否从数据库获取，默认false</param>
+/// <returns>返回缓存值，自动转换为指定类型</returns>
+Task<T> GetCache<T>(object p_key, bool p_persist = false);
 
-    /// <summary>
-    /// 将对象ToString添加到缓存
-    /// </summary>
-    /// <typeparam name="T">缓存类型</typeparam>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <param name="p_value">待缓存对象</param>
-    /// <param name="p_expiry">过期时间</param>
-    /// <returns></returns>
-    public static Task StringSet<T>(string p_keyPrefix, object p_key, T p_value, TimeSpan? p_expiry = null)
+/// <summary>
+/// 将键值添加到缓存，并根据p_persist控制是否同时存放在数据库
+/// </summary>
+/// <param name="p_key">缓存键，字符串或简单值类型，推荐分段式串如：大类1:分组2:标识</param>
+/// <param name="p_value">缓存值，持久化时按照rpc json规则序列化键值</param>
+/// <param name="p_persist">是否同时存放在数据库，默认false</param>
+/// <returns>是否成功</returns>
+Task<bool> SetCache(object p_key, object p_value, bool p_persist = false);
 
-    /// <summary>
-    /// 按键名批量查询缓存对象
-    /// </summary>
-    /// <typeparam name="T">缓存类型</typeparam>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_keys">不带前缀的键名列表</param>
-    /// <returns>缓存对象列表</returns>
-    public static Task<List<T>> StringBatchGet<T>(string p_keyPrefix, IEnumerable<object> p_keys)
+/// <summary>
+/// 将键值添加到缓存，并设置过期时间，始终不持久化
+/// </summary>
+/// <param name="p_key">缓存键，字符串或简单值类型，推荐分段式串如：大类1:分组2:标识</param>
+/// <param name="p_value">缓存值</param>
+/// <param name="p_seconds">过期秒数，0表示永久缓存</param>
+/// <returns>是否成功</returns>
+Task<bool> SetExpireCache(object p_key, object p_value, double p_seconds);
 
-    /// <summary>
-    /// 计数增加1
-    /// </summary>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <returns>返回加1后的值</returns>
-    public static Task<long> StringIncrement(string p_keyPrefix, object p_key = null)
+/// <summary>
+/// 删除缓存值，并根据p_persist控制是否同时删除数据库中的值
+/// </summary>
+/// <param name="p_key">缓存键，字符串或简单值类型</param>
+/// <param name="p_persist">是否同时删除数据库中的值，默认false</param>
+/// <returns>是否成功</returns>
+Task<bool> DeleteCache(object p_key, bool p_persist = false);
 
-    /// <summary>
-    /// 计数减1
-    /// </summary>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <param name="p_min">最小值</param>
-    /// <returns>返回减1后的值</returns>
-    public static Task<long> StringDecrement(string p_keyPrefix, object p_key = null, int p_min = 0)
+/// <summary>
+/// 批量删除缓存值，并根据p_persist控制是否同时删除数据库中的值
+/// </summary>
+/// <param name="p_keys">缓存键列表，字符串或简单值类型，推荐分段式串如：大类1:分组2:标识</param>
+/// <param name="p_persist">是否同时删除数据库中的值，默认false</param>
+/// <returns>是否成功</returns>
+Task<bool> BatchDeleteCache(IList p_keys, bool p_persist = false);
 
-    /// <summary>
-    /// 根据键查询缓存对象
-    /// </summary>
-    /// <typeparam name="T">缓存类型</typeparam>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <returns>缓存对象</returns>
-    public static Task<T> HashGet<T>(string p_keyPrefix, object p_key = null)
+/// <summary>
+/// 按照匹配模式批量删除缓存值，并根据p_persist控制是否同时删除数据库中的值
+/// </summary>
+/// <param name="p_keyStr">待匹配的键字符串</param>
+/// <param name="p_pattern">匹配模式：0以开头，1以结尾，2包含</param>
+/// <param name="p_persist">是否同时删除数据库中的值，默认false</param>
+/// <returns>是否成功</returns>
+Task<bool> DelCacheByPattern(string p_keyStr, int p_pattern, bool p_persist = false);
 
-    /// <summary>
-    /// 将对象添加到缓存
-    /// </summary>
-    /// <typeparam name="T">缓存类型</typeparam>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <param name="p_value">待缓存对象</param>
-    /// <param name="p_expiry">过期时间</param>
-    /// <returns></returns>
-    public static Task HashSet<T>(string p_keyPrefix, object p_key, T p_value, TimeSpan? p_expiry = null)
-
-    /// <summary>
-    /// 按键名批量查询缓存对象
-    /// </summary>
-    /// <typeparam name="T">缓存类型</typeparam>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_keys">不带前缀的键名列表</param>
-    /// <returns>缓存对象列表</returns>
-    public static Task<List<T>> HashBatchGet<T>(string p_keyPrefix, IEnumerable<object> p_keys)
-
-    /// <summary>
-    /// 获取指定键名的hash中field对应的value
-    /// </summary>
-    /// <typeparam name="T">field类型</typeparam>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <param name="p_field">hash中的field，大小写敏感</param>
-    /// <returns>field对应的value</returns>
-    public static Task<T> HashGetField<T>(string p_keyPrefix, object p_key, string p_field)
-
-    /// <summary>
-    /// 设置指定键名的hash中field对应的value
-    /// </summary>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <param name="p_field">hash中的field，大小写敏感</param>
-    /// <param name="p_value">field对应的value</param>
-    /// <returns></returns>
-    public static Task HashSetField(string p_keyPrefix, object p_key, string p_field, object p_value)
-
-    /// <summary>
-    /// 根据键查询所有field-value数组
-    /// </summary>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <returns></returns>
-    public static Task<HashEntry[]> HashGetAll(string p_keyPrefix, object p_key = null)
-
-    /// <summary>
-    /// SortedSet中增加指定字符串的权重
-    /// </summary>
-    /// <param name="p_key">完整键名</param>
-    /// <param name="p_name">字符串</param>
-    /// <param name="p_stepValue">增量</param>
-    /// <returns></returns>
-    public static Task<double> SortedSetIncrement(string p_key, string p_name, double p_stepValue = 1)
-
-    /// <summary>
-    /// SortedSet中减少指定字符串的权重
-    /// </summary>
-    /// <param name="p_key">完整键名</param>
-    /// <param name="p_name">字符串</param>
-    /// <param name="p_stepValue">减量</param>
-    /// <returns></returns>
-    public static Task<double> SortedSetDecrement(string p_key, string p_name, double p_stepValue = 1)
-
-    /// <summary>
-    /// 获取权重值最小的字符串
-    /// </summary>
-    /// <param name="p_key">完整键名</param>
-    /// <returns></returns>
-    public static Task<string> SortedSetGetMin(string p_key)
-
-    /// <summary>
-    /// 获取权重值最大的字符串
-    /// </summary>
-    /// <param name="p_key">完整键名</param>
-    /// <returns></returns>
-    public static Task<string> SortedSetGetMax(string p_key)
-
-    /// <summary>
-    /// 在尾部添加元素
-    /// </summary>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，null时键前缀为完整键</param>
-    /// <param name="p_value">待缓存对象</param>
-    /// <returns></returns>
-    public static Task<long> ListRightPush<T>(string p_keyPrefix, object p_key, T p_value)
-
-    /// <summary>
-    /// 返回名称为key的list中start至end之间的元素
-    /// </summary>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，null时键前缀为完整键</param>
-    /// <param name="p_start"></param>
-    /// <param name="p_stop">-1表示最后一个元素</param>
-    /// <returns></returns>
-    public static Task<List<T>> ListRange<T>(string p_keyPrefix, object p_key, long p_start = 0, long p_stop = -1)
-
-    /// <summary>
-    /// 删除缓存对象
-    /// </summary>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_key">不带前缀的键，非null时完整键形如"prefix:key"，null时前缀作为完整键</param>
-    /// <returns></returns>
-    public static Task<bool> DeleteCache(string p_keyPrefix, object p_key = null)
-
-    /// <summary>
-    /// 批量删除缓存对象
-    /// </summary>
-    /// <param name="p_keyPrefix">缓存键前缀，非空</param>
-    /// <param name="p_keys">不带前缀的键名列表</param>
-    /// <returns></returns>
-    public static Task BatchDeleteCache(string p_keyPrefix, IEnumerable<string> p_keys)
-}
+/// <summary>
+/// 按照匹配模式获取一级缓存(内存)的所有键列表，p_keyStr空时返回所有键
+/// </summary>
+/// <param name="p_keyStr">待匹配的键字符串，空时表示匹配所有键</param>
+/// <param name="p_pattern">匹配模式：0以开头，1以结尾，2包含</param>
+/// <returns>缓存键列表</returns>
+Task<List<string>> GetCacheKeys(string p_keyStr, int p_pattern);
 {{< /highlight >}}
 
 

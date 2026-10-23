@@ -155,7 +155,7 @@ tags: []
 
 　　![](a16.png)
 
-8. 数据库初始化成功后，复制新库的连接串，打开Svc项目的 etc/config/global.json 文件，将连接串粘贴到`Database`节，注意数据库类型一致。global.json 文件存储全局配置，包括应用名称、所有涉及的数据库连接串、rabbitmq配置、redis配置等，是系统内所有微服务需要的公共配置。数据库连接串可以为多个，并支持4种类型数据库，每个服务的默认库是这其中的一个。
+8. 数据库初始化成功后，复制新库的连接串，打开Svc项目的 etc/config/global.json 文件，将连接串粘贴到`Database`节，注意数据库类型一致。global.json 文件存储全局配置，包括应用名称、所有涉及的数据库连接串、rabbitmq配置等，是系统内所有微服务需要的公共配置。数据库连接串可以为多个，并支持4种类型数据库，每个服务的默认库是这其中的一个。
 {{< highlight json "hl_lines=5 10 16" >}}
 {
   "App": "PrjName1",
@@ -171,8 +171,7 @@ tags: []
     "Password": "dt",
     "Port": 5672,
     "HttpPort": 15672
-  },
-  "Redis": "10.10.1.2,password=dt,defaultDatabase=15,allowAdmin=true"
+  }
 }
 {{< /highlight >}}
 
